@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="assets/images/Group16.png">
+  <title>van Son fotografie</title>
+  <meta
+    name="description"
+    content="Portfolio website voor fotografie met werk in portret, commercieel werk en kunst."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@600;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="topbar">
+      <div class="topbar__group">
+        <a href="#about">Over mij</a>
+        <a href="#commercial">Opdrachten</a>
+        <a href="#art">Kunst</a>
+        <a href="gallery.html" target="_blank" rel="noopener noreferrer">Galerij</a>
+        <a href="blog.html" target="_blank" rel="noopener noreferrer">Blogs</a>
+      </div>
+      <a class="topbar__contact" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <aside class="sun-nav" data-sun-nav aria-label="Snelle sectienavigatie">
+    <button class="sun-nav__button" type="button" aria-expanded="false" aria-controls="sun-nav-menu">
+      <span class="sun-nav__halo" aria-hidden="true"></span>
+      <span class="sun-nav__rays" aria-hidden="true"></span>
+      <span class="sun-nav__core" aria-hidden="true"></span>
+      <span class="sun-nav__sr">Open sectienavigatie</span>
+    </button>
+    <div class="sun-nav__menu" id="sun-nav-menu">
+      <a href="#about" data-sun-link>Over mij</a>
+      <a href="#commercial" data-sun-link>Opdrachten</a>
+      <a href="#art" data-sun-link>Kunst</a>
+      <a href="gallery.html" target="_blank" rel="noopener noreferrer">Galerij</a>
+      <a href="blog.html" target="_blank" rel="noopener noreferrer">Blogs</a>
+      <a href="#contact" data-sun-link>Contact</a>
+    </div>
+  </aside>
+
+  <main class="page-shell">
+    <section id="about" class="feature-section about-section">
+      <div class="about-media">
+        <figure class="photo-card about-photo-card">
+          <img src="assets/images/DSC03243OvermijV2.webp" alt="Plaats hier jouw foto voor het over mij gedeelte">
+        </figure>
+      </div>
+
+      <div class="copy-block">
+        <div class="text-panel">
+          <h1 class="panel-title">Over mij</h1>
+          <p>
+  Mijn naam is Gijs. Op deze website verzamel ik mijn fotografie: van persoonlijke portretten
+  tot vrij werk en commerciële opdrachten.
+</p>
+<p>
+  Ik hou van spontane beelden met warmte en karakter. In mijn werk zoek ik naar momenten die
+  echt voelen en lang blijven hangen.
+</p>
+<p>
+  Voor mij draait fotografie om mensen vastleggen zoals ze zijn. Ik vind het belangrijk dat de
+  mensen die ik fotografeer met een lach kunnen terugkijken op het moment dat we samen hebben
+  vastgelegd.
+</p>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="commercial" class="feature-section feature-section-reverse">
+      <div class="copy-block">
+        <div class="text-panel">
+          <h2 class="panel-title">Opdrachten</h2>
+          <p>
+            In mijn opdrachten fotografeer ik momenten en verhalen voor anderen. Denk aan bruiloften, evenementen of andere projecten waarbij het vastleggen van sfeer, emoties en herinneringen centraal staat. Elke opdracht is anders, en juist dat maakt het werk zo interessant.
+          </p>
+          <p>
+            Met aandacht voor licht, compositie en het juiste moment probeer ik beelden te maken die niet alleen laten zien wat er gebeurt, maar ook het gevoel van het moment overbrengen. Of het nu gaat om een grote dag zoals een bruiloft, een bijzonder evenement of een ander project: mijn doel is om foto's te maken die de sfeer en het verhaal van dat moment echt laten spreken.
+          </p>
+          <p>
+           Samen kijken we naar wat belangrijk is om vast te leggen, zodat de beelden niet alleen mooi zijn, maar ook betekenisvol blijven om later op terug te kijken.
+          </p>
+        </div>
+      </div>
+
+      <div class="gallery-slider" data-slider data-dots-side="left" aria-label="Opdrachten galerij">
+        <div class="slider-frame">
+          <figure class="slider-slide is-active">
+            <img src="assets/images/DSC08056com1.JPG.webp" alt="Plaats hier jouw eerste commercial-foto">
+          </figure>
+          <figure class="slider-slide">
+            <img src="assets/images/DSC07908com2.webp" alt="Plaats hier jouw tweede commercial-foto">
+          </figure>
+          <figure class="slider-slide">
+            <img src="assets/images/DSC07843com3.webp" alt="Plaats hier jouw derde commercial-foto">
+          </figure>
+          <figure class="slider-slide">
+            <img src="assets/images/DSC08051com3.webp" alt="Plaats hier jouw vierde commercial-foto">
+          </figure>
+          <button class="slider-control slider-control--prev" type="button" data-direction="prev" aria-label="Vorige foto">
+            <span aria-hidden="true">&#8592;</span>
+          </button>
+          <button class="slider-control slider-control--next" type="button" data-direction="next" aria-label="Volgende foto">
+            <span aria-hidden="true">&#8594;</span>
+          </button>
+        </div>
+        <div class="slider-ui">
+          <div class="slider-dots" aria-label="Kies een foto"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="timeline-section" aria-label="Werkwijze">
+      <div class="timeline">
+        <!-- Vervang de tekst hieronder per stap. Bij hover of focus verschijnt deze tekst boven het bolletje. -->
+        <div class="timeline-track" aria-hidden="true"></div>
+        <div class="timeline-step" tabindex="0">
+          <span class="timeline-label">Opdracht</span>
+          <span class="timeline-dot" aria-hidden="true"></span>
+        </div>
+        <div class="timeline-step" tabindex="0">
+          <span class="timeline-label">Concept</span>
+          <span class="timeline-dot" aria-hidden="true"></span>
+        </div>
+        <div class="timeline-step" tabindex="0">
+          <span class="timeline-label">Shoot</span>
+          <span class="timeline-dot" aria-hidden="true"></span>
+        </div>
+        <div class="timeline-step" tabindex="0">
+          <span class="timeline-label">Oplevering</span>
+          <span class="timeline-dot" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="art" class="feature-section">
+      <div class="gallery-slider" data-slider data-dots-side="right" aria-label="Kunst galerij">
+        <div class="slider-frame">
+          <figure class="slider-slide is-active">
+            <img src="assets/images/DSC_0581art1.webp" alt="Plaats hier jouw eerste art-foto">
+          </figure>
+          <figure class="slider-slide">
+            <img src="assets/images/DSC08211art2.webp" alt="Plaats hier jouw tweede art-foto">
+          </figure>
+          <figure class="slider-slide">
+            <img src="assets/images/DSC03625art3.webp" alt="Plaats hier jouw derde art-foto">
+          </figure>
+          <figure class="slider-slide">
+            <img src="assets/images/DSC07744art4.webp" alt="Plaats hier jouw vierde art-foto">
+          </figure>
+          <button class="slider-control slider-control--prev" type="button" data-direction="prev" aria-label="Vorige foto">
+            <span aria-hidden="true">&#8592;</span>
+          </button>
+          <button class="slider-control slider-control--next" type="button" data-direction="next" aria-label="Volgende foto">
+            <span aria-hidden="true">&#8594;</span>
+          </button>
+        </div>
+        <div class="slider-ui">
+          <div class="slider-dots" aria-label="Kies een foto"></div>
+        </div>
+      </div>
+
+      <div class="copy-block">
+        <div class="text-panel">
+          <h2 class="panel-title">Kunst</h2>
+          <p>
+            Vrijheid blijheid! In mijn kunstfotografie laat ik mijn creativiteit de vrije loop. Zonder regels of verwachtingen ga ik op zoek naar beelden die mij inspireren en die iets laten voelen.
+          </p>
+          <p>
+           Hier experimenteer ik met licht, compositie en moment om foto's te maken die anders zijn dan mijn opdrachtwerk.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <div class="contact-card">
+        <h2 class="panel-title">Contact</h2>
+        <p>
+          Ben je geinteresseerd? Neem dan contact met mij op, en dan kijken we samen wat ik voor je kan betekenen.
+        </p>
+        <div class="contact-actions">
+          <a class="button button-primary" href="mailto:info@vansonfotografie.nl">Mail mij</a>
+          <a class="button button-secondary" href="https://www.instagram.com/van_son_fotografie/?next=%2F" target="_blank" rel="noreferrer">Stuur mij een DM op instagram</a>
+          <a class="button button-secondary" href="assets/documents/portfolio-van-son-fotografie.pdf" download>Download mijn portfolio!</a>
+          <a class="button button-secondary" href="https://www.linkedin.com/in/gijs-van-son-98b421199/" download>Stuur mij een berichtje op LinkedIn!</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="lightbox" hidden aria-hidden="true">
+    <button class="lightbox__close" type="button" aria-label="Sluit foto">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="lightbox__backdrop" data-lightbox-close></div>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Vorige foto" hidden>
+      <span aria-hidden="true">&#8592;</span>
+    </button>
+    <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Volgende foto" hidden>
+      <span aria-hidden="true">&#8594;</span>
+    </button>
+    <figure class="lightbox__figure">
+      <img class="lightbox__image" src="" alt="">
+    </figure>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

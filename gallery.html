@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galerij | van Son fotografie</title>
+  <meta
+    name="description"
+    content="Fotogalerij van van Son fotografie met filters voor verjaardagen, trouwerijen, evenementen en overig werk."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@600;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
+  <script src="gallery.js" defer></script>
+</head>
+<body>
+  <header class="hero">
+    <nav class="topbar">
+      <div class="topbar__group">
+        <a href="index.html#about">Over mij</a>
+        <a href="index.html#commercial">Opdrachten</a>
+        <a href="index.html#art">Kunst</a>
+        <a href="gallery.html">Galerij</a>
+        <a href="blog.html">Blogs</a>
+      </div>
+      <a class="topbar__contact" href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-shell gallery-page-shell">
+    <section class="gallery-hero">
+      <div class="gallery-hero__copy">
+        <p class="gallery-kicker">van Son fotografie</p>
+        <h1 class="gallery-page-title">Galerij</h1>
+        <p>
+          Onderstaand mijn fotografie! Neem vooral een kijkje!
+        </p>
+        <div class="gallery-toolbar gallery-toolbar--hero">
+          <div class="gallery-filterbar" aria-label="Filter foto's op categorie">
+            <button class="gallery-filter is-active" type="button" data-filter="all" aria-pressed="true">Alles</button>
+            <button class="gallery-filter" type="button" data-filter="verjaardag" aria-pressed="false">Verjaardag</button>
+            <button class="gallery-filter" type="button" data-filter="trouwen" aria-pressed="false">Trouwen</button>
+            <button class="gallery-filter" type="button" data-filter="evenementen" aria-pressed="false">Evenementen / festivals</button>
+            <button class="gallery-filter" type="button" data-filter="overig" aria-pressed="false">Overig</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-hero__aside">
+        <span class="gallery-hero__tag">Authentieke momenten, stijlvol vastgelegd</span>
+        <p>
+         Of je nu een evenement organiseert of een bijzonder moment wilt laten vastleggen — hier zie je wat je kunt verwachten. Echte momenten, precies zoals ze gebeuren.
+        </p>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <!--
+        FOTO'S TOEVOEGEN OF VERWIJDEREN:
+        1. Voeg hieronder een nieuw <li> item toe voor elke foto die je wilt tonen.
+        2. Vul als tekst alleen het pad naar de foto in.
+        3. Zet de categorie in data-category.
+        4. data-shape is optioneel. Mogelijke waarden: wide, tall, standard, panorama
+        5. Toegestane categorieen: verjaardag, trouwen, evenementen, overig
+        6. Een foto verwijderen = haal alleen het juiste <li> item weg.
+        7. data-alt is optioneel, maar fijn voor toegankelijkheid en SEO.
+      -->
+      <ul class="gallery-source-list" data-gallery-source-list hidden>
+        <li data-category="evenementen" data-shape="wide" data-column-desktop="3" data-aspect-desktop="19 / 20" data-alt="Sfeervolle foto van een evenement in warm avondlicht">assets/images/DSC08051com3.webp</li>
+        <li data-category="overig" data-shape="standard" data-column-desktop="3" data-alt="Creatieve foto uit de vrije galerij">assets/images/DSC03625art3.webp</li>
+        <li data-category="evenementen" data-shape="panorama" data-column-desktop="2" data-aspect-desktop="5 / 4" data-alt="Sfeervolle foto geschikt voor festivals of events">assets/images/DSC08211art2.webp</li>
+        <li data-category="overig" data-shape="standard" data-column-desktop="2" data-alt="Detailfoto uit de vrije galerij">assets/images/DSC07744art4.webp</li>
+        <li data-category="overig" data-shape="wide" data-column-desktop="1" data-alt="Abstracte foto uit het vrije werk">assets/images/DSC_0581art1.webp</li>
+      </ul>
+
+      <p class="gallery-toolbar__note">Filter op moment of scroll gewoon rustig door alle beelden heen.</p>
+
+      <div class="gallery-grid" data-gallery-grid aria-live="polite"></div>
+      <p class="gallery-empty" data-gallery-empty hidden>Er staan nog geen foto's in deze categorie.</p>
+    </section>
+
+    <section class="gallery-cta">
+      <div class="contact-card">
+        <h2 class="panel-title">Benieuwd naar meer of wil je zelf zulke vastgelegde beelden?</h2>
+        <p>
+          Zie je beelden die passen bij wat je zoekt? Stuur me gerust een bericht, dan kijken we samen
+          welk soort shoot of reportage het beste aansluit bij jouw moment.
+        </p>
+        <div class="contact-actions">
+          <a class="button button-primary" href="index.html#contact">Neem contact op</a>
+          <a class="button button-secondary" href="blog.html">Lees ook mijn blogs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="lightbox" hidden aria-hidden="true">
+    <button class="lightbox__close" type="button" aria-label="Sluit foto">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="lightbox__backdrop" data-lightbox-close></div>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Vorige foto" hidden>
+      <span aria-hidden="true">&#8592;</span>
+    </button>
+    <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Volgende foto" hidden>
+      <span aria-hidden="true">&#8594;</span>
+    </button>
+    <figure class="lightbox__figure">
+      <img class="lightbox__image" src="" alt="">
+    </figure>
+  </div>
+</body>
+</html>

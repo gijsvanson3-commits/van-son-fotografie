@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fotografie blogs | van Son fotografie</title>
+  <meta
+    name="description"
+    content="Fotografie blogs van van Son fotografie met artikelen over portretfotografie, shoots, locaties in Leiden en tips voor spontane foto's."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@600;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
+  <script src="blog.js" defer></script>
+</head>
+<body>
+  <header class="hero">
+    <nav class="topbar">
+      <div class="topbar__group">
+        <a href="index.html#about">Over mij</a>
+        <a href="index.html#commercial">Opdrachten</a>
+        <a href="index.html#art">Kunst</a>
+        <a href="gallery.html">Galerij</a>
+        <a href="blog.html">Blogs</a>
+      </div>
+      <a class="topbar__contact" href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-shell blog-page-shell">
+    <section class="blog-showcase">
+      <!--
+        UITGELICHTE BLOG KIEZEN:
+        Verander alleen data-featured-source hieronder naar het blogbestand dat je bovenaan wilt tonen.
+        Voorbeeld: data-featured-source="blog-mooie-fotolocaties-leiden.html"
+      -->
+      <a
+        class="blog-feature"
+        data-featured-blog
+        data-featured-source="blog-mooie-fotolocaties-leiden.html"
+        href="blog-mooie-fotolocaties-leiden.html"
+      >
+        <img
+          class="blog-feature__image"
+          data-featured-image
+          src="assets/images/DSC08051com3.webp"
+          alt="Foto als uitgelichte blogafbeelding"
+        >
+        <div class="blog-feature__content">
+          <p class="blog-eyebrow" data-featured-label>Uitgelichte blog</p>
+          <h1 class="blog-title" data-featured-title>Evenement fotografie</h1>
+          <p class="blog-intro" data-featured-intro>
+            Een evenement duurt vaak maar een paar uur, maar de herinneringen moeten blijven hangen. In deze blog lees
+            je waarom sterke evenementfotografie zoveel meer doet dan alleen het moment vastleggen.
+          </p>
+          <span class="blog-feature__cta">Lees deze blog</span>
+        </div>
+      </a>
+    </section>
+
+    <section class="blog-section">
+      <div class="blog-section__header">
+        <p></p>
+        <h2 class="panel-title">Onderstaand mijn blogs over fotografie</h2>
+        <p class="blog-section__intro">
+          Hieronder vind je een selectie van inspirerende blogartikelen, vormgegeven in dezelfde warme stijl als de rest van de website. Klik op een kaart en ontdek meer over evenementen, fotografie en de verhalen achter de beelden. Laat je inspireren en krijg een beter beeld van wat er mogelijk is voor jouw eigen evenement of fotoshoot.
+        </p>
+      </div>
+
+      <!--
+        BLOGKAARTJES AUTOMATISCH KOPPELEN:
+        1. Maak eerst je nieuwe blogbestand aan, bijvoorbeeld: blog-mijn-nieuwe-artikel.html
+        2. Voeg hieronder alleen bestaande blogbestanden toe.
+        3. Bestanden die ontbreken of niet goed laden worden automatisch overgeslagen.
+      -->
+      <ul class="blog-source-list" data-blog-source-list hidden>
+        <li>blog-evenementen-fotografie.html</li>
+      </ul>
+
+      <div class="blog-carousel" data-blog-carousel>
+        <div class="blog-carousel__controls">
+          <div class="slider-dots blog-carousel__dots" data-blog-dots aria-label="Kies een blogpositie"></div>
+        </div>
+
+        <div
+          class="blog-carousel__track"
+          data-blog-track
+          tabindex="0"
+          aria-label="Horizontale slider met blogkaartjes"
+        ></div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <div class="contact-card">
+        <h2 class="panel-title">Contact</h2>
+        <p>
+          Ben je geinteresseerd? Neem dan contact met mij op, en dan kijken we samen wat ik voor je kan betekenen.
+        </p>
+        <div class="contact-actions">
+          <a class="button button-primary" href="mailto:info@vansonfotografie.nl">Mail mij</a>
+          <a class="button button-secondary" href="https://www.instagram.com/van_son_fotografie/?next=%2F" target="_blank" rel="noreferrer">Stuur mij een DM op instagram</a>
+          <a class="button button-secondary" href="assets/documents/portfolio-van-son-fotografie.pdf" download>Download mijn portfolio!</a>
+          <a class="button button-secondary" href="https://www.linkedin.com/in/gijs-van-son-98b421199/" download>Stuur mij een berichtje op LinkedIn!</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

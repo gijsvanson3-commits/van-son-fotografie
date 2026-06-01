@@ -1,0 +1,11 @@
+Thumbs.db
+.DS_Store
+
+# Temporary installers or local downloads
+Git-*.exe
+
+# Local editor settings
+.vscode/
+
+# Local reference files that are not part of the deployed site
+Desktop - 2.pdf
