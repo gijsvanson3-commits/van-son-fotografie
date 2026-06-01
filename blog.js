@@ -65,13 +65,14 @@ function humanizeSourceTitle(source) {
 }
 
 function getBlogSources() {
-  const sourceList = document.querySelector("[data-blog-source-list]");
+  const sourceLists = [...document.querySelectorAll("[data-blog-source-list]")];
 
-  if (!sourceList) {
+  if (!sourceLists.length) {
     return [];
   }
 
-  return [...sourceList.querySelectorAll("li")]
+  return sourceLists
+    .flatMap((sourceList) => [...sourceList.querySelectorAll("li")])
     .map((item) => item.textContent?.trim() || "")
     .filter(Boolean);
 }
