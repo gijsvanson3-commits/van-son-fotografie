@@ -1,0 +1,28 @@
+Options -MultiViews
+RewriteEngine On
+
+# Stuur oude bestands-URL's door naar de nette publieke URL's.
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+RewriteRule ^index\.html$ / [R=301,L,NC]
+
+RewriteCond %{THE_REQUEST} \s/+gallery\.html[\s?] [NC]
+RewriteRule ^gallery\.html$ /galerij [R=301,L,NC]
+
+RewriteCond %{THE_REQUEST} \s/+blog\.html[\s?] [NC]
+RewriteRule ^blog\.html$ /blogs [R=301,L,NC]
+
+RewriteCond %{THE_REQUEST} \s/+blog-evenementen-fotografie\.html[\s?] [NC]
+RewriteRule ^blog-evenementen-fotografie\.html$ /blogs/evenementen-fotografie [R=301,L,NC]
+
+RewriteCond %{THE_REQUEST} \s/+Blog-verjaardag-fotoshoot\.html[\s?] [NC]
+RewriteRule ^Blog-verjaardag-fotoshoot\.html$ /blogs/verjaardag-fotoshoot [R=301,L,NC]
+
+# Houd voor pagina's steeds een URL zonder afsluitende slash aan.
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+# Koppel de nette URL's intern aan de bestaande HTML-bestanden.
+RewriteRule ^galerij$ gallery.html [L]
+RewriteRule ^blogs$ blog.html [L]
+RewriteRule ^blogs/evenementen-fotografie$ blog-evenementen-fotografie.html [L]
+RewriteRule ^blogs/verjaardag-fotoshoot$ Blog-verjaardag-fotoshoot.html [L]

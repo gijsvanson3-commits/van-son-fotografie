@@ -2,13 +2,6 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 const featuredBlog = document.querySelector("[data-featured-blog]");
 const blogDocumentCache = new Map();
 
-function normalizePagePath(pathname) {
-  return pathname
-    .replace(/\\/g, "/")
-    .replace(/\/index\.html$/i, "/")
-    .replace(/\/+$/, "") || "/";
-}
-
 function shouldOpenInNewTab(link) {
   const href = link.getAttribute("href")?.trim() || "";
 
@@ -22,10 +15,7 @@ function shouldOpenInNewTab(link) {
 
   try {
     const targetUrl = new URL(href, window.location.href);
-    const currentPath = normalizePagePath(window.location.pathname);
-    const targetPath = normalizePagePath(targetUrl.pathname);
-
-    return targetUrl.origin !== window.location.origin || targetPath !== currentPath;
+    return targetUrl.origin !== window.location.origin;
   } catch (error) {
     return false;
   }
