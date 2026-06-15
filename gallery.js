@@ -21,50 +21,6 @@ let lightboxPointerStartY = 0;
 let lightboxPointerDeltaX = 0;
 let lightboxPointerDeltaY = 0;
 
-function normalizePagePath(pathname) {
-  return pathname
-    .replace(/\\/g, "/")
-    .replace(/\/index\.html$/i, "/")
-    .replace(/\/+$/, "") || "/";
-}
-
-function shouldOpenInNewTab(link) {
-  const href = link.getAttribute("href")?.trim() || "";
-
-  if (!href || href.startsWith("#") || link.hasAttribute("download")) {
-    return false;
-  }
-
-  if (/^(mailto:|tel:|javascript:)/i.test(href)) {
-    return false;
-  }
-
-  try {
-    const targetUrl = new URL(href, window.location.href);
-    const currentPath = normalizePagePath(window.location.pathname);
-    const targetPath = normalizePagePath(targetUrl.pathname);
-
-    return targetUrl.origin !== window.location.origin || targetPath !== currentPath;
-  } catch (error) {
-    return false;
-  }
-}
-
-function applyNewTabBehavior(root = document) {
-  const links = root.matches?.("a[href]") ? [root] : [...root.querySelectorAll("a[href]")];
-
-  links.forEach((link) => {
-    if (!shouldOpenInNewTab(link)) {
-      return;
-    }
-
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-  });
-}
-
-applyNewTabBehavior();
-
 const galleryCategoryLabels = {
   verjaardag: "Verjaardag",
   trouwen: "Trouwen",

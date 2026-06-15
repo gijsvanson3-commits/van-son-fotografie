@@ -2,40 +2,6 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 const featuredBlog = document.querySelector("[data-featured-blog]");
 const blogDocumentCache = new Map();
 
-function shouldOpenInNewTab(link) {
-  const href = link.getAttribute("href")?.trim() || "";
-
-  if (!href || href.startsWith("#") || link.hasAttribute("download")) {
-    return false;
-  }
-
-  if (/^(mailto:|tel:|javascript:)/i.test(href)) {
-    return false;
-  }
-
-  try {
-    const targetUrl = new URL(href, window.location.href);
-    return targetUrl.origin !== window.location.origin;
-  } catch (error) {
-    return false;
-  }
-}
-
-function applyNewTabBehavior(root = document) {
-  const links = root.matches?.("a[href]") ? [root] : [...root.querySelectorAll("a[href]")];
-
-  links.forEach((link) => {
-    if (!shouldOpenInNewTab(link)) {
-      return;
-    }
-
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-  });
-}
-
-applyNewTabBehavior();
-
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
@@ -144,7 +110,6 @@ function createBlogCard(data) {
   const card = document.createElement("a");
   card.className = "blog-card";
   card.href = data.href;
-  applyNewTabBehavior(card);
 
   const media = document.createElement("div");
   media.className = "blog-card__media";
@@ -244,8 +209,6 @@ function applyFeaturedBlogData(data) {
   if (data.href) {
     featuredBlog.href = data.href;
   }
-
-  applyNewTabBehavior(featuredBlog);
 
   if (featuredImage && data.imageSrc) {
     featuredImage.src = data.imageSrc;
