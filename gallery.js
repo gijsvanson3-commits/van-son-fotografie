@@ -127,7 +127,6 @@ function getGalleryItems() {
         category,
         alt: item.dataset.alt?.trim() || `${galleryCategoryLabels[category]} - ${humanizeImageName(src)}`,
         shape: normalizeGalleryShape(item.dataset.shape?.trim() || "", index),
-        desktopColumn: Number.parseInt(item.dataset.columnDesktop?.trim() || "", 10) || null,
         desktopAspectRatio: item.dataset.aspectDesktop?.trim() || "",
       };
     })
@@ -420,27 +419,9 @@ function buildBalancedGalleryPlan(items, columnCount) {
   );
 }
 
-function buildRowFirstGalleryColumns(items, columnCount) {
-  const columns = Array.from({ length: columnCount }, () => []);
-
-  items.forEach((item, index) => {
-    columns[index % columnCount].push(item);
-  });
-
-  return columns;
-}
-
-function buildGalleryColumns(items, filter) {
+function buildGalleryColumns(items) {
   const columnCount = getGalleryColumnCount();
-  const hasDesktopPlan =
-    filter === "all" &&
-    columnCount === 3 &&
-    items.every((item) => item.desktopColumn && item.desktopColumn <= columnCount);
-  const plannedColumns = hasDesktopPlan
-    ? Array.from({ length: columnCount }, (_, index) =>
-        items.filter((item) => item.desktopColumn === index + 1)
-      )
-    : buildRowFirstGalleryColumns(items, columnCount);
+  const plannedColumns = buildBalancedGalleryPlan(items, columnCount);
 
   return plannedColumns.map((columnItems) => {
     const column = document.createElement("div");
@@ -481,7 +462,7 @@ function applyGalleryFilter(filter) {
   galleryGrid.classList.toggle("gallery-grid--filtered", isFilteredView);
   galleryGrid.classList.toggle("gallery-grid--all", !isFilteredView);
   galleryGrid.replaceChildren(
-    ...(isFilteredView ? buildFilteredGalleryGrid(items) : buildGalleryColumns(items, filter))
+    ...(isFilteredView ? buildFilteredGalleryGrid(items) : buildGalleryColumns(items))
   );
   activeGalleryFilter = filter;
   setActiveFilter(filter);
