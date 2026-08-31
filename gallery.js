@@ -22,7 +22,7 @@ let lightboxPointerDeltaX = 0;
 let lightboxPointerDeltaY = 0;
 
 const galleryCategoryLabels = {
-  verjaardag: "Verjaardag",
+  "21-diner": "21 diner",
   trouwen: "Trouwen",
   evenementen: "Evenementen / festivals",
   overig: "Overig",
