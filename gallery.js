@@ -25,6 +25,7 @@ const galleryCategoryLabels = {
   "21-diner": "21 diner",
   trouwen: "Trouwen",
   evenementen: "Evenementen / festivals",
+  kunst: "Kunst",
   overig: "Overig",
 };
 
