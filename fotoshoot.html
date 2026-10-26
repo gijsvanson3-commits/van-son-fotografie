@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/images/Group16.png">
+  <title>Stel jouw fotoshoot samen | van Son fotografie</title>
+  <link rel="canonical" href="https://vansonfotografie.nl/fotoshoot">
+  <meta name="description" content="Stel jouw portret- of koppelfotoshoot samen. Voor zakelijke fotografie en alle evenementen ontvang je een persoonlijke offerte van Van Son Fotografie.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="fotoshoot.css">
+  <script type="module" src="fotoshoot.js"></script>
+</head>
+<body class="shoot-page">
+  <a class="shoot-skip" href="#fotoshoot">Direct naar de fotoshootconfigurator</a>
+  <header class="hero">
+    <nav class="topbar" aria-label="Hoofdnavigatie">
+      <div class="topbar__group">
+        <a href="/#about">Over mij</a>
+        <a href="/#commercial">Opdrachten</a>
+        <a href="/#art">Kunst</a>
+        <a href="/galerij">Galerij</a>
+        <a href="/blogs">Blogs</a>
+        <a href="/fotoshoot" aria-current="page">Prijscalculator</a>
+      </div>
+      <a class="topbar__contact" href="/#contact">Contact</a>
+    </nav>
+  </header>
+  <main class="page-shell shoot-shell" id="fotoshoot">
+    <section class="shoot-intro" aria-labelledby="shoot-title">
+      <h1 id="shoot-title">Stel jouw fotoshoot samen</h1>
+      <p class="shoot-lead">Bekijk direct een prijsindicatie of vraag een persoonlijke offerte aan.</p>
+    </section>
+    <section class="shoot-start" aria-label="Kies het type aanvraag">
+      <div class="shoot-routes" id="shoot-routes" hidden>
+        <button class="shoot-route" type="button" data-route="private" aria-pressed="false" aria-controls="shoot-workspace">
+          <strong>Particuliere fotoshoot</strong>
+          <span>Portret of koppel · direct een prijsindicatie.</span>
+        </button>
+        <button class="shoot-route" type="button" data-route="business" aria-pressed="false" aria-controls="shoot-workspace">
+          <strong>Zakelijke fotografie of evenementen</strong>
+          <span>Voor bedrijven en alle evenementen · een offerte op maat.</span>
+        </button>
+      </div>
+      <p class="shoot-note">Ook een particulier evenement, zoals een verjaardag, bruiloft of diner, krijgt altijd een offerte op maat.</p>
+    </section>
+    <p id="shoot-loading" role="status">De configurator wordt geladen…</p>
+    <div id="shoot-init-error" class="shoot-message" role="alert" hidden>
+      <p>De configurator is tijdelijk niet beschikbaar. Probeer het opnieuw of mail je wensen naar <a href="mailto:info@vansonfotografie.nl">info@vansonfotografie.nl</a>.</p>
+      <button type="button" class="button shoot-button" onclick="window.location.reload()">Opnieuw laden</button>
+    </div>
+    <noscript><p>Om je fotoshoot samen te stellen is JavaScript nodig. Je kunt je wensen ook mailen naar <a href="mailto:info@vansonfotografie.nl">info@vansonfotografie.nl</a>.</p></noscript>
+    <section id="shoot-workspace" class="shoot-workspace" aria-label="Jouw aanvraag samenstellen" hidden>
+      <nav aria-label="Voortgang van je aanvraag"><ol id="shoot-progress" class="shoot-progress"></ol></nav>
+      <div class="shoot-layout">
+        <form id="shoot-form" novalidate>
+          <div id="shoot-panels"></div>
+          <div class="shoot-trap" aria-hidden="true"><label for="shoot-website">Laat dit veld leeg</label><input id="shoot-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+          <div id="shoot-errors" class="shoot-message" role="alert" tabindex="-1" hidden></div>
+          <div class="shoot-actions">
+            <button type="button" class="button shoot-button shoot-button--secondary" id="shoot-prev">Terug</button>
+            <button type="submit" class="button shoot-button" id="shoot-next">Verder</button>
+          </div>
+          <p class="shoot-note" id="shoot-booking-note">Je aanvraag is vrijblijvend. Een boeking is pas definitief na mijn persoonlijke bevestiging.</p>
+        </form>
+        <aside id="shoot-summary" class="shoot-summary" aria-label="Jouw fotoshoot in het kort" hidden></aside>
+      </div>
+    </section>
+    <section id="shoot-success" class="shoot-success" aria-labelledby="shoot-success-title" hidden>
+      <p class="shoot-kicker">Bedankt voor je aanvraag</p>
+      <h2 id="shoot-success-title" tabindex="-1">Jouw verhaal begint hier.</h2>
+      <p>Je aanvraag is ontvangen. Ik neem persoonlijk contact met je op om je wensen en de mogelijkheden te bespreken.</p>
+      <p class="shoot-note">Een boeking is pas definitief na mijn persoonlijke bevestiging.</p>
+      <a class="button shoot-button" href="/galerij">Bekijk ondertussen mijn werk</a>
+    </section>
+    <footer class="shoot-footer"><span>van Son fotografie</span><a href="mailto:info@vansonfotografie.nl">Liever even overleggen? Mail mij ↗</a></footer>
+  </main>
+</body>
+</html>

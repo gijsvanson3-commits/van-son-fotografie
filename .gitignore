@@ -9,3 +9,7 @@ Git-*.exe
 
 # Local reference files that are not part of the deployed site
 Desktop - 2.pdf
+
+# Serverinstellingen en lokale verificatiebestanden
+api/config.local.php
+.local/

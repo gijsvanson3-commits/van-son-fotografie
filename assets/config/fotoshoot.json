@@ -1,0 +1,111 @@
+{
+  "currency": "EUR",
+  "taxNotice": "Alle prijzen zijn totaalprijzen.",
+  "priceNotice": "De totaalprijs en je boeking zijn pas definitief na mijn persoonlijke bevestiging.",
+  "photography": [
+    {
+      "id": "portret",
+      "label": "Portretfotografie",
+      "description": "Een portret waarin jij jezelf herkent.",
+      "packageIds": [
+        "mini",
+        "standaard"
+      ]
+    },
+    {
+      "id": "koppel",
+      "label": "Koppelfotografie",
+      "description": "Even alle aandacht voor jullie samen.",
+      "packageIds": [
+        "mini",
+        "standaard"
+      ]
+    }
+  ],
+  "packages": [
+    {
+      "id": "mini",
+      "label": "Mini Shoot",
+      "priceCents": 6500,
+      "minutes": 30,
+      "photos": 5,
+      "delivery": "Digitale oplevering in hoge resolutie",
+      "selection": "Keuze uit een persoonlijke online selectiegalerij"
+    },
+    {
+      "id": "standaard",
+      "label": "Standaard Shoot",
+      "priceCents": 8900,
+      "minutes": 30,
+      "photos": 10,
+      "delivery": "Digitale oplevering in hoge resolutie",
+      "badge": "Meer foto's",
+      "compareTo": "mini",
+      "selection": "Keuze uit een persoonlijke online selectiegalerij"
+    }
+  ],
+  "extras": {
+    "photoPriceCents": 1200,
+    "rushPriceCents": 3500,
+    "maxExtraPhotos": 100
+  },
+  "eventCoverage": [
+    "Sfeerbeelden van het evenement",
+    "Groepsfoto's tijdens het evenement",
+    "Beide: sfeerbeelden en groepsfoto's"
+  ],
+  "hospitalitySubjects": [
+    "Gerechten / menukaart",
+    "Interieur",
+    "Sfeerbeelden",
+    "Personeel",
+    "Combinatie van bovenstaande"
+  ],
+  "business": [
+    {
+      "id": "horeca",
+      "label": "Restaurant / horeca",
+      "subjectLabel": "Vertel iets over je restaurant of horecazaak",
+      "scopeLabel": "Geschat aantal gerechten, ruimtes of medewerkers"
+    },
+    {
+      "id": "branding",
+      "label": "Bedrijf / branding",
+      "subjectLabel": "Welk verhaal wil je over je bedrijf vertellen?",
+      "scopeLabel": "Geschat aantal beelden, medewerkers of locaties"
+    },
+    {
+      "id": "zakelijk-portret",
+      "label": "Zakelijke portretten",
+      "subjectLabel": "Wat voor zakelijke portretten zoek je?",
+      "scopeLabel": "Hoeveel personen wil je laten fotograferen?"
+    },
+    {
+      "id": "evenement",
+      "label": "Evenement"
+    },
+    {
+      "id": "product",
+      "label": "Productfotografie",
+      "subjectLabel": "Welke producten wil je laten fotograferen?",
+      "scopeLabel": "Geschat aantal producten en beelden per product"
+    },
+    {
+      "id": "campagne",
+      "label": "Commerciële campagne",
+      "subjectLabel": "Wat is het idee achter je campagne?",
+      "scopeLabel": "Geschatte omvang: beelden, locaties en betrokkenen"
+    },
+    {
+      "id": "anders",
+      "label": "Anders",
+      "subjectLabel": "Wat wil je laten fotograferen?",
+      "scopeLabel": "Wat is de geschatte omvang van de opdracht?"
+    }
+  ],
+  "travelNotice": "Eventuele reiskosten buiten het standaard werkgebied spreken we vooraf af.",
+  "editingNotice": "De foto's die jij kiest, worden zorgvuldig geoptimaliseerd op kleur, belichting, contrast en uitstraling.",
+  "retouchNotice": "Complexe retouchering of uitgebreide Photoshop-bewerkingen zijn niet standaard inbegrepen en kunnen afzonderlijk worden besproken. Alleen het genoemde aantal nabewerkte foto’s is inbegrepen.",
+  "rushNotice": "Spoedlevering binnen 2 werkdagen na jouw fotokeuze, afhankelijk van beschikbaarheid en na persoonlijke bevestiging.",
+  "standardDeliveryNotice": "Oplevering binnen 7 werkdagen na jouw fotokeuze."
+}

@@ -1,6 +1,14 @@
 Options -MultiViews
 RewriteEngine On
 
+# Alleen het publieke aanvraagendpoint is rechtstreeks toegankelijk.
+RewriteRule ^(?:tests|tools)(?:/|$) - [F,L,NC]
+RewriteRule ^api/(?!fotoshoot\.php$) - [F,L,NC]
+RewriteRule ^(?:\.git|\.agents|\.codex)(?:/|$) - [F,L,NC]
+
+RewriteCond %{THE_REQUEST} \s/+fotoshoot\.html[\s?] [NC]
+RewriteRule ^fotoshoot\.html$ /fotoshoot [R=301,L,NC]
+
 # Stuur oude bestands-URL's door naar de nette publieke URL's.
 RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
 RewriteRule ^index\.html$ / [R=301,L,NC]
@@ -22,6 +30,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.+)/$ /$1 [R=301,L]
 
 # Koppel de nette URL's intern aan de bestaande HTML-bestanden.
+RewriteRule ^fotoshoot$ fotoshoot.html [L]
 RewriteRule ^galerij$ gallery.html [L]
 RewriteRule ^blogs$ blog.html [L]
 RewriteRule ^blogs/evenementen-fotografie$ blog-evenementen-fotografie.html [L]
