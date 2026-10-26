@@ -133,3 +133,9 @@
 .shoot-package-badge { display: inline-block; padding: .2rem .6rem; margin: 0 .5rem .45rem 0; border-radius: var(--radius-pill); background: #ffdc91; font-size: .72rem; font-weight: 700; }
 .shoot-choice .shoot-package-upgrade { font-weight: 700; margin-top: .65rem; }
 .shoot-package-explanation { margin: 1.25rem 0; }
+
+/* De botcontrole verschijnt alleen bij de laatste verzendstap. */
+.shoot-bot-check { margin: 1.5rem 0; min-width: 0; }
+.shoot-bot-check [data-bot-widget] { max-width: 100%; }
+.shoot-bot-check .shoot-note { margin: .65rem 0; }
+.shoot-bot-check [data-bot-retry] { font-size: .9rem; padding: .65rem 1rem; }

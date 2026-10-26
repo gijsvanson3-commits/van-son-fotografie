@@ -60,6 +60,11 @@
           <div id="shoot-panels"></div>
           <div class="shoot-trap" aria-hidden="true"><label for="shoot-website">Laat dit veld leeg</label><input id="shoot-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
           <div id="shoot-errors" class="shoot-message" role="alert" tabindex="-1" hidden></div>
+          <div id="shoot-bot-check" class="shoot-bot-check" tabindex="-1" aria-label="Botcontrole voor verzending" hidden>
+            <div data-bot-widget></div>
+            <p class="shoot-note" data-bot-status role="status" aria-live="polite"></p>
+            <button type="button" class="button shoot-button shoot-button--secondary" data-bot-retry hidden>Controle opnieuw laden</button>
+          </div>
           <div class="shoot-actions">
             <button type="button" class="button shoot-button shoot-button--secondary" id="shoot-prev">Terug</button>
             <button type="submit" class="button shoot-button" id="shoot-next">Verder</button>

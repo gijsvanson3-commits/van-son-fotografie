@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/fotoshoot-turnstile.php';
+
 final class ShootValidationException extends RuntimeException {}
 
 function shoot_config(): array
@@ -19,6 +21,8 @@ function shoot_settings(): array
         'to' => 'info@vansonfotografie.nl',
         'allowedOrigins' => ['https://vansonfotografie.nl', 'https://www.vansonfotografie.nl'],
         'rateDirectory' => getenv('FOTOSHOOT_RATE_DIRECTORY') ?: '',
+        'turnstileSiteKey' => getenv('FOTOSHOOT_TURNSTILE_SITE_KEY') ?: '',
+        'turnstileSecretKey' => getenv('FOTOSHOOT_TURNSTILE_SECRET_KEY') ?: '',
     ];
     if (is_file(__DIR__ . '/config.local.php')) {
         $local = require __DIR__ . '/config.local.php';

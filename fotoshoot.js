@@ -1,3 +1,4 @@
+import { createBotCheck } from './fotoshoot-turnstile.js';
 import { calculatePrice, formatMoney, getPackages, getPackageUpgrade } from './fotoshoot-model.js';
 import { bindDatePickers, dateField, parseDate, formatDate, validateDateInput } from './fotoshoot-calendar.js';
 
@@ -18,6 +19,12 @@ let step = 0;
 let sending = false;
 let completed = false;
 let datePickers;
+let botCheck;
+
+function updateSubmitState() {
+  const reviewing = route && steps[route][step] === 'review';
+  next.disabled = sending || Boolean(reviewing && botCheck?.required && !botCheck.token);
+}
 const money = cents => formatMoney(cents, config.currency);
 const selected = name => form.querySelector(`[name="${name}"]:checked`)?.value || '';
 const value = name => {
@@ -208,6 +215,8 @@ function displayStep(focus = true) {
   if (active === 'review') renderReview();
   next.textContent = active === 'review' ? (isPrivate ? 'Verstuur mijn fotoshootaanvraag' : 'Verstuur mijn offerteaanvraag') : 'Verder';
   prev.textContent = 'Terug';
+  botCheck?.setVisible(active === 'review');
+  updateSubmitState();
   if (focus) panels.querySelector(`[data-panel="${active}"] > legend`).focus();
 }
 
@@ -235,8 +244,9 @@ async function submit() {
       return;
     }
   }
+  if (botCheck?.required && !botCheck.token) { botCheck.focus(); return; }
   const quote = route === 'private' ? calculatePrice(config, selection()) : null;
-  const payload = { route, contact: contactData(), ...(route === 'private' ? { selection: selection(), expectedTotalCents: quote?.totalCents } : { brief: businessData() }), configVersion: session.configVersion, csrfToken: session.csrfToken, requestId: session.requestId, website: value('website') };
+  const payload = { route, contact: contactData(), ...(route === 'private' ? { selection: selection(), expectedTotalCents: quote?.totalCents } : { brief: businessData() }), configVersion: session.configVersion, csrfToken: session.csrfToken, requestId: session.requestId, website: value('website'), ...(botCheck?.required ? { turnstileToken: botCheck.token } : {}) };
   sending = true;
   next.disabled = true;
   prev.disabled = true;
@@ -249,11 +259,17 @@ async function submit() {
     if (!response.ok || !result.success) {
       if (response.status === 403) {
         session = await bootstrap();
+        botCheck.configure(session.captcha);
         throw new Error('Je sessie is vernieuwd. Je keuzes zijn bewaard; controleer je aanvraag en verstuur deze opnieuw.');
+      }
+      if (result.code === 'captcha' && !botCheck.required) {
+        // Ook een formulier dat al openstond toen de controle werd geactiveerd moet die tonen.
+        try { session = await bootstrap(); botCheck.configure(session.captcha); } catch { /* Toon de oorspronkelijke verzendfout. */ }
       }
       throw new Error(result.message || 'Versturen is niet gelukt. Probeer het nogmaals of mail info@vansonfotografie.nl.');
     }
     completed = true;
+    botCheck.setVisible(false);
     workspace.hidden = true;
     $('#shoot-routes').hidden = true;
     $('#shoot-success').hidden = false;
@@ -265,7 +281,8 @@ async function submit() {
     showErrors([error.message || 'Geen verbinding. Je keuzes zijn bewaard. Probeer opnieuw of mail info@vansonfotografie.nl.']);
   } finally {
     sending = false;
-    next.disabled = false;
+    if (!completed) botCheck.reset();
+    updateSubmitState();
     prev.disabled = false;
     form.removeAttribute('aria-busy');
     document.querySelectorAll('[data-route]').forEach(button => { button.disabled = false; });
@@ -285,6 +302,7 @@ prev.addEventListener('click', () => {
   if (step > 0) { step--; displayStep(); }
   else {
     workspace.hidden = true;
+    botCheck?.setVisible(false);
     document.querySelector(`[data-route="${route}"]`).focus();
     document.querySelectorAll('[data-route]').forEach(button => button.setAttribute('aria-pressed', 'false'));
     route = null;
@@ -318,6 +336,8 @@ try {
   session = await bootstrap();
   config = session.config;
   render();
+  botCheck = createBotCheck({ container: $('#shoot-bot-check'), getSession: () => session, onChange: updateSubmitState });
+  botCheck.configure(session.captcha);
   datePickers = bindDatePickers(form, today);
   $('#shoot-routes').hidden = false;
   route = 'private';

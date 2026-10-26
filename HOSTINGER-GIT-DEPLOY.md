@@ -1,6 +1,8 @@
 # Hostinger Git deploy
 
-Deze website is een statische site en kan direct vanaf GitHub naar Hostinger worden gedeployed.
+De pagina’s zijn HTML/CSS/JavaScript zonder buildstap. De fotoshootconfigurator gebruikt daarnaast PHP 8.2+ voor validatie en e-mailverzending. Hostinger moet het endpoint `/api/fotoshoot.php` als PHP uitvoeren; alleen statische hosting is onvoldoende.
+
+Voor de botcontrole zijn eenmalig twee Turnstile-sleutels nodig, zie [Turnstile instellen](TURNSTILE-INSTELLEN.md). Het geheime bestand `api/config.local.php` stel je op de server in; dit wordt niet meegestuurd met Git.
 
 ## Eenmalig
 
@@ -28,9 +30,10 @@ Deze website is een statische site en kan direct vanaf GitHub naar Hostinger wor
 Bij elke wijziging:
 
 ```powershell
+Set-Location 'C:\Users\Gijsv\Documents\Website'
 & 'C:\Program Files\Git\cmd\git.exe' add .
 & 'C:\Program Files\Git\cmd\git.exe' commit -m "Beschrijf je wijziging"
-& 'C:\Program Files\Git\cmd\git.exe' push
+& 'C:\Program Files\Git\cmd\git.exe' push origin HEAD:main
 ```
 
 Daarna haal je in Hostinger de nieuwste versie binnen, of zet je auto deploy aan als die optie zichtbaar is.

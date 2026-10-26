@@ -10,4 +10,8 @@ return [
     'allowedOrigins' => ['https://vansonfotografie.nl', 'https://www.vansonfotografie.nl'],
     // Optioneel: een eigen, beschrijfbare map BUITEN public_html voor de spamlimiet.
     'rateDirectory' => '',
+    // Beide leeg: bestaande spambeveiliging. Beide ingevuld: Turnstile verplicht.
+    // Kies een Managed-widget in Cloudflare; de secret key blijft uitsluitend hier.
+    'turnstileSiteKey' => '',
+    'turnstileSecretKey' => '',
 ];

@@ -30,6 +30,7 @@ try {
     if (($origin !== null && !in_array($origin, $settings['allowedOrigins'], true)) || ($_SERVER['HTTP_SEC_FETCH_SITE'] ?? '') === 'cross-site') {
         shoot_response(403, ['message' => 'Open de aanvraag via de website en probeer opnieuw.']);
     }
+    $captcha = shoot_bot_config($settings, $isLocal);
     session_name('vanson_shoot');
     if (!session_start([
         'use_strict_mode' => 1,
@@ -44,7 +45,7 @@ try {
         $_SESSION = ['csrf' => bin2hex(random_bytes(32)), 'expires' => time() + 7200, 'sent' => []];
     }
     if ($method === 'GET') {
-        shoot_response(200, ['config' => $config, 'configVersion' => $version, 'csrfToken' => $_SESSION['csrf'], 'requestId' => bin2hex(random_bytes(16))]);
+        shoot_response(200, ['captcha' => $captcha, 'config' => $config, 'configVersion' => $version, 'csrfToken' => $_SESSION['csrf'], 'requestId' => bin2hex(random_bytes(16))]);
     }
     if (strtolower(trim(explode(';', $_SERVER['CONTENT_TYPE'] ?? '')[0])) !== 'application/json') shoot_response(415, ['message' => 'Verstuur je aanvraag via het formulier.']);
     if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > 32768) shoot_response(413, ['message' => 'De aanvraag is te groot. Kort je opmerkingen in.']);
@@ -65,15 +66,21 @@ try {
     if (($payload['configVersion'] ?? '') !== $version) shoot_response(409, ['message' => 'De instellingen of tarieven zijn gewijzigd. Herlaad de pagina en controleer je aanvraag opnieuw.']);
     $validated = shoot_validate($config, $payload);
     if ($settings['enabled'] !== true) shoot_response(503, ['message' => 'Online versturen is tijdelijk niet beschikbaar. Mail je wensen naar info@vansonfotografie.nl.']);
+    if ($captcha !== null) shoot_bot_token($payload['turnstileToken'] ?? null);
     if (!shoot_rate_limit($settings['rateDirectory'], $_SERVER['REMOTE_ADDR'] ?? 'unknown')) {
         header('Retry-After: 3600');
         shoot_response(429, ['message' => 'Er zijn te veel aanvragen verstuurd. Probeer het over een uur opnieuw of mail info@vansonfotografie.nl.']);
     }
+    if ($captcha !== null) shoot_bot_verify($settings, $payload['turnstileToken'] ?? null, $requestId);
     $reference = strtoupper(substr($requestId, 0, 12));
     if (!shoot_send($settings, $validated, $reference)) shoot_response(502, ['message' => 'Versturen is niet gelukt. Je keuzes zijn bewaard. Probeer opnieuw of mail info@vansonfotografie.nl.']);
     $_SESSION['sent'][$requestId] = $reference;
     if (count($_SESSION['sent']) > 20) array_shift($_SESSION['sent']);
     shoot_response(200, ['success' => true, 'reference' => $reference]);
+} catch (ShootBotException) {
+    shoot_response(422, ['code' => 'captcha', 'message' => 'Rond de botcontrole opnieuw af en verstuur je aanvraag nogmaals.']);
+} catch (ShootBotUnavailableException) {
+    shoot_response(503, ['code' => 'captcha', 'message' => 'De botcontrole is tijdelijk niet beschikbaar. Je keuzes zijn bewaard. Probeer opnieuw of mail info@vansonfotografie.nl.']);
 } catch (ShootValidationException $error) {
     shoot_response(422, ['message' => $error->getMessage()]);
 } catch (Throwable) {

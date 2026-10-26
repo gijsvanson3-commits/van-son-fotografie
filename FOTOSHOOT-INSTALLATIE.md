@@ -1,6 +1,6 @@
 # Fotoshootconfigurator — Van Son Fotografie
 
-De uitbreiding staat op `/fotoshoot`. Het ontwerp van de bestaande website is behouden: dezelfde algemene stylesheet, kleuren, lettertypen, navigatie en knoppen. De homepage heeft een losse, gecentreerde knop onder de zonnen van de werkwijze, buiten het opdrachtenvlak. Alle pagina’s krijgen ‘Prijscalculator’ in de bovenbalk; op de homepage staat die ook in het zonnemenu. De bestaande sliders, portfolio-indeling en inhoud van de andere pagina's zijn behouden. Er is niets naar productie gepubliceerd of gepusht.
+De uitbreiding staat op `/fotoshoot`. Het ontwerp van de bestaande website is behouden: dezelfde algemene stylesheet, kleuren, lettertypen, navigatie en knoppen. De homepage heeft een losse, gecentreerde knop onder de zonnen van de werkwijze, buiten het opdrachtenvlak. Alle pagina’s krijgen ‘Prijscalculator’ in de bovenbalk; op de homepage staat die ook in het zonnemenu. De bestaande sliders, portfolio-indeling en inhoud van de andere pagina's zijn behouden. De botcontrole vereist eenmalige serverinstellingen; zie [Turnstile instellen](TURNSTILE-INSTELLEN.md).
 
 ## Bestanden
 
@@ -12,6 +12,8 @@ De uitbreiding staat op `/fotoshoot`. Het ontwerp van de bestaande website is be
 | `fotoshoot.html` | Nieuwe pagina, routekeuze en toegankelijke formulierstructuur. |
 | `fotoshoot.css` | Aanvullende styling, uitsluitend voor de nieuwe pagina. |
 | `fotoshoot.js` | Stappen, keuzes, vervolgvragen, overzichten, validatie en verzending. |
+| `fotoshoot-turnstile.js` | Laadt Turnstile uitsluitend bij de laatste stap; bewaakt tokens en herstel na fouten. |
+| `api/fotoshoot-turnstile.php` | Verifieert tokens bij Cloudflare, inclusief hostname, actie en aanvraagreferentie. |
 | `fotoshoot-calendar.js` | Nederlandse datumkiezer, toetsenbordbediening en datumvalidatie. |
 | `fotoshoot-model.js` | Prijsberekening in gehele eurocenten en Nederlandse geldweergave. |
 | `assets/config/fotoshoot.json` | Eén centrale configuratie voor alle pakketten, prijzen, prijsteksten en keuzes. |
@@ -32,9 +34,9 @@ Particulieren kiezen uit portret- en koppelfotografie, met tekstkaarten zonder f
 1. Gebruik PHP 8.2 of hoger, HTTPS en de bestaande Apache/LiteSpeed `.htaccess`-routing. Er is geen npm-build, database of extra PHP-library nodig. Zorg dat PHP-sessies en de tijdelijke servermap beschrijfbaar zijn.
 2. Controleer de prijzen en pas zo nodig `priceNotice`, `travelNotice` en `taxNotice` in `assets/config/fotoshoot.json` aan op je werkelijke tarieven en btw-situatie. De eigenaar heeft bevestigd dat KOR-deelname actief is. `taxNotice` vermeldt uitsluitend: ‘Alle prijzen zijn totaalprijzen.’ De KOR-vermelding wordt op de factuur opgenomen. De code rekent geen btw boven op de bedragen. Een boeking en de definitieve totaalprijs worden persoonlijk bevestigd.
 3. Kopieer `api/config.example.php` naar `api/config.local.php` op de server. Controleer `from` en `to` (standaard beide `info@vansonfotografie.nl`) en zet pas daarna `enabled` op `true`. Dit lokale bestand wordt niet opgenomen in Git en is via `.htaccess` afgeschermd. Zonder inschakeling blijft echte verzending bewust uit en krijgt de bezoeker bij verzending een duidelijke mailmogelijkheid.
-4. De verzendfunctie gebruikt PHP `mail()` en de mailvoorziening van de hosting. Controleer bij Hostinger dat deze voorziening beschikbaar is voor je hostingpakket en dat het afzenderadres op je domein is toegestaan. Stel de domeinverificatie voor je mailbox in volgens je mailprovider. Er zijn geen API-sleutels in de browser nodig. Als je hosting uitsluitend SMTP met authenticatie toestaat, is nog een SMTP-transport op de server nodig; de configurator simuleert geen verzending.
+4. De verzendfunctie gebruikt PHP `mail()` en de mailvoorziening van de hosting. Controleer bij Hostinger dat deze voorziening beschikbaar is voor je hostingpakket en dat het afzenderadres op je domein is toegestaan. Stel de domeinverificatie voor je mailbox in volgens je mailprovider. De mailsleutels blijven op de server. De optionele botcontrole gebruikt uitsluitend een publieke sitekey in de browser; de secret key blijft op de server. Als je hosting uitsluitend SMTP met authenticatie toestaat, is nog een SMTP-transport op de server nodig; de configurator simuleert geen verzending.
 5. Controleer op een afgeschermde testomgeving de complete route, inclusief ontvangst van een particuliere aanvraag, horeca-aanvraag en evenementaanvraag in je echte inbox. De lokale tests bewijzen verwerking en acceptatie door een lokale SMTP-server; ontvangst op Hostinger is nog niet gecontroleerd. PHP `mail()` bevestigt acceptatie voor transport, geen gegarandeerde inboxbezorging.
-6. Publiceer pas wanneer je dit zelf wilt. De branch is `codex/fotoshoot-configurator`; er is geen push, merge of deploy uitgevoerd.
+6. Activeer de extra botcontrole met de stappen in [Turnstile instellen](TURNSTILE-INSTELLEN.md). De bestaande verzending blijft zonder deze sleutels werken met de bestaande spambeveiliging. Publiceer daarna de gewenste commit via GitHub en Hostinger.
 
 Je kunt serverinstellingen ook via omgevingsvariabelen instellen:
 
@@ -42,6 +44,8 @@ Je kunt serverinstellingen ook via omgevingsvariabelen instellen:
 | --- | --- |
 | `FOTOSHOOT_MAIL_ENABLED=true` | Schakelt echte verzending in. Standaard uit. |
 | `FOTOSHOOT_MAIL_FROM` | Vertrouwd afzenderadres op je eigen domein. |
+| `FOTOSHOOT_TURNSTILE_SITE_KEY` | Publieke sitekey van de Managed-widget. |
+| `FOTOSHOOT_TURNSTILE_SECRET_KEY` | Bijbehorende geheime serversleutel. Nooit in Git of frontendcode. |
 | `FOTOSHOOT_RATE_DIRECTORY` | Optionele beschrijfbare map buiten `public_html` voor gehashte spamlimieten. Standaard de tijdelijke systeemmap. |
 
 Waarden in `api/config.local.php` hebben voorrang. Zet alleen op een afgeschermde testomgeving een ander ontvangstadres. Voeg voor een testdomein de exacte HTTPS-origin toe aan `allowedOrigins`; gebruik geen wildcard. De ontwikkelserver staat automatisch zijn eigen loopback-origin toe. Publieke HTTP-hosting wordt niet ondersteund voor verzending, omdat de sessiecookie in productie `Secure` is.
@@ -81,6 +85,8 @@ Aanvragen worden als UTF-8-tekstmail met alle relevante keuzes verstuurd. De bez
 
 Beveiliging: servervalidatie, maximale aanvraaggrootte 32 KiB, vaste ontvanger/afzender, CSRF-token, origincontrole, honeypot, maximaal vijf valide verzendpogingen per IP per uur en bescherming tegen dubbele verzending binnen dezelfde sessie. De noodzakelijke sessiecookie is `HttpOnly`, `SameSite=Strict` en op productie `Secure`; sessiedata bevat alleen tokens, vervaltijd en verzendreferenties, geen formulierinhoud. Voor de spamlimiet staan met een willekeurige serversleutel gehashte IP-tellers buiten de publieke website. De limiet vervalt na een uur; oude tellerbestanden worden opportunistisch opgeruimd. Bij onbeschikbare sessie- of limiteropslag wordt niet verzonden.
 
+Als beide Turnstile-sleutels zijn ingevuld, is verificatie verplicht voor beide routes, ook voor rechtstreekse API-aanvragen. Eén ingevulde sleutel is een configuratiefout en blokkeert verzending. De server controleert eenmalige tokens bij Cloudflare via HTTPS met certificaatcontrole en een timeout; hostname, actie en aanvraagreferentie moeten overeenkomen. Bij ontbrekende/verlopen/afgewezen tokens, een onbereikbare verificatiedienst of ongeldige configuratie wordt geen mail verstuurd. De controles op CSRF, origin, honeypot, prijzen, limieten en dubbele verzending blijven bestaan. Alleen sitekey en actie gaan naar de browser; nooit de secret key. Cloudflare ontvangt voor verificatie het token en de serversleutel; contactvelden worden niet meegestuurd. Het widgetscript laadt pas bij de laatste stap. Tokens blijven uitsluitend in het geheugen van de pagina. Na een verzendfout, teruggaan of wisselen van route volgt een nieuwe controle; de aanvraagreferentie blijft bij een verzendretry gelijk om dubbele mail te voorkomen.
+
 Een succesmelding verschijnt alleen als het mailtransport de aanvraag accepteert. Bij een fout blijven de velden beschikbaar voor een nieuwe poging. Dubbelklikken en het opnieuw versturen van dezelfde aanvraagreferentie leveren binnen de sessie geen tweede mail op.
 
 ## Lokaal controleren
@@ -97,6 +103,7 @@ In een tweede terminal:
 
 ```powershell
 php tests/fotoshoot.test.php
+php tests/fotoshoot-turnstile.test.php
 $env:FOTOSHOOT_PHP = (Get-Command php).Source
 node --test tests/fotoshoot.test.mjs
 ```
@@ -105,6 +112,9 @@ Browser- en integratietests gebruiken Playwright (module beschikbaar via `NODE_P
 
 ```powershell
 node tests/fotoshoot.browser.mjs
+node tests/fotoshoot-turnstile.browser.mjs
 ```
 
 Uitgevoerde controles: 13 browser- en integratietestgroepen; 113 PHP-asserties; 24 prijscombinaties en een categoriegebonden prijsvoorbeeld tussen JavaScript en PHP; ongeldige prijzen/keuzes/datums/contactgegevens; alle zakelijke categorieën; verplichte evenementkeuze; horeca-multiselect; aanvraagoverzichten; veilige tekstweergave; lokaal mailtransport en foutafhandeling; dubbele verzending; CSRF, origin, honeypot en spamlimiet; toetsenbord en focus; schermbreedtes 320/375/390/768/1366; bestaande pagina's, sliders en galerijfilters. Screenshots staan lokaal in de genegeerde map `.local/`. De echte Hostinger-router en inboxbezorging vragen nog de test hierboven.
+
+De Turnstile-tests gebruiken 36 PHP-controles met providerfixtures en 6 browser/API-testgroepen op poort 8767. Ze controleren afgeschermde sleutels, verplichte tokens, hostname/actie/referentie, verlopen en dubbele tokens, fouten/herstel, behoud van invoer, een stabiele verzendreferentie en de zakelijke route op 320px. De positieve providerantwoorden worden gesimuleerd; er gaat geen mail naar buiten en hiermee is geen echte Cloudflare- of Hostinger-configuratie getest. Controleer na activatie met de eigen sleutels beide routes in een gewone browser en de daadwerkelijke inboxbezorging.
