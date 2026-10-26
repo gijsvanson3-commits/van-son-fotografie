@@ -1,12 +1,12 @@
 # Fotoshootconfigurator — Van Son Fotografie
 
-De uitbreiding staat op `/fotoshoot`. Het ontwerp van de bestaande website is behouden: dezelfde algemene stylesheet, kleuren, lettertypen, navigatie en knoppen. De homepage krijgt één knop bij ‘Opdrachten’. Alle pagina’s krijgen ‘Prijscalculator’ in de bovenbalk; op de homepage staat die ook in het zonnemenu. De bestaande sliders, portfolio-indeling en inhoud van de andere pagina's zijn behouden. Er is niets naar productie gepubliceerd of gepusht.
+De uitbreiding staat op `/fotoshoot`. Het ontwerp van de bestaande website is behouden: dezelfde algemene stylesheet, kleuren, lettertypen, navigatie en knoppen. De homepage heeft een losse, gecentreerde knop onder de zonnen van de werkwijze, buiten het opdrachtenvlak. Alle pagina’s krijgen ‘Prijscalculator’ in de bovenbalk; op de homepage staat die ook in het zonnemenu. De bestaande sliders, portfolio-indeling en inhoud van de andere pagina's zijn behouden. Er is niets naar productie gepubliceerd of gepusht.
 
 ## Bestanden
 
 | Bestand | Functie |
 | --- | --- |
-| `index.html` | Knop bij Opdrachten en de link Prijscalculator in de bovenbalk en het zonnemenu. |
+| `index.html` | Knop onder de zonnen van de werkwijze en de link Prijscalculator in de bovenbalk en het zonnemenu. |
 | `gallery.html`, `blog.html`, beide blogartikelen | Prijscalculator in de bestaande bovenbalk. |
 | `styles.css` | Laat navigatielinks bij onvoldoende ruimte doorlopen naar een volgende regel. |
 | `fotoshoot.html` | Nieuwe pagina, routekeuze en toegankelijke formulierstructuur. |

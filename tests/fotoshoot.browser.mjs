@@ -306,7 +306,7 @@ try {
     assert.equal(response.status(), 200, route);
     assert.equal(await page.locator('.topbar a[href="/fotoshoot"]').innerText(), 'Prijscalculator');
     if (route === '/') {
-      await page.locator('#commercial .button').waitFor();
+      await page.locator('.timeline-cta .button').waitFor();
       assert.equal(await page.locator('[data-slider]').count(), 2);
       await page.locator('[data-slider]').first().locator('[data-direction="next"]').click();
     }
