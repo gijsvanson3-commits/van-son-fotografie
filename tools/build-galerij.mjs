@@ -1,6 +1,7 @@
 // Bouwt de galerij uit tools/galerij.json:
 //   - gallery.html            (overzicht van alle series, live op /galerij)
 //   - series/<slug>.html      (pagina per serie, live op /galerij/<slug>)
+//   - index.html              (alleen de blokken tussen de <!-- galerij:... --> markeringen)
 //   - sitemap.xml
 // Gebruik: cd tools && node build-galerij.mjs
 // Draai eerst optimize-images.mjs als je nieuwe foto's hebt toegevoegd.
@@ -313,6 +314,65 @@ ${lightboxMarkup}
 
 const pages = series.map((serie, index) => [serie.slug, seriePage(serie, index)]);
 
+// ---------- Homepage: opdrachten en kunstmuur ----------
+// Vult de blokken tussen de <!-- galerij:... --> markeringen in index.html.
+const opdrachtSeries = series.filter((serie) => serie.thema !== 'muur').slice(0, 4);
+const kunstSerie = series.find((serie) => serie.thema === 'muur');
+
+const homeWork = opdrachtSeries
+  .map((serie, index) => {
+    const label = data.categorieen[serie.categorie];
+    return `          <a class="home-work__item" href="/galerij/${esc(serie.slug)}">
+            <figure class="home-work__media">
+              ${serie.coverPhoto ? img(serie.coverPhoto, { sizes: '(max-width: 920px) 92vw, 34rem', eager: false }) : ''}
+              <span class="home-work__label">${esc(label)}</span>
+            </figure>
+            <span class="home-work__caption">
+              <span class="home-work__title">${esc(serie.titel)}</span>
+              <span class="home-work__context">${esc(serie.context)}</span>
+              <span class="home-work__cta">Bekijk serie <span aria-hidden="true">&rarr;</span></span>
+            </span>
+          </a>`;
+  })
+  .join('\n');
+
+const homeArt = kunstSerie
+  ? kunstSerie.layout
+      .flat()
+      .filter((block) => typeof block === 'string')
+      .slice(0, 3)
+      .map((file) => {
+        const p = photo(file);
+        if (!p) return '';
+        const shape = p.ratio > 1.7 ? 'panorama' : p.portrait ? 'portrait' : 'landscape';
+        return `          <figure class="kunst-piece kunst-piece--${shape}">
+            <svg class="kunst-hanger" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M4 40 L50 4 L96 40" /></svg>
+            <a class="kunst-frame" href="/galerij/${esc(kunstSerie.slug)}" aria-label="Naar de kunstmuur: ${esc(p.alt)}">
+              <span class="kunst-frame__mat">
+                ${img(p, { sizes: '(max-width: 720px) 70vw, 18rem' })}
+              </span>
+            </a>
+          </figure>`;
+      })
+      .join('\n')
+  : '';
+
+function fillMarker(html, name, content) {
+  const pattern = new RegExp(`(<!-- galerij:${name} -->)[\\s\\S]*?(\\s*<!-- /galerij:${name} -->)`);
+  if (!pattern.test(html)) {
+    problems.push(`Markering <!-- galerij:${name} --> ontbreekt in index.html`);
+    return html;
+  }
+  return html.replace(pattern, (match, open, close) => `${open}\n${content}${close}`);
+}
+
+const indexPath = path.join(root, 'index.html');
+const indexBefore = readFileSync(indexPath, 'utf8');
+const lineEnding = indexBefore.includes('\r\n') ? '\r\n' : '\n';
+let indexAfter = fillMarker(indexBefore.replace(/\r\n/g, '\n'), 'opdrachten', homeWork);
+indexAfter = fillMarker(indexAfter, 'kunst', homeArt);
+if (kunstSerie) indexAfter = indexAfter.replace(/data-kunst-link href="[^"]*"/g, `data-kunst-link href="/galerij/${kunstSerie.slug}"`);
+
 const slugs = new Set();
 for (const serie of series) {
   if (!/^[a-z0-9-]+$/.test(serie.slug)) problems.push(`Slug "${serie.slug}" mag alleen kleine letters, cijfers en streepjes bevatten`);
@@ -327,6 +387,7 @@ if (problems.length) {
 
 // ---------- Schrijven ----------
 writeFileSync(path.join(root, 'gallery.html'), overview);
+writeFileSync(indexPath, indexAfter.replace(/\n/g, lineEnding));
 const seriesDir = path.join(root, 'series');
 mkdirSync(seriesDir, { recursive: true });
 for (const file of readdirSync(seriesDir)) {
@@ -350,4 +411,4 @@ writeFileSync(
     .join('\n')}\n</urlset>\n`
 );
 
-console.log(`Galerij gebouwd: overzicht + ${pages.length} series (${[...slugs].join(', ')}) + sitemap.xml`);
+console.log(`Galerij gebouwd: overzicht + ${pages.length} series (${[...slugs].join(', ')}) + homepage-blokken + sitemap.xml`);

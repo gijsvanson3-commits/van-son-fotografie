@@ -683,11 +683,11 @@ if (!prefersReducedMotion.matches) {
   document.body.classList.add("js-ready");
 
   const revealTargets = [
-    ...document.querySelectorAll(".about-media, .copy-block, .gallery-slider, .timeline-step, .contact-card"),
+    ...document.querySelectorAll(".about-media, .copy-block, .gallery-slider, .timeline-step, .contact-card, .home-work__item, .home-art__wall, .review"),
   ];
 
   revealTargets.forEach((element, index) => {
-    const parent = element.closest(".feature-section, .contact-section, .timeline");
+    const parent = element.closest(".feature-section, .contact-section, .timeline, .home-work__reel");
     const siblings = parent ? [...parent.children] : [...(element.parentElement?.children || [])];
     const siblingIndex = siblings.indexOf(element);
     const delayIndex = siblingIndex >= 0 ? siblingIndex : index;
