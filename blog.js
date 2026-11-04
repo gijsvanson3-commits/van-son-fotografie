@@ -97,6 +97,7 @@ async function getBlogData(source) {
       title,
       intro,
       imageSrc: image?.getAttribute("src") || "",
+      imageSrcset: image?.getAttribute("srcset") || "",
       imageAlt: image?.getAttribute("alt") || `Afbeelding bij ${title}`,
       label: getCardLabelFromDocument(doc),
     };
@@ -117,6 +118,13 @@ function createBlogCard(data) {
   if (data.imageSrc) {
     const image = document.createElement("img");
     image.src = data.imageSrc;
+    image.loading = "lazy";
+    image.decoding = "async";
+
+    if (data.imageSrcset) {
+      image.srcset = data.imageSrcset;
+      image.sizes = "(max-width: 920px) 92vw, 22rem";
+    }
     image.alt = data.imageAlt || "";
     media.appendChild(image);
   } else {
@@ -212,6 +220,12 @@ function applyFeaturedBlogData(data) {
 
   if (featuredImage && data.imageSrc) {
     featuredImage.src = data.imageSrc;
+
+    if (data.imageSrcset) {
+      featuredImage.srcset = data.imageSrcset;
+    } else {
+      featuredImage.removeAttribute("srcset");
+    }
   }
 
   if (featuredImage && data.imageAlt) {

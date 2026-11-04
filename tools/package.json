@@ -1,0 +1,12 @@
+{
+  "name": "van-son-fotografie-tools",
+  "private": true,
+  "type": "module",
+  "description": "Hulpscripts voor lokaal gebruik; geen onderdeel van de live site.",
+  "scripts": {
+    "images": "node optimize-images.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.0"
+  }
+}

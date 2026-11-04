@@ -85,6 +85,10 @@ function getGalleryItems() {
         alt: item.dataset.alt?.trim() || `${galleryCategoryLabels[category]} - ${humanizeImageName(src)}`,
         shape: normalizeGalleryShape(item.dataset.shape?.trim() || "", index),
         desktopAspectRatio: item.dataset.aspectDesktop?.trim() || "",
+        srcset: item.dataset.srcset?.trim() || "",
+        full: item.dataset.full?.trim() || "",
+        width: Number(item.dataset.width) || 0,
+        height: Number(item.dataset.height) || 0,
       };
     })
     .filter(Boolean);
@@ -107,6 +111,20 @@ function createGalleryCard(item, options = {}) {
 
   const image = document.createElement("img");
   image.src = item.src;
+
+  if (item.srcset) {
+    image.srcset = item.srcset;
+    image.sizes = "(max-width: 560px) 92vw, (max-width: 920px) 46vw, 22rem";
+  }
+
+  if (item.width && item.height) {
+    image.width = item.width;
+    image.height = item.height;
+  }
+
+  if (item.full) {
+    image.dataset.full = item.full;
+  }
   image.alt = item.alt;
   image.loading = "lazy";
   image.decoding = "async";
@@ -181,7 +199,7 @@ function renderLightboxImage() {
     return;
   }
 
-  lightboxImage.src = currentImage.currentSrc || currentImage.src;
+  lightboxImage.src = currentImage.dataset.full || currentImage.currentSrc || currentImage.src;
   lightboxImage.alt = currentImage.alt || "";
   lightboxFigure?.scrollTo({ top: 0, left: 0, behavior: "auto" });
 }

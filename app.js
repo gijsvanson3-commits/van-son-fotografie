@@ -304,6 +304,12 @@ function initSlider(slider) {
       dot.classList.toggle("is-active", isActive);
       dot.setAttribute("aria-current", isActive ? "true" : "false");
     });
+
+    // Laad de buurfoto's alvast, zodat doorbladeren direct een beeld toont.
+    [activeIndex, activeIndex + 1, activeIndex - 1].forEach((index) => {
+      const image = slides[(index + slides.length) % slides.length].querySelector("img");
+      image?.setAttribute("loading", "eager");
+    });
   }
 
   slider.setActiveSlide = setActiveSlide;
@@ -561,7 +567,7 @@ function renderLightboxImage() {
     return;
   }
 
-  lightboxImage.src = currentImage.currentSrc || currentImage.src;
+  lightboxImage.src = currentImage.dataset.full || currentImage.currentSrc || currentImage.src;
   lightboxImage.alt = currentImage.alt || "";
   lightboxFigure?.scrollTo({ top: 0, left: 0, behavior: "auto" });
 

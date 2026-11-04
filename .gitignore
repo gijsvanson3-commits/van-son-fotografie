@@ -13,3 +13,7 @@ Desktop - 2.pdf
 # Serverinstellingen en lokale verificatiebestanden
 api/config.local.php
 .local/
+
+# Lokale hulpscripts
+tools/node_modules/
+tools/package-lock.json
