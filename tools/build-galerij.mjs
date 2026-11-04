@@ -122,7 +122,7 @@ const cards = series
   .map((serie, index) => {
     const label = data.categorieen[serie.categorie];
     const count = serie.layout.flat().filter((block) => typeof block === 'string').length;
-    return `        <article class="serie-card" role="listitem" data-serie-card data-category="${esc(serie.categorie)}">
+    return `        <div class="serie-card" role="listitem" data-serie-card data-category="${esc(serie.categorie)}">
           <a class="serie-card__link" href="/galerij/${esc(serie.slug)}">
             <figure class="serie-card__media">
               ${serie.coverPhoto ? img(serie.coverPhoto, { sizes: '(max-width: 560px) 88vw, (max-width: 920px) 44vw, 20rem', eager: index < 3 }) : ''}
@@ -137,7 +137,7 @@ const cards = series
               </div>
             </div>
           </a>
-        </article>`;
+        </div>`;
   })
   .join('\n');
 
@@ -246,7 +246,7 @@ function seriePage(serie, index) {
       }
       if (Array.isArray(block)) {
         if (block.length !== 2) problems.push(`Serie "${serie.slug}": een paar moet precies twee foto's hebben`);
-        const figures = block.map((file) => figure(photo(file), '(max-width: 720px) 92vw, 33rem')).join('\n        ');
+        const figures = block.map((file) => figure(photo(file), '(max-width: 720px) 46vw, 33rem')).join('\n        ');
         return `      <div class="serie-block serie-block--pair">
         ${figures}
       </div>`;

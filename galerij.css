@@ -170,7 +170,7 @@
 }
 
 .serie-card__count {
-  color: rgba(139, 71, 0, 0.62);
+  color: #8b4700;
   font-size: 0.8rem;
   font-weight: 700;
   white-space: nowrap;
@@ -320,6 +320,20 @@
   gap: 1.1rem;
   margin-top: clamp(3.5rem, 9vw, 6rem);
   text-align: center;
+}
+
+/* Knop op de lichte achtergrond: donkere tekst op oranje voor genoeg contrast. */
+.serie-cta .button {
+  width: auto;
+  padding: 1rem 1.8rem;
+  color: var(--text);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.serie-cta .button:hover,
+.serie-cta .button:focus-visible {
+  background: var(--panel-dark);
 }
 
 .serie-cta__lead {

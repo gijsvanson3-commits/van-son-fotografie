@@ -11,7 +11,7 @@ import sharp from 'sharp';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sourceDir = path.join(root, 'assets', 'images');
 const outputDir = path.join(sourceDir, 'opt');
-const widths = [480, 960, 1440, 2048];
+const widths = [480, 720, 960, 1440, 2048];
 const skip = new Set(['Group16.png']);
 
 export function slugify(fileName) {

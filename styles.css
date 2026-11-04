@@ -590,32 +590,49 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.45rem;
-  padding: 0.42rem 0.52rem;
+  gap: 0;
+  padding: 0.12rem 0.28rem;
   border-radius: var(--radius-pill);
   background: rgba(255, 249, 238, 0.24);
   backdrop-filter: blur(8px);
   pointer-events: auto;
 }
 
+/* De knop zelf is 24px (goed te raken op een telefoon); het zichtbare bolletje zit erin. */
 .slider-dot {
-  width: 0.72rem;
-  height: 0.72rem;
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
   border: 0;
   border-radius: var(--radius-pill);
-  background: rgba(242, 166, 44, 0.34);
+  background: transparent;
   cursor: pointer;
+  transition: width 180ms ease;
+}
+
+.slider-dot::before {
+  content: "";
+  width: 0.72rem;
+  height: 0.72rem;
+  border-radius: var(--radius-pill);
+  background: rgba(242, 166, 44, 0.34);
   transition: width 180ms ease, transform 180ms ease, background-color 180ms ease;
 }
 
 .slider-dot.is-active {
+  width: 2.2rem;
+}
+
+.slider-dot.is-active::before {
   width: 1.8rem;
   background: #ff9f00;
 }
 
-.slider-dot:hover,
-.slider-dot:focus-visible {
-  transform: scale(1.05);
+.slider-dot:hover::before,
+.slider-dot:focus-visible::before {
+  transform: scale(1.1);
 }
 
 .panel-title {

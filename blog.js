@@ -218,7 +218,10 @@ function applyFeaturedBlogData(data) {
     featuredBlog.href = data.href;
   }
 
-  if (featuredImage && data.imageSrc) {
+  const currentSrc = featuredImage?.getAttribute("src")?.replace(/^\//, "") || "";
+  const nextSrc = data.imageSrc?.replace(/^\//, "") || "";
+
+  if (featuredImage && data.imageSrc && currentSrc !== nextSrc) {
     featuredImage.src = data.imageSrc;
 
     if (data.imageSrcset) {
@@ -232,11 +235,12 @@ function applyFeaturedBlogData(data) {
     featuredImage.alt = data.imageAlt;
   }
 
-  if (featuredTitle && data.title) {
+  // Alleen vervangen als de tekst echt anders is, zodat de pagina niet verspringt.
+  if (featuredTitle && data.title && extractText(featuredTitle) !== data.title) {
     featuredTitle.textContent = data.title;
   }
 
-  if (featuredIntro && data.intro) {
+  if (featuredIntro && data.intro && extractText(featuredIntro) !== data.intro) {
     featuredIntro.textContent = data.intro;
   }
 }
@@ -522,4 +526,14 @@ async function initBlogPage() {
   document.querySelectorAll("[data-blog-carousel]").forEach((carousel) => initBlogCarousel(carousel));
 }
 
-initBlogPage();
+// Start pas als de pagina voor het eerst in beeld is getekend. Kaartjes die eerder worden
+// ingevoegd zorgen ervoor dat Chrome de laadsnelheid (LCP) van deze pagina niet kan meten.
+function startAfterFirstPaint() {
+  requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(initBlogPage, 0)));
+}
+
+if (document.readyState === "complete") {
+  startAfterFirstPaint();
+} else {
+  window.addEventListener("load", startAfterFirstPaint, { once: true });
+}
