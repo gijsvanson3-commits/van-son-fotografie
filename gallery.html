@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="assets/images/Group16.png">
+  <!-- Gegenereerd door tools/build-galerij.mjs uit tools/galerij.json. Pas daar aan, niet hier. -->
+  <link rel="icon" type="image/png" href="/assets/images/Group16.png">
   <title>Galerij | van Son fotografie</title>
   <link rel="canonical" href="https://vansonfotografie.nl/galerij">
-  <meta name="description" content="Bekijk de fotografie van van Son fotografie: 21 diners, evenementen, festivals en kunstfotografie. Echte momenten, precies zoals ze gebeuren.">
+  <meta name="description" content="Fotoseries van van Son fotografie: 21 diners, evenementen, festivals en vrij werk. Elke serie vertelt het verhaal van één dag.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="nl_NL">
   <meta property="og:site_name" content="van Son fotografie">
   <meta property="og:title" content="Galerij | van Son fotografie">
-  <meta property="og:description" content="Bekijk de fotografie van van Son fotografie: 21 diners, evenementen, festivals en kunstfotografie. Echte momenten, precies zoals ze gebeuren.">
+  <meta property="og:description" content="Fotoseries van van Son fotografie: 21 diners, evenementen, festivals en vrij werk. Elke serie vertelt het verhaal van één dag.">
   <meta property="og:url" content="https://vansonfotografie.nl/galerij">
   <meta property="og:image" content="https://vansonfotografie.nl/assets/images/opt/21-diner-3-1440.webp">
   <meta name="twitter:card" content="summary_large_image">
@@ -21,17 +22,18 @@
     href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@600;700&display=swap"
     rel="stylesheet"
   >
-  <link rel="stylesheet" href="styles.css">
-  <script src="gallery.js" defer></script>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/galerij.css">
+  <script src="/gallery.js" defer></script>
 </head>
-<body>
+<body class="galerij-page">
   <header class="hero">
-    <nav class="topbar">
+    <nav class="topbar" aria-label="Hoofdnavigatie">
       <div class="topbar__group">
         <a href="/#about">Over mij</a>
         <a href="/#commercial">Opdrachten</a>
         <a href="/#art">Kunst</a>
-        <a href="/galerij">Galerij</a>
+        <a href="/galerij" aria-current="page">Galerij</a>
         <a href="/blogs">Blogs</a>
         <a href="/fotoshoot">Prijscalculator</a>
       </div>
@@ -39,97 +41,120 @@
     </nav>
   </header>
 
-  <main class="page-shell gallery-page-shell">
-    <section class="gallery-hero">
-      <div class="gallery-hero__copy">
-        <p class="gallery-kicker">van Son fotografie</p>
-        <h1 class="gallery-page-title">Galerij</h1>
-        <p>
-          Onderstaand mijn fotografie! Neem vooral een kijkje!
-        </p>
-        <div class="gallery-toolbar gallery-toolbar--hero">
-          <div class="gallery-filterbar" aria-label="Filter foto's op categorie">
-            <button class="gallery-filter is-active" type="button" data-filter="all" aria-pressed="true">Alles</button>
-            <button class="gallery-filter" type="button" data-filter="21-diner" aria-pressed="false">21 diner</button>
-            <button class="gallery-filter" type="button" data-filter="trouwen" aria-pressed="false">Trouwen</button>
-            <button class="gallery-filter" type="button" data-filter="evenementen" aria-pressed="false">Evenementen / festivals</button>
-            <button class="gallery-filter" type="button" data-filter="kunst" aria-pressed="false">Kunst</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-hero__aside">
-        <span class="gallery-hero__tag">Authentieke momenten, stijlvol vastgelegd</span>
-        <p>
-         Of je nu een evenement organiseert of een bijzonder moment wilt laten vastleggen — hier zie je wat je kunt verwachten. Echte momenten, precies zoals ze gebeuren.
-        </p>
+  <main class="page-shell galerij-shell">
+    <section class="galerij-intro">
+      <p class="gallery-kicker">Galerij</p>
+      <h1 class="galerij-title">Authentieke momenten, stijlvol vastgelegd</h1>
+      <p class="galerij-lead">
+        Elke serie vertelt het verhaal van één dag of avond. Kies een serie en kijk rustig rond.
+      </p>
+      <div class="gallery-filterbar" role="group" aria-label="Filter series op categorie">
+          <button class="gallery-filter is-active" type="button" data-filter="all" aria-pressed="true">Alles</button>
+          <button class="gallery-filter" type="button" data-filter="21-diner" aria-pressed="false">21 diner</button>
+          <button class="gallery-filter" type="button" data-filter="evenementen" aria-pressed="false">Evenementen / festivals</button>
+          <button class="gallery-filter" type="button" data-filter="kunst" aria-pressed="false">Kunst</button>
       </div>
     </section>
 
-    <section class="gallery-section">
-      <!--
-        FOTO'S TOEVOEGEN OF VERWIJDEREN:
-        1. Voeg hieronder een nieuw <li> item toe voor elke foto die je wilt tonen.
-        2. Vul als tekst alleen het pad naar de foto in.
-        3. Zet de categorie in data-category.
-        4. data-shape is optioneel. Mogelijke waarden: wide, tall, standard, panorama
-        5. Toegestane categorieen: 21-diner, trouwen, evenementen, kunst
-        6. Een foto verwijderen = haal alleen het juiste <li> item weg.
-        7. data-alt is optioneel, maar fijn voor toegankelijkheid en SEO.
-      -->
-      <ul class="gallery-source-list" data-gallery-source-list hidden>
-        <li data-category="evenementen" data-shape="wide" data-column-desktop="3" data-aspect-desktop="19 / 20" data-alt="Man in blauwe hoodie strekt zijn armen uit op een zonnig terras met een besneeuwde bergtop" data-srcset="assets/images/opt/dsc08051com3-480.webp 480w, assets/images/opt/dsc08051com3-960.webp 960w, assets/images/opt/dsc08051com3-1168.webp 1168w" data-full="assets/images/opt/dsc08051com3-1168.webp" data-width="1168" data-height="1752">assets/images/opt/dsc08051com3-960.webp</li>
-        <li data-category="21-diner" data-shape="tall" data-alt="Sfeervolle foto van een 21 diner met een glas bier aan tafel" data-srcset="assets/images/opt/21-diner-1-480.webp 480w, assets/images/opt/21-diner-1-960.webp 960w, assets/images/opt/21-diner-1-1440.webp 1440w, assets/images/opt/21-diner-1-2048.webp 2048w" data-full="assets/images/opt/21-diner-1-2048.webp" data-width="2048" data-height="3072">assets/images/opt/21-diner-1-960.webp</li>
-        <li data-category="21-diner" data-shape="tall" data-alt="Detailfoto van decoratie in een boom bij een 21 diner" data-srcset="assets/images/opt/21-diner-2-480.webp 480w, assets/images/opt/21-diner-2-960.webp 960w, assets/images/opt/21-diner-2-1440.webp 1440w, assets/images/opt/21-diner-2-2048.webp 2048w" data-full="assets/images/opt/21-diner-2-2048.webp" data-width="2048" data-height="3072">assets/images/opt/21-diner-2-960.webp</li>
-        <li data-category="21-diner" data-shape="tall" data-alt="Champagne wordt ingeschonken tijdens een 21 diner" data-srcset="assets/images/opt/21-diner-3-480.webp 480w, assets/images/opt/21-diner-3-960.webp 960w, assets/images/opt/21-diner-3-1440.webp 1440w, assets/images/opt/21-diner-3-2048.webp 2048w" data-full="assets/images/opt/21-diner-3-2048.webp" data-width="2048" data-height="3072">assets/images/opt/21-diner-3-960.webp</li>
-        <li data-category="21-diner" data-shape="tall" data-alt="Detailfoto van graan in avondlicht bij een 21 diner" data-srcset="assets/images/opt/21-diner-4-480.webp 480w, assets/images/opt/21-diner-4-960.webp 960w, assets/images/opt/21-diner-4-1440.webp 1440w, assets/images/opt/21-diner-4-2048.webp 2048w" data-full="assets/images/opt/21-diner-4-2048.webp" data-width="2048" data-height="3072">assets/images/opt/21-diner-4-960.webp</li>
-        <li data-category="21-diner" data-shape="tall" data-alt="Portretfoto aan tafel tijdens een zonnig 21 diner" data-srcset="assets/images/opt/21-diner-5-480.webp 480w, assets/images/opt/21-diner-5-960.webp 960w, assets/images/opt/21-diner-5-1440.webp 1440w, assets/images/opt/21-diner-5-2048.webp 2048w" data-full="assets/images/opt/21-diner-5-2048.webp" data-width="2048" data-height="3072">assets/images/opt/21-diner-5-960.webp</li>
-        <li data-category="evenementen" data-shape="wide" data-column-desktop="3" data-aspect-desktop="19 / 20" data-alt="Lachend stel poseert samen tussen het publiek op een festival" data-srcset="assets/images/opt/dsc09907-480.webp 480w, assets/images/opt/dsc09907-960.webp 960w, assets/images/opt/dsc09907-1440.webp 1440w, assets/images/opt/dsc09907-2048.webp 2048w" data-full="assets/images/opt/dsc09907-2048.webp" data-width="2048" data-height="3073">assets/images/opt/dsc09907-960.webp</li>
-        <li data-category="evenementen" data-shape="wide" data-column-desktop="3" data-aspect-desktop="19 / 20" data-alt="Jongen danst lachend onder roze neonlicht op een feest" data-srcset="assets/images/opt/dsc00695-480.webp 480w, assets/images/opt/dsc00695-960.webp 960w, assets/images/opt/dsc00695-1024.webp 1024w" data-full="assets/images/opt/dsc00695-1024.webp" data-width="1024" data-height="600">assets/images/opt/dsc00695-960.webp</li>
-        <li data-category="evenementen" data-shape="wide" data-column-desktop="3" data-aspect-desktop="19 / 20" data-alt="Neonbord boven een dansende menigte in rood licht" data-srcset="assets/images/opt/dsc00342-480.webp 480w, assets/images/opt/dsc00342-960.webp 960w, assets/images/opt/dsc00342-1440.webp 1440w, assets/images/opt/dsc00342-2048.webp 2048w" data-full="assets/images/opt/dsc00342-2048.webp" data-width="2048" data-height="1643">assets/images/opt/dsc00342-960.webp</li>
-        <li data-category="evenementen" data-shape="wide" data-column-desktop="3" data-aspect-desktop="19 / 20" data-alt="Vrienden met zonnebril en drankje poseren voor neonverlichting op een feest" data-srcset="assets/images/opt/dsc00078-480.webp 480w, assets/images/opt/dsc00078-960.webp 960w, assets/images/opt/dsc00078-1024.webp 1024w" data-full="assets/images/opt/dsc00078-1024.webp" data-width="1024" data-height="600">assets/images/opt/dsc00078-960.webp</li>
-        <li data-category="kunst" data-shape="standard" data-column-desktop="3" data-alt="Speedboot trekt een wit spoor over de diepblauwe zee met bergen aan de horizon" data-srcset="assets/images/opt/dsc03625art3-480.webp 480w, assets/images/opt/dsc03625art3-960.webp 960w, assets/images/opt/dsc03625art3-1440.webp 1440w, assets/images/opt/dsc03625art3-1752.webp 1752w" data-full="assets/images/opt/dsc03625art3-1752.webp" data-width="1752" data-height="1168">assets/images/opt/dsc03625art3-960.webp</li>
-        <li data-category="kunst" data-shape="panorama" data-column-desktop="2" data-aspect-desktop="5 / 4" data-alt="Glazen met goudkleurige drankjes in het zonlicht op een houten terrastafel in de bergen" data-srcset="assets/images/opt/dsc08211art2-480.webp 480w, assets/images/opt/dsc08211art2-960.webp 960w, assets/images/opt/dsc08211art2-1168.webp 1168w" data-full="assets/images/opt/dsc08211art2-1168.webp" data-width="1168" data-height="1752">assets/images/opt/dsc08211art2-960.webp</li>
-        <li data-category="kunst" data-shape="standard" data-column-desktop="2" data-alt="Skiërs op een zonnige piste terwijl sneeuwkanonnen witte wolken langs de bergtop blazen" data-srcset="assets/images/opt/dsc07744art4-480.webp 480w, assets/images/opt/dsc07744art4-960.webp 960w, assets/images/opt/dsc07744art4-1168.webp 1168w" data-full="assets/images/opt/dsc07744art4-1168.webp" data-width="1168" data-height="1752">assets/images/opt/dsc07744art4-960.webp</li>
-        <li data-category="kunst" data-shape="wide" data-column-desktop="1" data-alt="Handen en een gezicht drukken zich af tegen een geplooid wit gordijn" data-srcset="assets/images/opt/dsc-0581art1-480.webp 480w, assets/images/opt/dsc-0581art1-960.webp 960w, assets/images/opt/dsc-0581art1-1000.webp 1000w" data-full="assets/images/opt/dsc-0581art1-1000.webp" data-width="1000" data-height="1504">assets/images/opt/dsc-0581art1-960.webp</li>
-        <li data-category="kunst" data-shape="panorama" data-alt="Silhouetten van bouwkranen tegen een kleurrijke zonsondergang" data-srcset="assets/images/opt/kunstfotografie-480.webp 480w, assets/images/opt/kunstfotografie-960.webp 960w, assets/images/opt/kunstfotografie-1440.webp 1440w, assets/images/opt/kunstfotografie-2048.webp 2048w" data-full="assets/images/opt/kunstfotografie-2048.webp" data-width="2048" data-height="1033">assets/images/opt/kunstfotografie-960.webp</li>
-      </ul>
-
-      <p class="gallery-toolbar__note">Filter op moment of scroll gewoon rustig door alle beelden heen.</p>
-
-      <div class="gallery-grid" data-gallery-grid aria-live="polite"></div>
-      <p class="gallery-empty" data-gallery-empty hidden>Er staan nog geen foto's in deze categorie.</p>
+    <section aria-label="Series">
+      <div class="serie-grid" role="list">
+        <article class="serie-card" role="listitem" data-serie-card data-category="21-diner">
+          <a class="serie-card__link" href="/galerij/21-diner-zomeravond">
+            <figure class="serie-card__media">
+              <img src="/assets/images/opt/21-diner-3-960.webp" srcset="/assets/images/opt/21-diner-3-480.webp 480w, /assets/images/opt/21-diner-3-960.webp 960w, /assets/images/opt/21-diner-3-1440.webp 1440w, /assets/images/opt/21-diner-3-2048.webp 2048w" sizes="(max-width: 560px) 88vw, (max-width: 920px) 44vw, 20rem" width="2048" height="3072" alt="Champagne wordt ingeschonken tijdens een 21 diner" loading="eager" fetchpriority="high" decoding="async">
+              <span class="serie-card__label">21 diner</span>
+            </figure>
+            <div class="serie-card__body">
+              <h2 class="serie-card__title">21 diner</h2>
+              <p class="serie-card__context">Warm avondlicht, lange tafel en bubbels</p>
+              <div class="serie-card__footer">
+                <span class="serie-card__cta">Bekijk serie <span class="serie-card__arrow" aria-hidden="true">&rarr;</span></span>
+                <span class="serie-card__count">5 foto's</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <article class="serie-card" role="listitem" data-serie-card data-category="evenementen">
+          <a class="serie-card__link" href="/galerij/wintersport">
+            <figure class="serie-card__media">
+              <img src="/assets/images/opt/dsc08051com3-960.webp" srcset="/assets/images/opt/dsc08051com3-480.webp 480w, /assets/images/opt/dsc08051com3-960.webp 960w, /assets/images/opt/dsc08051com3-1168.webp 1168w" sizes="(max-width: 560px) 88vw, (max-width: 920px) 44vw, 20rem" width="1168" height="1752" alt="Man in blauwe hoodie strekt zijn armen uit op een zonnig terras met een besneeuwde bergtop" loading="eager" fetchpriority="high" decoding="async">
+              <span class="serie-card__label">Evenementen / festivals</span>
+            </figure>
+            <div class="serie-card__body">
+              <h2 class="serie-card__title">Wintersport</h2>
+              <p class="serie-card__context">Zon, sneeuw en een vol terras</p>
+              <div class="serie-card__footer">
+                <span class="serie-card__cta">Bekijk serie <span class="serie-card__arrow" aria-hidden="true">&rarr;</span></span>
+                <span class="serie-card__count">4 foto's</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <article class="serie-card" role="listitem" data-serie-card data-category="evenementen">
+          <a class="serie-card__link" href="/galerij/festival">
+            <figure class="serie-card__media">
+              <img src="/assets/images/opt/dsc09907-960.webp" srcset="/assets/images/opt/dsc09907-480.webp 480w, /assets/images/opt/dsc09907-960.webp 960w, /assets/images/opt/dsc09907-1440.webp 1440w, /assets/images/opt/dsc09907-2048.webp 2048w" sizes="(max-width: 560px) 88vw, (max-width: 920px) 44vw, 20rem" width="2048" height="3073" alt="Lachend stel poseert samen tussen het publiek op een festival" loading="eager" fetchpriority="high" decoding="async">
+              <span class="serie-card__label">Evenementen / festivals</span>
+            </figure>
+            <div class="serie-card__body">
+              <h2 class="serie-card__title">Festival</h2>
+              <p class="serie-card__context">Neon, dansvloer en vrienden tot diep in de nacht</p>
+              <div class="serie-card__footer">
+                <span class="serie-card__cta">Bekijk serie <span class="serie-card__arrow" aria-hidden="true">&rarr;</span></span>
+                <span class="serie-card__count">4 foto's</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <article class="serie-card" role="listitem" data-serie-card data-category="evenementen">
+          <a class="serie-card__link" href="/galerij/70e-verjaardag">
+            <figure class="serie-card__media">
+              <img src="/assets/images/opt/verjaardag-shoot-960.webp" srcset="/assets/images/opt/verjaardag-shoot-480.webp 480w, /assets/images/opt/verjaardag-shoot-960.webp 960w, /assets/images/opt/verjaardag-shoot-1024.webp 1024w" sizes="(max-width: 560px) 88vw, (max-width: 920px) 44vw, 20rem" width="1024" height="600" alt="Jarige vrouw poseert met een fotolijst voor haar 70e verjaardag in een zonnige tuin" loading="lazy" decoding="async">
+              <span class="serie-card__label">Evenementen / festivals</span>
+            </figure>
+            <div class="serie-card__body">
+              <h2 class="serie-card__title">70e verjaardag</h2>
+              <p class="serie-card__context">Een zonnige tuin, familie en een fotolijst vol trots</p>
+              <div class="serie-card__footer">
+                <span class="serie-card__cta">Bekijk serie <span class="serie-card__arrow" aria-hidden="true">&rarr;</span></span>
+                <span class="serie-card__count">2 foto's</span>
+              </div>
+            </div>
+          </a>
+        </article>
+        <article class="serie-card" role="listitem" data-serie-card data-category="kunst">
+          <a class="serie-card__link" href="/galerij/vrij-werk">
+            <figure class="serie-card__media">
+              <img src="/assets/images/opt/kunstfotografie-960.webp" srcset="/assets/images/opt/kunstfotografie-480.webp 480w, /assets/images/opt/kunstfotografie-960.webp 960w, /assets/images/opt/kunstfotografie-1440.webp 1440w, /assets/images/opt/kunstfotografie-2048.webp 2048w" sizes="(max-width: 560px) 88vw, (max-width: 920px) 44vw, 20rem" width="2048" height="1033" alt="Silhouetten van bouwkranen tegen een kleurrijke zonsondergang" loading="lazy" decoding="async">
+              <span class="serie-card__label">Kunst</span>
+            </figure>
+            <div class="serie-card__body">
+              <h2 class="serie-card__title">Vrij werk</h2>
+              <p class="serie-card__context">Vrijheid blijheid! Licht, vorm en toeval</p>
+              <div class="serie-card__footer">
+                <span class="serie-card__cta">Bekijk serie <span class="serie-card__arrow" aria-hidden="true">&rarr;</span></span>
+                <span class="serie-card__count">5 foto's</span>
+              </div>
+            </div>
+          </a>
+        </article>
+      </div>
+      <p class="galerij-empty" data-gallery-empty hidden>Er staan nog geen series in deze categorie.</p>
     </section>
 
     <section class="gallery-cta">
       <div class="contact-card">
-        <h2 class="panel-title">Benieuwd naar meer of wil je zelf zulke vastgelegde beelden?</h2>
+        <h2 class="panel-title">Zelf zulke beelden laten maken?</h2>
         <p>
-          Zie je beelden die passen bij wat je zoekt? Stuur me gerust een bericht, dan kijken we samen
-          welk soort shoot of reportage het beste aansluit bij jouw moment.
+          Zie je een serie die past bij wat je zoekt? Stel jouw fotoshoot samen, dan kijken we samen welk
+          soort shoot of reportage het beste bij jouw moment past.
         </p>
         <div class="contact-actions">
-          <a class="button button-primary" href="/#contact">Neem contact op</a>
-          <a class="button button-secondary" href="/blogs">Lees ook mijn blogs</a>
+          <a class="button button-primary" href="/fotoshoot">Stel jouw fotoshoot samen</a>
+          <a class="button button-secondary" href="/#contact">Neem contact op</a>
         </div>
       </div>
     </section>
   </main>
-
-  <div class="lightbox" hidden aria-hidden="true">
-    <button class="lightbox__close" type="button" aria-label="Sluit foto">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <div class="lightbox__backdrop" data-lightbox-close></div>
-    <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Vorige foto" hidden>
-      <span aria-hidden="true">&#8592;</span>
-    </button>
-    <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Volgende foto" hidden>
-      <span aria-hidden="true">&#8594;</span>
-    </button>
-    <figure class="lightbox__figure">
-      <img class="lightbox__image" src="" alt="">
-    </figure>
-  </div>
 </body>
 </html>

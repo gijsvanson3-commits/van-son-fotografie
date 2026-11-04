@@ -1,0 +1,117 @@
+{
+  "_uitleg": [
+    "Hier staan alle series van de galerij. Na een wijziging: cd tools && node build-galerij.mjs",
+    "Nieuwe foto's eerst in assets/images zetten en node optimize-images.mjs draaien.",
+    "categorie: 21-diner, trouwen, evenementen of kunst (alleen gebruikte categorieen krijgen een filter).",
+    "layout: een bestandsnaam = foto over de volle breedte, [twee namen] = twee naast elkaar, {\"tekst\": \"...\"} = korte zin tussen de beelden.",
+    "alt-teksten: beschrijving per foto in \"alt\" onderaan (voor Google en schermlezers). Elke gebruikte foto moet er één hebben.",
+    "thema: \"muur\" hangt de foto's ingelijst aan een muur (voor kunst)."
+  ],
+  "categorieen": {
+    "21-diner": "21 diner",
+    "trouwen": "Trouwen",
+    "evenementen": "Evenementen / festivals",
+    "kunst": "Kunst"
+  },
+  "series": [
+    {
+      "slug": "21-diner-zomeravond",
+      "categorie": "21-diner",
+      "titel": "21 diner",
+      "context": "Warm avondlicht, lange tafel en bubbels",
+      "intro": "Een avond vol proosten, verhalen en een zon die langzaam ondergaat. Van de eerste decoratie tot de laatste toast.",
+      "omschrijving": "Fotoserie van een 21 diner in warm avondlicht: lange tafel, champagne en spontane momenten met vrienden.",
+      "cover": "21-diner-3.jpg",
+      "layout": [
+        "21-diner-4.jpg",
+        ["21-diner-2.jpg", "21-diner-1.jpg"],
+        { "tekst": "Dan schuift iedereen aan en begint het echte feest." },
+        ["21-diner-3.jpg", "21-diner-5.webp"]
+      ]
+    },
+    {
+      "slug": "wintersport",
+      "categorie": "evenementen",
+      "titel": "Wintersport",
+      "context": "Zon, sneeuw en een vol terras",
+      "intro": "Tussen de afdalingen door gebeurt het echte werk: op het terras, met de bergen als decor.",
+      "omschrijving": "Fotoserie van een wintersportreis: zonnige terrassen, besneeuwde bergtoppen en vrienden die genieten.",
+      "cover": "DSC08051com3.webp",
+      "layout": [
+        "DSC07908com2.webp",
+        ["DSC08051com3.webp", "DSC08056com1.JPG.webp"],
+        { "tekst": "Iedereen heeft een verhaal over die ene afdaling." },
+        "DSC07843com3.webp"
+      ]
+    },
+    {
+      "slug": "festival",
+      "categorie": "evenementen",
+      "titel": "Festival",
+      "context": "Neon, dansvloer en vrienden tot diep in de nacht",
+      "intro": "Zodra de muziek begint, verdwijnt alle verlegenheid. Rood licht, neon en een dansvloer die niet leeg raakt.",
+      "omschrijving": "Fotoserie van een festival: neonlicht, een volle dansvloer en vrienden die samen de avond vieren.",
+      "cover": "DSC09907.webp",
+      "layout": [
+        "DSC00342.webp",
+        { "tekst": "Iedereen kent iedereen, of in elk geval na dit nummer." },
+        "DSC00078.webp",
+        "DSC09907.webp",
+        "DSC00695.webp"
+      ]
+    },
+    {
+      "slug": "70e-verjaardag",
+      "categorie": "evenementen",
+      "titel": "70e verjaardag",
+      "context": "Een zonnige tuin, familie en een fotolijst vol trots",
+      "intro": "Zeventig jaar en nog altijd het stralende middelpunt. Een middag in de tuin met de mensen die ertoe doen.",
+      "omschrijving": "Fotoserie van een 70e verjaardag in een zonnige tuin, met familie en een feestelijke fotolijst.",
+      "cover": "Verjaardag shoot.webp",
+      "layout": [
+        "Verjaardag shoot.webp",
+        { "tekst": "Samen op de foto, precies zoals het voelt." },
+        "Verjaardag shoot 2.webp"
+      ]
+    },
+    {
+      "slug": "vrij-werk",
+      "categorie": "kunst",
+      "titel": "Vrij werk",
+      "context": "Vrijheid blijheid! Licht, vorm en toeval",
+      "intro": "Zonder regels of verwachtingen. Beelden die mij inspireren en die iets laten voelen.",
+      "omschrijving": "Kunstfotografie en vrij werk van van Son fotografie: experimenten met licht, compositie en het juiste moment.",
+      "thema": "muur",
+      "cover": "kunstfotografie.webp",
+      "layout": [
+        "kunstfotografie.webp",
+        "DSC_0581art1.webp",
+        "DSC03625art3.webp",
+        "DSC07744art4.webp",
+        "DSC08211art2.webp"
+      ]
+    }
+  ],
+  "alt": {
+    "21-diner-1.jpg": "Glas bier op een lange tafel tijdens een 21 diner",
+    "21-diner-2.jpg": "Detail van decoratie in een boom bij een 21 diner",
+    "21-diner-3.jpg": "Champagne wordt ingeschonken tijdens een 21 diner",
+    "21-diner-4.jpg": "Graan in warm avondlicht bij een 21 diner",
+    "21-diner-5.webp": "Portret aan tafel tijdens een zonnig 21 diner",
+    "DSC07908com2.webp": "Jongen met krullen lacht op een zonnig terras in de sneeuw",
+    "DSC08056com1.JPG.webp": "Detail van een geborduurd hondje op de rug van een blauwe hoodie",
+    "DSC08051com3.webp": "Man in blauwe hoodie strekt zijn armen uit op een zonnig terras met een besneeuwde bergtop",
+    "DSC07843com3.webp": "Man met spiegelende zonnebril vertelt enthousiast voor een houten berghut",
+    "DSC09907.webp": "Lachend stel poseert samen tussen het publiek op een festival",
+    "DSC00695.webp": "Jongen danst lachend onder roze neonlicht op een feest",
+    "DSC00342.webp": "Neonbord boven een dansende menigte in rood licht",
+    "DSC00078.webp": "Vrienden met zonnebril en drankje poseren voor neonverlichting op een feest",
+    "Verjaardag shoot.webp": "Jarige vrouw poseert met een fotolijst voor haar 70e verjaardag in een zonnige tuin",
+    "Verjaardag shoot 2.webp": "Jarige vrouw lacht samen met twee familieleden in een zonnige tuin",
+    "kunstfotografie.webp": "Silhouetten van bouwkranen tegen een kleurrijke zonsondergang",
+    "DSC_0581art1.webp": "Handen en een gezicht drukken zich af tegen een geplooid wit gordijn",
+    "DSC08211art2.webp": "Glazen met goudkleurige drankjes in het zonlicht op een houten terrastafel in de bergen",
+    "DSC03625art3.webp": "Speedboot trekt een wit spoor over de diepblauwe zee met bergen aan de horizon",
+    "DSC07744art4.webp": "Skiërs op een zonnige piste terwijl sneeuwkanonnen witte wolken langs de bergtop blazen"
+  }
+}

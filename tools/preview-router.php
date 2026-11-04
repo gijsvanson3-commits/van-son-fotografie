@@ -11,6 +11,9 @@ $routes = [
     '/blogs' => 'blog.html', '/blogs/evenementen-fotografie' => 'blog-evenementen-fotografie.html',
     '/blogs/verjaardag-fotoshoot' => 'Blog-verjaardag-fotoshoot.html',
 ];
+if (preg_match('~^/galerij/([a-z0-9-]+)$~', $path, $serie) && is_file(__DIR__ . '/../series/' . $serie[1] . '.html')) {
+    $routes[$path] = 'series/' . $serie[1] . '.html';
+}
 if (isset($routes[$path])) {
     header('Content-Type: text/html; charset=UTF-8');
     readfile(__DIR__ . '/../' . $routes[$path]);

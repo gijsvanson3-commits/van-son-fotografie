@@ -16,6 +16,9 @@ RewriteRule ^index\.html$ / [R=301,L,NC]
 RewriteCond %{THE_REQUEST} \s/+gallery\.html[\s?] [NC]
 RewriteRule ^gallery\.html$ /galerij [R=301,L,NC]
 
+RewriteCond %{THE_REQUEST} \s/+series/([a-z0-9-]+)\.html[\s?] [NC]
+RewriteRule ^series/([a-z0-9-]+)\.html$ /galerij/%1 [R=301,L,NC]
+
 RewriteCond %{THE_REQUEST} \s/+blog\.html[\s?] [NC]
 RewriteRule ^blog\.html$ /blogs [R=301,L,NC]
 
@@ -32,6 +35,7 @@ RewriteRule ^(.+)/$ /$1 [R=301,L]
 # Koppel de nette URL's intern aan de bestaande HTML-bestanden.
 RewriteRule ^fotoshoot$ fotoshoot.html [L]
 RewriteRule ^galerij$ gallery.html [L]
+RewriteRule ^galerij/([a-z0-9-]+)$ series/$1.html [L,NC]
 RewriteRule ^blogs$ blog.html [L]
 RewriteRule ^blogs/evenementen-fotografie$ blog-evenementen-fotografie.html [L]
 RewriteRule ^blogs/verjaardag-fotoshoot$ Blog-verjaardag-fotoshoot.html [L]
