@@ -162,11 +162,7 @@ ${nav('galerij')}
 
   <main class="page-shell galerij-shell">
     <section class="galerij-intro">
-      <p class="gallery-kicker">Galerij</p>
-      <h1 class="galerij-title">Authentieke momenten, stijlvol vastgelegd</h1>
-      <p class="galerij-lead">
-        Elke serie vertelt het verhaal van één dag of avond. Kies een serie en kijk rustig rond.
-      </p>
+      <h1 class="galerij-title visually-hidden">Galerij: authentieke momenten, stijlvol vastgelegd</h1>
       <div class="gallery-filterbar" role="group" aria-label="Filter series op categorie">
           ${filters}
       </div>
