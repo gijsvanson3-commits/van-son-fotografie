@@ -3,7 +3,7 @@
 //   cd tools && npm install && node optimize-images.mjs
 // Bronnen: assets/images/*.{jpg,jpeg,png,webp}
 // Uitvoer: assets/images/opt/<naam>-<breedte>.webp + manifest.json
-import { readdir, mkdir, stat, writeFile } from 'node:fs/promises';
+import { readdir, mkdir, stat, writeFile, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
@@ -32,6 +32,17 @@ async function isFresh(target, sourceTime) {
 }
 
 await mkdir(outputDir, { recursive: true });
+
+// Kwaliteit 88 met smartSubsample: verzadigde kleuren (neon, rood licht) en donkere vlakken
+// blijven scherp, zonder blokjes. Veranderen deze instellingen, dan worden alle foto's opnieuw gemaakt.
+const webpSettings = { quality: 88, effort: 6, smartSubsample: true };
+const settingsFile = path.join(outputDir, 'instellingen.json');
+const settingsText = `${JSON.stringify(webpSettings)}\n`;
+let settingsChanged = true;
+try {
+  settingsChanged = (await readFile(settingsFile, 'utf8')) !== settingsText;
+} catch {}
+
 const manifest = {};
 const usedSlugs = new Set();
 // WebP-bronnen eerst, zodat zij bij gelijke namen de korte slug krijgen.
@@ -47,15 +58,16 @@ for (const file of files) {
   let slug = slugify(file);
   if (usedSlugs.has(slug)) slug = `${slug}-${path.extname(file).slice(1).toLowerCase()}`;
   usedSlugs.add(slug);
-  const targetWidths = widths.filter((w) => w < width);
+  // Geen standaardbreedte die bijna even groot is als het origineel (bijv. 1440 naast 1441).
+  const targetWidths = widths.filter((w) => w < width * 0.95);
   if (width <= widths.at(-1)) targetWidths.push(width);
   else targetWidths.push(widths.at(-1));
   const unique = [...new Set(targetWidths)].sort((a, b) => a - b);
 
   for (const w of unique) {
     const target = path.join(outputDir, `${slug}-${w}.webp`);
-    if (await isFresh(target, sourceTime)) continue;
-    await sharp(source).rotate().resize({ width: w, withoutEnlargement: true }).webp({ quality: 80, effort: 5 }).toFile(target);
+    if (!settingsChanged && (await isFresh(target, sourceTime))) continue;
+    await sharp(source).rotate().resize({ width: w, withoutEnlargement: true, kernel: 'lanczos3' }).webp(webpSettings).toFile(target);
   }
 
   manifest[file] = { slug, width, height, widths: unique };
@@ -63,3 +75,4 @@ for (const file of files) {
 }
 
 await writeFile(path.join(outputDir, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);
+await writeFile(settingsFile, settingsText);

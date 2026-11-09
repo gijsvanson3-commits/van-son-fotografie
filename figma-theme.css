@@ -261,6 +261,19 @@ body {
   display: none;
 }
 
+/* Oneven aantal opdrachten: de laatste foto vult de hele rij. */
+.home-work__item:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+.home-work__item:last-child:nth-child(odd) .home-work__media {
+  aspect-ratio: 610 / 348;
+}
+
+.home-work__media img {
+  object-position: center 30%;
+}
+
 /* De titel staat als pil onderin de foto, zoals de labels in het ontwerp. */
 .home-work__caption {
   position: absolute;
@@ -485,6 +498,8 @@ body {
 .serie-grid > .serie-card:nth-child(5n + 5) { grid-column: span 12; }
 /* Staat de grote foto als laatste alleen op een rij, dan over de volle breedte. */
 .serie-grid > .serie-card:nth-child(5n + 1):last-child { grid-column: 1 / -1; }
+/* Vier series: tweede rij smal + breed, gespiegeld aan de eerste. */
+.serie-grid > .serie-card:nth-child(5n + 4):last-child { grid-column: span 18; }
 
 .serie-card__link,
 .serie-card__link:hover,

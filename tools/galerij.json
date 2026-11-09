@@ -31,48 +31,19 @@
       ]
     },
     {
-      "slug": "wintersport",
-      "categorie": "evenementen",
-      "titel": "Wintersport",
-      "context": "Zon, sneeuw en een vol terras",
-      "intro": "Tussen de afdalingen door gebeurt het echte werk: op het terras, met de bergen als decor.",
-      "omschrijving": "Fotoserie van een wintersportreis: zonnige terrassen, besneeuwde bergtoppen en vrienden die genieten.",
-      "cover": "DSC08051com3.webp",
-      "layout": [
-        "DSC07908com2.webp",
-        ["DSC08051com3.webp", "DSC08056com1.JPG.webp"],
-        { "tekst": "Iedereen heeft een verhaal over die ene afdaling." },
-        "DSC07843com3.webp"
-      ]
-    },
-    {
       "slug": "festival",
       "categorie": "evenementen",
-      "titel": "Festival",
+      "titel": "Festival: Gestrand",
       "context": "Neon, dansvloer en vrienden tot diep in de nacht",
       "intro": "Zodra de muziek begint, verdwijnt alle verlegenheid. Rood licht, neon en een dansvloer die niet leeg raakt.",
       "omschrijving": "Fotoserie van een festival: neonlicht, een volle dansvloer en vrienden die samen de avond vieren.",
-      "cover": "DSC09907.webp",
+      "cover": "festival-02.jpg",
       "layout": [
-        "DSC00342.webp",
+        "festival-01.jpg",
         { "tekst": "Iedereen kent iedereen, of in elk geval na dit nummer." },
-        "DSC00078.webp",
-        "DSC09907.webp",
-        "DSC00695.webp"
-      ]
-    },
-    {
-      "slug": "70e-verjaardag",
-      "categorie": "evenementen",
-      "titel": "70e verjaardag",
-      "context": "Een zonnige tuin, familie en een fotolijst vol trots",
-      "intro": "Zeventig jaar en nog altijd het stralende middelpunt. Een middag in de tuin met de mensen die ertoe doen.",
-      "omschrijving": "Fotoserie van een 70e verjaardag in een zonnige tuin, met familie en een feestelijke fotolijst.",
-      "cover": "Verjaardag shoot.webp",
-      "layout": [
-        "Verjaardag shoot.webp",
-        { "tekst": "Samen op de foto, precies zoals het voelt." },
-        "Verjaardag shoot 2.webp"
+        "DSC00342.webp",
+        ["festival-02.jpg", "festival-03.jpg"],
+        ["festival-04.jpg", "festival-05.jpg"]
       ]
     },
     {
@@ -88,6 +59,20 @@
         { "kop": "Meer dan alleen een profielfoto", "tekst": "Een sterk portret draait niet alleen om hoe je eruitziet, maar ook om wat je uitstraalt. Door te fotograferen in een vertrouwde, natuurlijke omgeving ontstaan authentieke beelden. Geen geforceerde poses, maar foto's waarin je jezelf herkent." },
         { "breed": "linkedin-02.jpg", "uitsnede": "35%" },
         ["linkedin-08.jpg", "linkedin-09.jpg"]
+      ]
+    },
+    {
+      "slug": "trouwen",
+      "categorie": "trouwen",
+      "titel": "Trouwen",
+      "context": "Een zomerse trouwdag vol lachende gezichten",
+      "intro": "Van het welkom van de gasten tot het gouden avondlicht: een trouwdag vol spontane momenten met familie en vrienden.",
+      "omschrijving": "Fotoserie van een zomerse bruiloft: een lachend bruidspaar, juichende gasten en een sfeervolle locatie in het avondlicht.",
+      "cover": "trouwen-01.jpg",
+      "layout": [
+        "trouwen-01.jpg",
+        { "kop": "Echte momenten", "tekst": "Geen geposeerde plaatjes, maar de lach, de spanning en de warmte van de dag zelf." },
+        ["trouwen-02.jpg", "trouwen-03.jpg"]
       ]
     },
     {
@@ -121,6 +106,11 @@
     "DSC09907.webp": "Lachend stel poseert samen tussen het publiek op een festival",
     "DSC00695.webp": "Jongen danst lachend onder roze neonlicht op een feest",
     "DSC00342.webp": "Neonbord boven een dansende menigte in rood licht",
+    "festival-01.jpg": "Jongen en meisje lachen voor een felrood en paars neonbord op een feest",
+    "festival-02.jpg": "Lachend stel met zonnebril in het haar poseert samen tussen het festivalpubliek",
+    "festival-03.jpg": "Jongen steekt juichend zijn arm in de lucht naast een lachend meisje onder neonlicht",
+    "festival-04.jpg": "Meisje met zonnebril leunt tegen een jongen met donkere zonnebril op een festivalterrein",
+    "festival-05.jpg": "Hand van een dj aan de knoppen van een verlichte mengtafel in rood licht",
     "DSC00078.webp": "Vrienden met zonnebril en drankje poseren voor neonverlichting op een feest",
     "Verjaardag shoot.webp": "Jarige vrouw poseert met een fotolijst voor haar 70e verjaardag in een zonnige tuin",
     "Verjaardag shoot 2.webp": "Jarige vrouw lacht samen met twee familieleden in een zonnige tuin",
@@ -128,6 +118,9 @@
     "linkedin-02.jpg": "Portret van een lachende man met ronde bril en werkjas voor een bakstenen gevel met groot raam",
     "linkedin-08.jpg": "Lachende man met bril en gestreept overhemd in een steeg met een lantaarnpaal",
     "linkedin-09.jpg": "Man lacht op een met bomen omzoomd klinkerpad langs een gracht",
+    "trouwen-01.jpg": "Lachende bruid in kanten jurk en bruidegom in wit colbert met gele vlinderdas tussen hun gasten",
+    "trouwen-02.jpg": "Bruid en bruidegom lachen samen op een grindpad terwijl gasten op de achtergrond klappen",
+    "trouwen-03.jpg": "Zwembad voor een witte gevel met het opschrift Paarl 1690 in het zonnige avondlicht",
     "kunstfotografie.webp": "Silhouetten van bouwkranen tegen een kleurrijke zonsondergang",
     "DSC_0581art1.webp": "Handen en een gezicht drukken zich af tegen een geplooid wit gordijn",
     "DSC08211art2.webp": "Glazen met goudkleurige drankjes in het zonlicht op een houten terrastafel in de bergen",
