@@ -50,6 +50,7 @@ function nav(current) {
   const link = (href, label, isCurrent) => `<a href="${href}"${isCurrent ? ' aria-current="page"' : ''}>${label}</a>`;
   return `  <header class="hero">
     <nav class="topbar" aria-label="Hoofdnavigatie">
+      <span class="topbar__title" aria-hidden="true">Galerij</span>
       <div class="topbar__group">
         ${link('/#about', 'Over mij')}
         ${link('/#commercial', 'Opdrachten')}
@@ -85,11 +86,12 @@ function head({ title, description, url, image, extraScript = '' }) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap"
     rel="stylesheet"
   >
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/galerij.css">
+  <link rel="stylesheet" href="/figma-theme.css">
 ${extraScript}</head>`;
 }
 
@@ -191,6 +193,17 @@ ${cards}
       </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span class="site-footer__brand">van Son fotografie</span>
+      <nav class="site-footer__links" aria-label="Contact">
+        <a href="mailto:info@vansonfotografie.nl">Mail</a>
+        <a href="https://www.instagram.com/van_son_fotografie/">Instagram</a>
+        <a href="https://www.linkedin.com/in/gijs-van-son-98b421199/">LinkedIn</a>
+      </nav>
+    </div>
+  </footer>
 </body>
 </html>
 `;
@@ -305,6 +318,17 @@ ${cta}
       <a class="serie-next__next" href="/galerij/${esc(next.slug)}"><small>Volgende serie &rarr;</small>${esc(next.titel)}</a>
     </nav>
   </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span class="site-footer__brand">van Son fotografie</span>
+      <nav class="site-footer__links" aria-label="Contact">
+        <a href="mailto:info@vansonfotografie.nl">Mail</a>
+        <a href="https://www.instagram.com/van_son_fotografie/">Instagram</a>
+        <a href="https://www.linkedin.com/in/gijs-van-son-98b421199/">LinkedIn</a>
+      </nav>
+    </div>
+  </footer>
 
 ${lightboxMarkup}
 </body>

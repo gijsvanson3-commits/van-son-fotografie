@@ -18,15 +18,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap"
     rel="stylesheet"
   >
   <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/figma-theme.css">
   <script src="/app.js" defer></script>
 </head>
 <body>
   <header class="hero">
     <nav class="topbar">
+      <span class="topbar__title" aria-hidden="true">Blogs</span>
       <div class="topbar__group">
         <a href="/#about">Over mij</a>
         <a href="/#commercial">Opdrachten</a>
@@ -126,6 +128,17 @@
       </section>
     </article>
   </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span class="site-footer__brand">van Son fotografie</span>
+      <nav class="site-footer__links" aria-label="Contact">
+        <a href="mailto:info@vansonfotografie.nl">Mail</a>
+        <a href="https://www.instagram.com/van_son_fotografie/">Instagram</a>
+        <a href="https://www.linkedin.com/in/gijs-van-son-98b421199/">LinkedIn</a>
+      </nav>
+    </div>
+  </footer>
 
   <div class="lightbox" hidden aria-hidden="true">
     <button class="lightbox__close" type="button" aria-label="Sluit foto">
