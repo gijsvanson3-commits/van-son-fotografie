@@ -851,13 +851,25 @@ body {
   }
 }
 
+/* Blogfoto: één oranje kader (dat van de slider zelf), even dun als bij de andere foto's. */
 .blog-article-cover,
-.blog-article-cover img {
+.blog-article-cover .slider-frame {
   border-radius: var(--figma-radius-sm);
 }
 
-.blog-article-cover {
-  border: 6px solid var(--figma-orange);
+.blog-article-cover .slider-frame {
+  padding: var(--figma-frame);
+  background: var(--figma-orange);
+  box-shadow: none;
+}
+
+.blog-article-cover .slider-slide {
+  inset: var(--figma-frame);
+}
+
+.blog-article-cover .slider-slide img,
+.blog-article-cover img {
+  border-radius: calc(var(--figma-radius-sm) - var(--figma-frame));
 }
 
 .blog-tag {
