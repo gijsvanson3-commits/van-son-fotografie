@@ -42,70 +42,38 @@
   </header>
 
   <main class="page-shell blog-page-shell">
-    <section class="blog-showcase">
-      <!--
-        UITGELICHTE BLOG KIEZEN:
-        Verander alleen data-featured-source hieronder naar het blogbestand dat je bovenaan wilt tonen.
-        Voorbeeld: data-featured-source="blog-mooie-fotolocaties-leiden.html"
-      -->
-      <a
-        class="blog-feature"
-        data-featured-blog
-        data-featured-source="/blogs/evenementen-fotografie"
-        href="/blogs/evenementen-fotografie"
-      >
-        <img
-          class="blog-feature__image" data-featured-image alt="Lachend stel poseert samen tussen het publiek op een festival"
-          src="assets/images/opt/dsc09907-960.webp"
-          srcset="assets/images/opt/dsc09907-480.webp 480w, assets/images/opt/dsc09907-720.webp 720w, assets/images/opt/dsc09907-960.webp 960w, assets/images/opt/dsc09907-1440.webp 1440w, assets/images/opt/dsc09907-2048.webp 2048w"
-          sizes="(max-width: 920px) 92vw, 50vw"
-          width="2048" height="3073"
-          loading="eager" fetchpriority="high" decoding="async"
-          data-full="assets/images/opt/dsc09907-2048.webp"
-        >
-        <div class="blog-feature__content">
-          <p class="blog-eyebrow" data-featured-label>Uitgelichte blog</p>
-          <h1 class="blog-title" data-featured-title>Evenement fotografie</h1>
-          <p class="blog-intro" data-featured-intro>
-            Een evenement duurt vaak maar een paar uur, maar de herinneringen moeten een leven lang meegaan. Met professionele evenementfotografie leg je niet alleen vast wat er gebeurt, maar vooral hoe het voelde. De energie van het publiek, de spontane lach, de belangrijke momenten op precies het juiste moment gevangen in één beeld.
-          </p>
-          <span class="blog-feature__cta">Lees deze blog</span>
-        </div>
-      </a>
-    </section>
+    <h1 class="visually-hidden">Blogs over fotografie</h1>
 
-    <section class="blog-section">
-      <div class="blog-section__header">
-        <p></p>
-        <h2 class="panel-title">Onderstaand mijn blogs over fotografie</h2>
-        <p class="blog-section__intro">
-          Hieronder vind je een selectie van inspirerende blogartikelen, vormgegeven in dezelfde warme stijl als de rest van de website. Klik op een kaart en ontdek meer over evenementen, fotografie en de verhalen achter de beelden. Laat je inspireren en krijg een beter beeld van wat er mogelijk is voor jouw eigen evenement of fotoshoot.
-        </p>
-      </div>
-
+    <section class="blog-list" aria-label="Alle blogs">
       <!--
-        BLOGKAARTJES AUTOMATISCH KOPPELEN:
+        BLOGS TOEVOEGEN:
         1. Maak eerst je nieuwe blogbestand aan, bijvoorbeeld: blog-mijn-nieuwe-artikel.html
-        2. Voeg hieronder alleen bestaande blogbestanden toe.
+        2. Zet de link hieronder in de lijst. De kaart (foto, titel, intro en leestijd) wordt dan
+           automatisch uit de blog zelf gehaald.
         3. Bestanden die ontbreken of niet goed laden worden automatisch overgeslagen.
       -->
       <ul class="blog-source-list" data-blog-source-list hidden>
         <li>/blogs/evenementen-fotografie</li>
-      </ul>
-      <ul class="blog-source-list" data-blog-source-list hidden>
         <li>/blogs/verjaardag-fotoshoot</li>
       </ul>
 
-      <div class="blog-carousel" data-blog-carousel>
-        <div class="blog-carousel__controls">
-          <div class="slider-dots blog-carousel__dots" data-blog-dots aria-label="Kies een blogpositie"></div>
-        </div>
-        <div
-          class="blog-carousel__track"
-          data-blog-track
-          tabindex="0"
-          aria-label="Horizontale slider met blogkaartjes"
-        ></div>
+      <div class="blog-list__cards" data-blog-list>
+        <!-- Eerste kaart staat al in de HTML, zodat de foto direct laadt. blog.js vult de rest aan. -->
+        <a class="blog-wide" href="/blogs/evenementen-fotografie" data-blog-href="/blogs/evenementen-fotografie">
+          <img
+            class="blog-wide__image" alt="Lachend stel poseert samen tussen het publiek op een festival"
+            src="assets/images/opt/dsc09907-960.webp"
+            srcset="assets/images/opt/dsc09907-480.webp 480w, assets/images/opt/dsc09907-720.webp 720w, assets/images/opt/dsc09907-960.webp 960w, assets/images/opt/dsc09907-1440.webp 1440w, assets/images/opt/dsc09907-2048.webp 2048w"
+            sizes="(max-width: 920px) 92vw, 73rem"
+            width="2048" height="3073"
+            loading="eager" fetchpriority="high" decoding="async"
+          >
+          <h2 class="blog-wide__title">Evenement fotografie</h2>
+          <span class="blog-wide__panel">
+            <span class="blog-wide__intro">Een evenement duurt vaak maar een paar uur, maar de herinneringen moeten een leven lang meegaan. Met professionele evenementfotografie leg je niet alleen vast wat er gebeurt, maar vooral hoe het voelde. De energie van het publiek, de spontane lach, de belangrijke momenten op precies het juiste moment gevangen in één beeld.</span>
+            <span class="blog-wide__time">Leestijd 3 minuten</span>
+          </span>
+        </a>
       </div>
     </section>
 

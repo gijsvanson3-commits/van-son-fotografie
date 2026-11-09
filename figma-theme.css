@@ -9,7 +9,7 @@
   --figma-orange: #ffbc4c;
   --figma-orange-deep: #ffa000;
   --figma-cream-text: #fffcef;
-  --figma-ink: #000;
+  --figma-ink: #622b14;
   --figma-frame: 4px;
   --figma-radius: 20px;
   --figma-radius-sm: 15px;
@@ -20,7 +20,7 @@
   --panel-dark: var(--figma-orange-deep);
   --panel-soft: var(--figma-orange);
   --white: var(--figma-cream-text);
-  --text: #1a1610;
+  --text: var(--figma-ink);
   --radius-xl: var(--figma-radius);
   --radius-lg: var(--figma-radius);
   --content-width: 1170px;
@@ -30,6 +30,13 @@
 body {
   font-family: "Inter", system-ui, sans-serif;
   background: var(--figma-bg);
+}
+
+/* Donkere tekst in de bruine tint (#622B14) in plaats van zwart. */
+.serie-intro,
+.serie-card__context,
+.home-work__context {
+  color: rgba(98, 43, 20, 0.82);
 }
 
 /* Alle koppen in Inter in plaats van de schreefletter. */
@@ -544,58 +551,168 @@ body {
   font-weight: 900;
 }
 
-/* ---------- Blogs: brede foto met oranje rand en een pil ---------- */
-.blog-feature {
-  min-height: 26.4rem;
+/* ---------- Blogs: brede kaart, bij hover veegt een oranje blok van rechts naar links ---------- */
+.blog-list__cards {
+  display: grid;
+  gap: 1.9rem;
+  margin-top: 2.6rem;
+}
+
+.blog-wide {
+  --blog-wipe: 620ms cubic-bezier(0.7, 0, 0.2, 1);
+  position: relative;
+  display: block;
+  height: 26.4rem;
+  overflow: hidden;
   border: 6px solid var(--figma-orange);
   border-radius: var(--figma-radius-sm);
-  box-shadow: none;
+  background: var(--figma-orange);
+  color: var(--figma-ink);
+  isolation: isolate;
 }
 
-.blog-feature::after {
-  background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.28) 100%);
+.blog-wide:focus-visible {
+  outline: 3px solid var(--figma-orange-deep);
+  outline-offset: 4px;
 }
 
-.blog-feature__content {
-  align-content: end;
-  padding: 0.9rem;
+.blog-wide__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 50%;
+  border-radius: calc(var(--figma-radius-sm) - 6px);
+  transition: transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.blog-feature :is(.blog-eyebrow, .blog-intro) {
-  display: none;
-}
-
-.blog-feature .blog-title {
-  justify-self: start;
+.blog-wide__title {
+  position: absolute;
+  z-index: 2;
+  left: 0.75rem;
+  bottom: 0.75rem;
+  min-width: min(20.4rem, calc(100% - 1.5rem));
   margin: 0;
-  padding: 0.45rem 2.2rem;
+  padding: 0.42rem 1.4rem;
   border-radius: var(--figma-radius-sm);
   background: var(--figma-bg);
   color: var(--figma-ink);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 900;
   letter-spacing: 0.08em;
   line-height: 1.3;
+  text-align: center;
 }
 
-.blog-feature__cta {
-  justify-self: start;
-  border-radius: var(--figma-radius-sm);
-}
-
-.blog-card {
+/* Het oranje blok: rechts 49% van de kaart, met de intro en de leestijd. */
+.blog-wide__panel {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 49%;
+  display: grid;
+  place-items: center;
+  padding: 2rem 2.4rem 3.6rem;
+  border-radius: calc(var(--figma-radius-sm) - 6px);
   background: var(--figma-orange);
+  clip-path: inset(0 0 0 100%);
+  transition: clip-path var(--blog-wipe);
+}
+
+.blog-wide__intro {
+  max-width: 21rem;
+  color: var(--figma-cream-text);
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: center;
+  opacity: 0;
+  transform: translateX(1.5rem);
+  transition: opacity 300ms ease, transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.blog-wide__time {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  min-width: min(13.1rem, calc(100% - 1.5rem));
+  padding: 0.42rem 1rem;
   border-radius: var(--figma-radius-sm);
-  box-shadow: none;
-}
-
-.blog-card__media {
-  margin: 6px 6px 0;
-  border-radius: calc(var(--figma-radius-sm) - 4px);
-}
-
-.blog-card__title {
+  background: var(--figma-bg);
+  color: var(--figma-ink);
+  font-size: 0.75rem;
   font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.blog-wide:hover .blog-wide__panel,
+.blog-wide:focus-visible .blog-wide__panel {
+  clip-path: inset(0 0 0 0);
+}
+
+.blog-wide:hover :is(.blog-wide__intro, .blog-wide__time),
+.blog-wide:focus-visible :is(.blog-wide__intro, .blog-wide__time) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 260ms;
+}
+
+.blog-wide:hover .blog-wide__image,
+.blog-wide:focus-visible .blog-wide__image {
+  transform: scale(1.03);
+}
+
+.blog-wide--no-image .blog-wide__panel {
+  width: 100%;
+}
+
+/* Telefoons en tablets zonder muis: het blok staat er gewoon, onder de foto. */
+@media (hover: none), (max-width: 720px) {
+  .blog-wide {
+    height: auto;
+    display: grid;
+  }
+
+  .blog-wide__image {
+    position: relative;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    border-radius: calc(var(--figma-radius-sm) - 6px) calc(var(--figma-radius-sm) - 6px) 0 0;
+  }
+
+  .blog-wide__title {
+    bottom: auto;
+    top: 0.75rem;
+  }
+
+  .blog-wide__panel {
+    position: relative;
+    width: auto;
+    padding: 1.3rem 1.1rem 4rem;
+    clip-path: none;
+  }
+
+  .blog-wide__intro,
+  .blog-wide__time {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-wide__panel,
+  .blog-wide__intro,
+  .blog-wide__time,
+  .blog-wide__image {
+    transition: none;
+  }
 }
 
 .blog-article-cover,
@@ -607,9 +724,7 @@ body {
   border: 6px solid var(--figma-orange);
 }
 
-.blog-tag,
-.blog-feature__cta,
-.blog-card__cta {
+.blog-tag {
   border-radius: var(--figma-radius-sm);
 }
 
@@ -692,7 +807,4 @@ body {
     grid-column: 1 / -1;
   }
 
-  .blog-feature {
-    min-height: 20rem;
-  }
 }
