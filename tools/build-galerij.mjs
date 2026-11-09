@@ -239,34 +239,67 @@ function seriePage(serie, index) {
     return html;
   };
 
-  const blocks = serie.layout
-    .map((block) => {
+  // Opbouw zoals Figma "Desktop 5": de eerste losse foto komt bovenaan naast de titel.
+  // Een {"tekst"} komt als crème tekstvak op de foto('s) die erna komen.
+  const isText = (block) => block && typeof block.tekst === 'string';
+  const isPhotoBlock = (block) => typeof block === 'string' || Array.isArray(block);
+  let layout = [...serie.layout];
+  let heroPhoto = null;
+  if (!wall) {
+    if (typeof layout[0] === 'string') {
+      heroPhoto = photo(layout[0]);
+      layout = layout.slice(1);
+    } else {
+      heroPhoto = photo(serie.cover);
+    }
+  }
+  // De bovenste foto laadt direct; de foto's eronder pas als ze in beeld komen.
+  if (heroPhoto) first = false;
+
+  const note = (text) => (text ? `\n        <p class="serie-note">${esc(text)}</p>` : '');
+
+  const blocks = layout
+    .map((block, i) => {
       if (wall) {
-        if (block && typeof block.tekst === 'string') return `      <p class="kunst-note">${esc(block.tekst)}</p>`;
+        if (isText(block)) return `      <p class="kunst-note">${esc(block.tekst)}</p>`;
         return [block].flat().map((file) => framed(photo(file))).join('\n');
       }
+      const previous = layout[i - 1];
+      const noteText = isText(previous) ? previous.tekst : '';
       if (typeof block === 'string') {
         const p = photo(block);
         if (!p) return '';
-        const sizes = p.portrait ? '(max-width: 720px) 92vw, 40rem' : '(max-width: 1100px) 92vw, 1060px';
-        return `      <div class="serie-block serie-block--full${p.portrait ? ' serie-block--portrait' : ''}" style="--ratio: ${p.ratio}">
-        ${figure(p, sizes)}
+        const sizes = p.portrait ? '(max-width: 720px) 92vw, 40rem' : '(max-width: 1200px) 92vw, 1170px';
+        return `      <div class="serie-block serie-block--full${p.portrait ? ' serie-block--portrait' : ''}${noteText ? ' serie-block--noted' : ''}" style="--ratio: ${p.ratio}">
+        ${figure(p, sizes)}${note(noteText)}
       </div>`;
       }
       if (Array.isArray(block)) {
         if (block.length !== 2) problems.push(`Serie "${serie.slug}": een paar moet precies twee foto's hebben`);
-        const figures = block.map((file) => figure(photo(file), '(max-width: 720px) 46vw, 33rem')).join('\n        ');
-        return `      <div class="serie-block serie-block--pair">
-        ${figures}
+        const figures = block.map((file) => figure(photo(file), '(max-width: 720px) 92vw, 36rem')).join('\n        ');
+        return `      <div class="serie-block serie-block--pair${noteText ? ' serie-block--noted' : ''}">
+        ${figures}${note(noteText)}
       </div>`;
       }
-      if (block && typeof block.tekst === 'string') {
+      if (isText(block)) {
+        // Staat er een foto na deze tekst, dan komt de tekst als tekstvak op die foto.
+        if (isPhotoBlock(layout[i + 1])) return '';
         return `      <p class="serie-block serie-block--text">${esc(block.tekst)}</p>`;
       }
       problems.push(`Serie "${serie.slug}": onbekend layout-blok ${JSON.stringify(block)}`);
       return '';
     })
+    .filter(Boolean)
     .join('\n');
+
+  const heroMedia = heroPhoto
+    ? `      <figure class="serie-hero__media">
+        <a class="serie-photo" href="${heroPhoto.full}" data-lightbox>
+          ${img(heroPhoto, { sizes: '(max-width: 920px) 92vw, 39rem', eager: true })}
+        </a>
+      </figure>
+`
+    : '';
 
   const cta = wall
     ? `    <section class="serie-cta">
@@ -278,7 +311,6 @@ function seriePage(serie, index) {
       <a class="button button-primary" href="/fotoshoot">Stel jouw fotoshoot samen &rarr;</a>
     </section>`;
 
-  const label = data.categorieen[serie.categorie];
   return `${head({
     title: `${serie.titel} – ${serie.context} | van Son fotografie`,
     description: serie.omschrijving,
@@ -290,13 +322,12 @@ function seriePage(serie, index) {
 ${nav('galerij')}
 
   <main class="serie-shell">
-    <p class="serie-crumb"><a href="/galerij">&larr; Alle series</a></p>
-
-    <header class="serie-head">
-      <p class="serie-label">${esc(label)}</p>
-      <h1 class="serie-title">${esc(serie.titel)}</h1>
-      <p class="serie-context">${esc(serie.context)}</p>
-      ${serie.intro ? `<p class="serie-intro">${esc(serie.intro)}</p>` : ''}
+    <header class="serie-hero${heroPhoto ? '' : ' serie-hero--text'}">
+${heroMedia}      <div class="serie-hero__text">
+        <h1 class="serie-hero__title">${esc(serie.titel)}</h1>
+        <p class="serie-hero__subtitle">${esc(serie.context)}</p>
+        ${serie.intro ? `<p class="serie-hero__intro">${esc(serie.intro)}</p>` : ''}
+      </div>
     </header>
 
 ${wall ? `    <p class="kunst-hint">Klik op een lijst om de foto groot te bekijken.</p>

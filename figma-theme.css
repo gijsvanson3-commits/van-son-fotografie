@@ -321,20 +321,17 @@ body {
   box-shadow: none;
 }
 
+/* De bollen zijn zonnetjes: de draaiende stralen komen uit styles.css, hier alleen groter. */
 .timeline-dot {
   width: 3.06rem;
-  background: var(--figma-orange-deep);
-  box-shadow: none;
 }
 
-.timeline-dot::before,
+.timeline-dot::before {
+  inset: -1.5rem;
+}
+
 .timeline-dot::after {
-  display: none;
-}
-
-.timeline-step:hover .timeline-dot,
-.timeline-step:focus-visible .timeline-dot {
-  box-shadow: 0 0 0 5px var(--figma-bg);
+  inset: -0.45rem;
 }
 
 .timeline-label {
@@ -539,16 +536,155 @@ body {
   display: none;
 }
 
+/* ---------- Seriepagina (Figma Desktop 5) ---------- */
+.serie-shell {
+  max-width: calc(var(--content-width) + 2.5rem);
+  padding: 2.4rem 1.25rem 4rem;
+}
+
 .serie-photo {
+  height: 100%;
+  border-radius: var(--figma-radius-sm);
+  background: var(--figma-orange);
+}
+
+.serie-photo img {
+  height: 100%;
+  object-fit: cover;
   border-radius: var(--figma-radius-sm);
 }
 
-.serie-label {
-  border-radius: var(--figma-radius-sm);
+/* Bovenaan: foto links, grote titel met ondertitel en intro rechts. */
+.serie-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 619fr) minmax(0, 550fr);
+  gap: 1.1rem;
+  align-items: start;
+  margin-bottom: 2.2rem;
 }
 
-.serie-title {
+.serie-hero--text {
+  grid-template-columns: minmax(0, 46rem);
+  justify-content: center;
+  text-align: center;
+}
+
+.serie-hero__media {
+  aspect-ratio: 619 / 422;
+  margin: 0;
+}
+
+.serie-hero__text {
+  padding: 0 0.25rem;
+  color: var(--figma-ink);
+}
+
+.serie-hero__title {
+  margin: 0 0 0.4rem;
+  font-size: clamp(2.6rem, 5.2vw, 5.3rem);
   font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  overflow-wrap: anywhere;
+}
+
+.serie-hero__subtitle {
+  margin: 0 0 0.9rem;
+  font-size: 1.125rem;
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+}
+
+.serie-hero__intro {
+  max-width: 26rem;
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.serie-hero--text .serie-hero__intro {
+  margin-inline: auto;
+}
+
+.serie-story {
+  gap: 2.2rem;
+}
+
+/* Liggende foto over de volle breedte in de verhouding uit het ontwerp. */
+.serie-block--full:not(.serie-block--portrait) .serie-photo-wrap {
+  aspect-ratio: 1169 / 756;
+}
+
+.serie-block--portrait .serie-photo img {
+  height: auto;
+}
+
+/* Twee foto's naast elkaar, even groot. */
+.serie-block--pair {
+  gap: 2.4rem;
+}
+
+.serie-block--pair .serie-photo-wrap,
+.serie-block--pair .serie-photo-wrap:nth-child(2) {
+  margin-top: 0;
+  aspect-ratio: 566 / 561;
+}
+
+/* Crème tekstvak linksboven op de foto. */
+.serie-block--noted {
+  position: relative;
+}
+
+.serie-note {
+  position: absolute;
+  z-index: 1;
+  top: 1.25rem;
+  left: 1.1rem;
+  width: min(27rem, calc(100% - 2.2rem));
+  margin: 0;
+  padding: 1.4rem 1.8rem;
+  border-radius: 7px;
+  background: var(--figma-bg);
+  color: var(--figma-ink);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.45;
+  pointer-events: none;
+}
+
+.serie-block--text {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 900;
+  color: var(--figma-ink);
+}
+
+@media (max-width: 920px) {
+  .serie-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .serie-block--pair {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.2rem;
+  }
+
+  /* Op de telefoon staat het tekstvak onder de foto in plaats van erop. */
+  .serie-block--noted {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .serie-note {
+    position: static;
+    width: auto;
+    padding: 1rem 1.2rem;
+    order: 2;
+  }
 }
 
 /* ---------- Blogs: brede kaart, bij hover veegt een oranje blok van rechts naar links ---------- */
@@ -609,14 +745,14 @@ body {
 .blog-wide__panel {
   position: absolute;
   z-index: 1;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 49%;
+  /* 1px buiten de kaart, zodat er langs de rand geen randje van de foto doorschemert. */
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  width: calc(49% + 1px);
   display: grid;
   place-items: center;
   padding: 2rem 2.4rem 3.6rem;
-  border-radius: calc(var(--figma-radius-sm) - 6px);
   background: var(--figma-orange);
   clip-path: inset(0 0 0 100%);
   transition: clip-path var(--blog-wipe);
