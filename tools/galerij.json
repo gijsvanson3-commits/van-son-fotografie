@@ -2,8 +2,8 @@
   "_uitleg": [
     "Hier staan alle series van de galerij. Na een wijziging: cd tools && node build-galerij.mjs",
     "Nieuwe foto's eerst in assets/images zetten en node optimize-images.mjs draaien.",
-    "categorie: 21-diner, trouwen, evenementen of kunst (alleen gebruikte categorieen krijgen een filter).",
-    "layout: een bestandsnaam = foto over de volle breedte, [twee namen] = twee naast elkaar, {\"tekst\": \"...\"} = korte zin tussen de beelden.",
+    "categorie: 21-diner, trouwen, evenementen, portretten of kunst (alleen gebruikte categorieen krijgen een filter).",
+    "layout: de eerste losse foto komt bovenaan naast de titel. Daarna: een bestandsnaam = foto over de volle breedte, [twee namen] = twee naast elkaar, {\"breed\": \"naam\", \"uitsnede\": \"20%\"} = staande foto toch breed bijgesneden (uitsnede: 0% = bovenkant, 100% = onderkant), {\"tekst\": \"...\"} = tekstvak op de foto('s) die erna komen (met \"kop\": \"...\" erbij krijgt het tekstvak een kopje).",
     "alt-teksten: beschrijving per foto in \"alt\" onderaan (voor Google en schermlezers). Elke gebruikte foto moet er één hebben.",
     "thema: \"muur\" hangt de foto's ingelijst aan een muur (voor kunst)."
   ],
@@ -11,6 +11,7 @@
     "21-diner": "21 diner",
     "trouwen": "Trouwen",
     "evenementen": "Evenementen / festivals",
+    "portretten": "Portretten",
     "kunst": "Kunst"
   },
   "series": [
@@ -75,6 +76,21 @@
       ]
     },
     {
+      "slug": "linkedin",
+      "categorie": "portretten",
+      "titel": "LinkedIn Portretten",
+      "context": "Een professionele uitstraling, helemaal jezelf.",
+      "intro": "Een goede profielfoto maakt het verschil. Tijdens deze fotoshoot in de straten van Leiden lag de nadruk op het vastleggen van spontane en professionele portretten. Door gebruik te maken van natuurlijk licht en een ontspannen sfeer ontstonden beelden die persoonlijkheid en professionaliteit combineren.",
+      "omschrijving": "Fotoserie van een LinkedIn-shoot in de straten van Leiden: natuurlijke, spontane portretten met een professionele en persoonlijke uitstraling.",
+      "cover": "linkedin-01.jpg",
+      "layout": [
+        "linkedin-01.jpg",
+        { "kop": "Meer dan alleen een profielfoto", "tekst": "Een sterk portret draait niet alleen om hoe je eruitziet, maar ook om wat je uitstraalt. Door te fotograferen in een vertrouwde, natuurlijke omgeving ontstaan authentieke beelden. Geen geforceerde poses, maar foto's waarin je jezelf herkent." },
+        { "breed": "linkedin-02.jpg", "uitsnede": "35%" },
+        ["linkedin-08.jpg", "linkedin-09.jpg"]
+      ]
+    },
+    {
       "slug": "vrij-werk",
       "categorie": "kunst",
       "titel": "Vrij werk",
@@ -108,6 +124,10 @@
     "DSC00078.webp": "Vrienden met zonnebril en drankje poseren voor neonverlichting op een feest",
     "Verjaardag shoot.webp": "Jarige vrouw poseert met een fotolijst voor haar 70e verjaardag in een zonnige tuin",
     "Verjaardag shoot 2.webp": "Jarige vrouw lacht samen met twee familieleden in een zonnige tuin",
+    "linkedin-01.jpg": "Lachende man met ronde gouden bril en mintgroen gestreept overhemd in een Leidse steeg",
+    "linkedin-02.jpg": "Portret van een lachende man met ronde bril en werkjas voor een bakstenen gevel met groot raam",
+    "linkedin-08.jpg": "Lachende man met bril en gestreept overhemd in een steeg met een lantaarnpaal",
+    "linkedin-09.jpg": "Man lacht op een met bomen omzoomd klinkerpad langs een gracht",
     "kunstfotografie.webp": "Silhouetten van bouwkranen tegen een kleurrijke zonsondergang",
     "DSC_0581art1.webp": "Handen en een gezicht drukken zich af tegen een geplooid wit gordijn",
     "DSC08211art2.webp": "Glazen met goudkleurige drankjes in het zonlicht op een houten terrastafel in de bergen",

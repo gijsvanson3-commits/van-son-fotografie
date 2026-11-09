@@ -251,6 +251,50 @@
       2048
     ]
   },
+  "linkedin-01.jpg": {
+    "slug": "linkedin-01",
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      480,
+      720,
+      960,
+      1333
+    ]
+  },
+  "linkedin-02.jpg": {
+    "slug": "linkedin-02",
+    "width": 1245,
+    "height": 2000,
+    "widths": [
+      480,
+      720,
+      960,
+      1245
+    ]
+  },
+  "linkedin-08.jpg": {
+    "slug": "linkedin-08",
+    "width": 1250,
+    "height": 2000,
+    "widths": [
+      480,
+      720,
+      960,
+      1250
+    ]
+  },
+  "linkedin-09.jpg": {
+    "slug": "linkedin-09",
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      480,
+      720,
+      960,
+      1333
+    ]
+  },
   "Verjaardag shoot.jpg": {
     "slug": "verjaardag-shoot-jpg",
     "width": 800,

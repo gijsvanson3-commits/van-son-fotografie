@@ -123,7 +123,7 @@ for (const serie of series) {
 const cards = series
   .map((serie, index) => {
     const label = data.categorieen[serie.categorie];
-    const count = serie.layout.flat().filter((block) => typeof block === 'string').length;
+    const count = serie.layout.flat().filter((block) => typeof block === 'string' || typeof block?.breed === 'string').length;
     return `        <div class="serie-card" role="listitem" data-serie-card data-category="${esc(serie.categorie)}">
           <a class="serie-card__link" href="/galerij/${esc(serie.slug)}">
             <figure class="serie-card__media">
@@ -242,7 +242,8 @@ function seriePage(serie, index) {
   // Opbouw zoals Figma "Desktop 5": de eerste losse foto komt bovenaan naast de titel.
   // Een {"tekst"} komt als crème tekstvak op de foto('s) die erna komen.
   const isText = (block) => block && typeof block.tekst === 'string';
-  const isPhotoBlock = (block) => typeof block === 'string' || Array.isArray(block);
+  const isWide = (block) => block && typeof block.breed === 'string';
+  const isPhotoBlock = (block) => typeof block === 'string' || Array.isArray(block) || isWide(block);
   let layout = [...serie.layout];
   let heroPhoto = null;
   if (!wall) {
@@ -256,7 +257,15 @@ function seriePage(serie, index) {
   // De bovenste foto laadt direct; de foto's eronder pas als ze in beeld komen.
   if (heroPhoto) first = false;
 
-  const note = (text) => (text ? `\n        <p class="serie-note">${esc(text)}</p>` : '');
+  // Tekstvak op een foto, eventueel met een kopje ("kop") erboven.
+  const note = (block) => {
+    if (!block) return '';
+    if (!block.kop) return `\n        <p class="serie-note">${esc(block.tekst)}</p>`;
+    return `\n        <div class="serie-note">
+          <h2 class="serie-note__title">${esc(block.kop)}</h2>
+          <p>${esc(block.tekst)}</p>
+        </div>`;
+  };
 
   const blocks = layout
     .map((block, i) => {
@@ -265,20 +274,32 @@ function seriePage(serie, index) {
         return [block].flat().map((file) => framed(photo(file))).join('\n');
       }
       const previous = layout[i - 1];
-      const noteText = isText(previous) ? previous.tekst : '';
+      const noteBlock = isText(previous) ? previous : null;
+      const noteText = noteBlock ? noteBlock.tekst : '';
+      // {"breed": "foto"}: ook een staande foto over de volle breedte, bijgesneden zoals in het ontwerp.
+      if (isWide(block)) {
+        const p = photo(block.breed);
+        if (!p) return '';
+        // "uitsnede": hoe hoog de foto in het kader staat (0% = bovenkant, 100% = onderkant).
+        const focus = /^\d{1,3}%$/.test(block.uitsnede || '') ? ` style="--focus: ${block.uitsnede}"` : '';
+        if (block.uitsnede && !focus) problems.push(`Serie "${serie.slug}": uitsnede "${block.uitsnede}" moet een percentage zijn, bijvoorbeeld "20%"`);
+        return `      <div class="serie-block serie-block--full serie-block--wide${noteText ? ' serie-block--noted' : ''}"${focus}>
+        ${figure(p, '(max-width: 1200px) 92vw, 1170px')}${note(noteBlock)}
+      </div>`;
+      }
       if (typeof block === 'string') {
         const p = photo(block);
         if (!p) return '';
         const sizes = p.portrait ? '(max-width: 720px) 92vw, 40rem' : '(max-width: 1200px) 92vw, 1170px';
         return `      <div class="serie-block serie-block--full${p.portrait ? ' serie-block--portrait' : ''}${noteText ? ' serie-block--noted' : ''}" style="--ratio: ${p.ratio}">
-        ${figure(p, sizes)}${note(noteText)}
+        ${figure(p, sizes)}${note(noteBlock)}
       </div>`;
       }
       if (Array.isArray(block)) {
         if (block.length !== 2) problems.push(`Serie "${serie.slug}": een paar moet precies twee foto's hebben`);
         const figures = block.map((file) => figure(photo(file), '(max-width: 720px) 92vw, 36rem')).join('\n        ');
         return `      <div class="serie-block serie-block--pair${noteText ? ' serie-block--noted' : ''}">
-        ${figures}${note(noteText)}
+        ${figures}${note(noteBlock)}
       </div>`;
       }
       if (isText(block)) {

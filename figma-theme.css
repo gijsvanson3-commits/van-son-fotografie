@@ -43,7 +43,8 @@ body {
 :is(h1, h2, h3, h4, legend,
   .panel-title, .blog-title, .blog-card__title, .blog-article-title,
   .home-work__title, .serie-card__title, .serie-title, .galerij-title,
-  .review blockquote, .shoot-total strong, .shoot-route strong, .shoot-calendar__top p) {
+  .review blockquote, .shoot-total strong, .shoot-route strong, .shoot-calendar__top p,
+  .serie-cta__lead, .serie-next a, .serie-next small, .kunst-note, .serie-block--text) {
   font-family: "Inter", system-ui, sans-serif;
   letter-spacing: -0.01em;
 }
@@ -482,6 +483,8 @@ body {
 .serie-grid > .serie-card:nth-child(5n + 3),
 .serie-grid > .serie-card:nth-child(5n + 4) { grid-column: span 6; }
 .serie-grid > .serie-card:nth-child(5n + 5) { grid-column: span 12; }
+/* Staat de grote foto als laatste alleen op een rij, dan over de volle breedte. */
+.serie-grid > .serie-card:nth-child(5n + 1):last-child { grid-column: 1 / -1; }
 
 .serie-card__link,
 .serie-card__link:hover,
@@ -622,6 +625,19 @@ body {
   height: auto;
 }
 
+/* Bijgesneden staande foto's: iets boven het midden, zodat het gezicht in beeld blijft. */
+.serie-hero__media img,
+.serie-block--wide img,
+.serie-block--pair img,
+.serie-card__media img {
+  object-position: center 30%;
+}
+
+/* Per foto in te stellen met "uitsnede" in galerij.json. */
+.serie-block--wide img {
+  object-position: center var(--focus, 30%);
+}
+
 /* Twee foto's naast elkaar, even groot. */
 .serie-block--pair {
   gap: 2.4rem;
@@ -653,6 +669,20 @@ body {
   font-weight: 700;
   line-height: 1.45;
   pointer-events: none;
+}
+
+.serie-note__title {
+  margin: 0 0 0.5rem;
+  color: var(--figma-ink);
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+}
+
+.serie-note p {
+  margin: 0;
 }
 
 .serie-block--text {
