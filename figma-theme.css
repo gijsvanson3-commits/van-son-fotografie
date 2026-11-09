@@ -10,7 +10,7 @@
   --figma-orange-deep: #ffa000;
   --figma-cream-text: #fffcef;
   --figma-ink: #000;
-  --figma-frame: 8px;
+  --figma-frame: 4px;
   --figma-radius: 20px;
   --figma-radius-sm: 15px;
 
@@ -80,11 +80,9 @@ body {
   color: var(--figma-bg);
   font-size: clamp(2.6rem, 5.4vw, 5.3rem);
   font-weight: 900;
-  line-height: 0.95;
+  line-height: 1.05;
   letter-spacing: 0.08em;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: clip;
   user-select: none;
 }
 
@@ -120,14 +118,6 @@ body {
 }
 
 /* ---------- Basis: panelen, titels en fotokaders ---------- */
-.section-heading {
-  margin: 0 0 0.9rem 1.05rem;
-  color: var(--figma-ink);
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
 .text-panel,
 .contact-card {
   background: var(--figma-orange);
@@ -153,10 +143,11 @@ body {
   box-shadow: none;
 }
 
+/* Titels in het paneel, in dezelfde crèmekleur als de tekst. */
 .text-panel .panel-title,
 .contact-card .panel-title {
-  color: var(--figma-ink);
-  font-size: 1.5rem;
+  color: var(--figma-cream-text);
+  font-size: clamp(1.6rem, 2.2vw, 2rem);
   font-weight: 700;
 }
 
@@ -179,16 +170,33 @@ body {
   border-radius: calc(var(--figma-radius) - var(--figma-frame));
 }
 
-/* Over mij: foto in zijn eigen verhouding, zodat hij niet wordt bijgesneden. */
+/* Over mij: brede foto (647 x 370) met het tekstpaneel even hoog ernaast. */
 .about-section {
-  --feature-media-width: 34.9rem;
+  --feature-media-width: 40.45rem;
   --feature-copy-width: 26.75rem;
-  gap: 7.7rem;
-  margin-top: 4.3rem;
+  gap: 2.1rem;
+  align-items: stretch;
+  margin-top: 5.6rem;
+}
+
+.about-media,
+.about-section .copy-block {
+  align-self: stretch;
+}
+
+.about-section .copy-block,
+.about-section .text-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-section .text-panel {
+  flex: 1;
+  justify-content: center;
 }
 
 .about-photo-card {
-  aspect-ratio: 1168 / 935;
+  aspect-ratio: 647 / 370;
 }
 
 .about-photo-card img {
@@ -196,10 +204,6 @@ body {
   width: 100%;
   height: 100%;
   border-radius: calc(var(--figma-radius) - var(--figma-frame));
-}
-
-.about-section .copy-block {
-  margin-top: -2.9rem;
 }
 
 .home-more-link {
@@ -214,8 +218,8 @@ body {
 
 /* ---------- Opdrachten: tekstpaneel links, raster van 2 x 2 foto's rechts ---------- */
 .home-work {
-  grid-template-columns: minmax(0, 26.75rem) minmax(0, 34.9rem);
-  gap: 3.8rem 8.1rem;
+  grid-template-columns: minmax(0, 26.75rem) minmax(0, 38.1rem);
+  gap: 3rem 3.45rem;
   align-items: center;
 }
 
@@ -225,7 +229,7 @@ body {
 
 .home-work__reel {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.35rem 1.2rem;
+  gap: 6px;
 }
 
 .home-work__item {
@@ -234,7 +238,7 @@ body {
 }
 
 .home-work__media {
-  aspect-ratio: 266 / 348;
+  aspect-ratio: 302 / 348;
   border: var(--figma-frame) solid var(--figma-orange);
   border-radius: var(--figma-radius);
   background: var(--figma-orange);
@@ -364,73 +368,7 @@ body {
   background: var(--figma-orange);
 }
 
-/* ---------- Kunst: foto's in oranje kaders links, tekst rechts ---------- */
-.home-art {
-  grid-template-columns: minmax(0, 34.9rem) minmax(0, 26.75rem);
-  gap: 3rem 8.1rem;
-}
-
-.home-art__wall {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: start;
-  gap: 1.35rem 1.2rem;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: none;
-  box-shadow: none;
-}
-
-.home-art__wall .kunst-piece,
-.home-art__wall .kunst-piece--panorama,
-.home-art__wall .kunst-piece--landscape,
-.home-art__wall .kunst-piece--portrait {
-  width: auto;
-  margin: 0;
-}
-
-.home-art__wall .kunst-piece--panorama {
-  grid-column: 1 / -1;
-}
-
-.home-art__wall .kunst-piece::before,
-.home-art__wall .kunst-piece::after,
-.home-art__wall .kunst-hanger {
-  display: none;
-}
-
-.home-art__wall .kunst-frame,
-.home-art__wall .kunst-frame:hover,
-.home-art__wall .kunst-frame:focus-visible,
-.home-art__wall .kunst-piece:nth-child(even) .kunst-frame:hover,
-.home-art__wall .kunst-piece:nth-child(even) .kunst-frame:focus-visible {
-  padding: 0;
-  border: var(--figma-frame) solid var(--figma-orange);
-  border-radius: var(--figma-radius);
-  background: var(--figma-orange);
-  box-shadow: none;
-  transform: none;
-  overflow: hidden;
-}
-
-.home-art__wall .kunst-frame__mat {
-  padding: 0;
-  background: none;
-  box-shadow: none;
-}
-
-.home-art__wall .kunst-frame__mat img {
-  border-radius: calc(var(--figma-radius) - var(--figma-frame));
-  outline: 0;
-  box-shadow: none;
-  transition: transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.home-art__wall .kunst-frame:hover img,
-.home-art__wall .kunst-frame:focus-visible img {
-  transform: scale(1.04);
-}
+/* Kunst: de houten lijsten aan de galeriemuur blijven zoals ze waren (zie styles.css). */
 
 /* ---------- Contact ---------- */
 .home-contact__main,
@@ -548,19 +486,16 @@ body {
   border-radius: var(--figma-radius-sm);
 }
 
+/* Eén label per foto: de naam van de serie, bovenaan. */
 .serie-card__label {
-  border-radius: var(--figma-radius-sm);
-  background: var(--figma-bg);
-  color: var(--figma-ink);
-  font-weight: 900;
-  letter-spacing: 0.06em;
+  display: none;
 }
 
 .serie-card__body {
   position: absolute;
   left: 0.75rem;
   right: 0.75rem;
-  bottom: 0.75rem;
+  top: 0.75rem;
   flex: none;
   padding: 0;
 }
@@ -670,9 +605,8 @@ body {
   }
 
   .about-section,
-  .home-work,
-  .home-art {
-    column-gap: 3rem;
+  .home-work {
+    column-gap: 2rem;
   }
 }
 
@@ -698,12 +632,11 @@ body {
     margin-top: 1.6rem;
   }
 
-  .about-section .copy-block {
-    margin-top: 0;
+  .about-section {
+    --feature-media-width: 36rem;
   }
 
-  .home-work,
-  .home-art {
+  .home-work {
     grid-template-columns: minmax(0, 36rem);
   }
 
@@ -729,9 +662,8 @@ body {
     grid-column: 1 / -1;
   }
 
-  .home-work__reel,
-  .home-art__wall {
-    gap: 0.9rem;
+  .home-work__reel {
+    gap: 6px;
   }
 
   .timeline-label {
