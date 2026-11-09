@@ -76,6 +76,21 @@
       ]
     },
     {
+      "slug": "dj-hidn",
+      "categorie": "portretten",
+      "titel": "DJ Hidn.",
+      "context": "Portretshoot",
+      "intro": "Een portretshoot voor DJ Hidn. buiten in de polder, met wind in het haar en een strakblauwe lucht.",
+      "omschrijving": "Portretshoot van DJ Hidn. in de polder: natuurlijke portretten onder een blauwe lucht.",
+      "cover": "dj-hidn-03.jpg",
+      "layout": [
+        "dj-hidn-03.jpg",
+        { "kop": "Achter de draaitafel vandaan", "tekst": "Even geen dansvloer, maar ruimte, licht en de persoon achter de muziek." },
+        ["dj-hidn-01.jpg", "dj-hidn-02.jpg"],
+        "dj-hidn-04.jpg"
+      ]
+    },
+    {
       "slug": "vrij-werk",
       "categorie": "kunst",
       "titel": "Vrij werk",
@@ -121,6 +136,10 @@
     "trouwen-01.jpg": "Lachende bruid in kanten jurk en bruidegom in wit colbert met gele vlinderdas tussen hun gasten",
     "trouwen-02.jpg": "Bruid en bruidegom lachen samen op een grindpad terwijl gasten op de achtergrond klappen",
     "trouwen-03.jpg": "Zwembad voor een witte gevel met het opschrift Paarl 1690 in het zonnige avondlicht",
+    "dj-hidn-01.jpg": "Lachende jongeman met krullen en werkjas leunt op een balkon met uitzicht over polder en water",
+    "dj-hidn-02.jpg": "Close-up van een jongeman met krullend haar die opzij kijkt tegen een blauwe lucht",
+    "dj-hidn-03.jpg": "Jongeman met krullen kijkt omhoog op een balkon boven groene weilanden en een rivier",
+    "dj-hidn-04.jpg": "Jongeman zit op een houten hek in de polder en wijst met gestrekte arm naar de lucht",
     "kunstfotografie.webp": "Silhouetten van bouwkranen tegen een kleurrijke zonsondergang",
     "DSC_0581art1.webp": "Handen en een gezicht drukken zich af tegen een geplooid wit gordijn",
     "DSC08211art2.webp": "Glazen met goudkleurige drankjes in het zonlicht op een houten terrastafel in de bergen",

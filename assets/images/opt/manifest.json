@@ -250,6 +250,50 @@
       2048
     ]
   },
+  "dj-hidn-01.jpg": {
+    "slug": "dj-hidn-01",
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      480,
+      720,
+      960,
+      1333
+    ]
+  },
+  "dj-hidn-02.jpg": {
+    "slug": "dj-hidn-02",
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      480,
+      720,
+      960,
+      1333
+    ]
+  },
+  "dj-hidn-03.jpg": {
+    "slug": "dj-hidn-03",
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      480,
+      720,
+      960,
+      1333
+    ]
+  },
+  "dj-hidn-04.jpg": {
+    "slug": "dj-hidn-04",
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      480,
+      720,
+      960,
+      1333
+    ]
+  },
   "festival-01.jpg": {
     "slug": "festival-01",
     "width": 2000,
