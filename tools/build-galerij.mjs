@@ -343,7 +343,7 @@ function seriePage(serie, index) {
 ${nav('galerij')}
 
   <main class="serie-shell">
-    <header class="serie-hero${heroPhoto ? '' : wall ? ' visually-hidden' : ' serie-hero--text'}">
+    <header class="serie-hero${heroPhoto ? (heroPhoto.portrait ? ' serie-hero--staand' : '') : wall ? ' visually-hidden' : ' serie-hero--text'}">
 ${heroMedia}      <div class="serie-hero__text">
         <h1 class="serie-hero__title">${esc(serie.titel)}</h1>
         <p class="serie-hero__subtitle">${esc(serie.context)}</p>

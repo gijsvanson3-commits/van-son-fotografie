@@ -78,24 +78,27 @@
     {
       "slug": "linkedin",
       "categorie": "portretten",
-      "titel": "LinkedIn Portretten",
+      "titel": "Zakelijk portret",
       "context": "Een professionele uitstraling, helemaal jezelf.",
-      "intro": "Een goede profielfoto maakt het verschil. Tijdens deze fotoshoot in de straten van Leiden lag de nadruk op het vastleggen van spontane en professionele portretten. Door gebruik te maken van natuurlijk licht en een ontspannen sfeer ontstonden beelden die persoonlijkheid en professionaliteit combineren.",
-      "omschrijving": "Fotoserie van een LinkedIn-shoot in de straten van Leiden: natuurlijke, spontane portretten met een professionele en persoonlijke uitstraling.",
+      "intro": [
+        "Jens, een goede kennis van mij, vroeg of ik LinkedIn-foto's voor zijn profiel kon maken. Tijdens deze fotoshoot in de straten van Leiden lag de nadruk op spontane en professionele portretten. Door gebruik te maken van natuurlijk licht en een ontspannen sfeer ontstonden beelden die persoonlijkheid en professionaliteit combineren.",
+        "Leiden heeft mooie, oude architectuur die als rustig straatbeeld achter het portret fungeert. Daardoor ogen de foto's al snel professioneel. Geen geforceerde poses, maar foto's waarin je jezelf herkent. Jens is erg blij met het resultaat, en ik ben er trots op hoe mooi de kleuren zijn geworden."
+      ],
+      "omschrijving": "LinkedIn-portretten in de straten van Leiden: natuurlijke, professionele portretten met oude architectuur als rustige achtergrond.",
       "cover": "linkedin-01.jpg",
       "layout": [
         "linkedin-01.jpg",
         {
           "kop": "Meer dan alleen een profielfoto",
-          "tekst": "Een sterk portret draait niet alleen om hoe je eruitziet, maar ook om wat je uitstraalt. Door te fotograferen in een vertrouwde, natuurlijke omgeving ontstaan authentieke beelden. Geen geforceerde poses, maar foto's waarin je jezelf herkent."
+          "tekst": "De foto's zijn niet alleen geschikt voor LinkedIn. Jens schreef laatst een opiniestuk voor de Volkskrant, en de krant gebruikte daarbij één van deze portretten."
         },
         {
-          "breed": "linkedin-02.jpg",
-          "uitsnede": "35%"
+          "breed": "linkedin-09.jpg",
+          "uitsnede": "30%"
         },
         [
           "linkedin-08.jpg",
-          "linkedin-09.jpg"
+          "linkedin-02.jpg"
         ]
       ]
     },
