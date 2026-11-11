@@ -1303,3 +1303,31 @@ body.serie-page--muur {
     width: min(64vw, 22rem);
   }
 }
+
+/* Paginatitel in de kopbalk: zo groot als het ontwerp, maar nooit breder dan de ruimte naast de knoppen.
+   De kopbalk is een container, zodat de titel kan meeschalen met de vrije ruimte (langste titel: "Fotoshoot"). */
+.topbar {
+  container-type: inline-size;
+}
+
+.topbar__title {
+  font-size: min(clamp(2.6rem, 5.4vw, 5.3rem), calc((100cqi - 4 * 9.5rem - 4 * 1.1rem - 2.5rem) / 6));
+}
+
+@media (max-width: 1100px) {
+  .topbar__title {
+    font-size: min(clamp(2.6rem, 5.4vw, 5.3rem), calc((100cqi - 4 * 7.6rem - 4 * 0.7rem - 2.5rem) / 6));
+  }
+}
+
+@media (max-width: 920px) {
+  .topbar__title {
+    font-size: min(clamp(2.6rem, 5.4vw, 5.3rem), calc((100cqi - 2rem) / 6));
+  }
+}
+
+@media (max-width: 560px) {
+  .topbar__title {
+    font-size: min(clamp(2.3rem, 13vw, 3.2rem), calc((100cqi - 2rem) / 6));
+  }
+}
