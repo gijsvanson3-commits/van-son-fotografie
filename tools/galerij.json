@@ -5,7 +5,8 @@
     "categorie: 21-diner, trouwen, evenementen, portretten of kunst (alleen gebruikte categorieen krijgen een filter).",
     "layout: de eerste losse foto komt bovenaan naast de titel. Daarna: een bestandsnaam = foto over de volle breedte, [twee namen] = twee naast elkaar, {\"breed\": \"naam\", \"uitsnede\": \"20%\"} = staande foto toch breed bijgesneden (uitsnede: 0% = bovenkant, 100% = onderkant), {\"tekst\": \"...\"} = tekstvak op de foto('s) die erna komen (met \"kop\": \"...\" erbij krijgt het tekstvak een kopje).",
     "alt-teksten: beschrijving per foto in \"alt\" onderaan (voor Google en schermlezers). Elke gebruikte foto moet er één hebben.",
-    "thema: \"muur\" hangt de foto's ingelijst aan een muur (voor kunst)."
+    "thema: \"muur\" hangt de foto's ingelijst aan een muur (voor kunst).",
+    "intro mag ook een lijst van alinea's zijn; met \"introKop\": \"...\" krijgt de tekst naast de hoofdfoto een kopje."
   ],
   "categorieen": {
     "21-diner": "21 diner",
@@ -18,10 +19,14 @@
     {
       "slug": "21-diner-zomeravond",
       "categorie": "21-diner",
-      "titel": "21 diner",
-      "context": "Warm avondlicht, lange tafel en bubbels",
-      "intro": "Een avond vol proosten, verhalen en een zon die langzaam ondergaat. Van de eerste decoratie tot de laatste toast.",
-      "omschrijving": "Fotoserie van een 21 diner in warm avondlicht: lange tafel, champagne en spontane momenten met vrienden.",
+      "titel": "21-diner",
+      "context": "Een mooie zomeravond met mooie verhalen, gezelligheid en veel lekkere wijn!",
+      "introKop": "Een bijzondere avond om vast te leggen",
+      "intro": [
+        "Voor haar 21-diner benaderde de jarige mij met de vraag of ik deze bijzondere avond wilde vastleggen.",
+        "Tijdens het diner heb ik me vooral gericht op het vastleggen van de mooie zomerse sfeer die deze dag had. Het was fantastisch weer, iedereen genoot van het heerlijke zonnetje en de heerlijke wijn. Bij het vastleggen van een dergelijk evenement is het mijn doel om een beetje onopvallend te zijn, zo krijg je meer spontane beelden die echt laten zien hoe mensen zelf zijn. Hiernaast is het fijn om te zien dat iedereen zo geniet!"
+      ],
+      "omschrijving": "Fotoreportage van een 21-diner op een zomeravond: spontane beelden van gasten, mooie verhalen en wijn in de zon.",
       "cover": "21-diner-3.jpg",
       "layout": [
         "21-diner-7.jpg",
@@ -29,13 +34,13 @@
           "21-diner-6.jpg",
           "21-diner-3.jpg"
         ],
-        {
-          "tekst": "Dan schuift iedereen aan en begint het echte feest."
-        },
         [
           "21-diner-8.jpg",
           "21-diner-5.webp"
         ],
+        {
+          "tekst": "Het resultaat is een sfeervolle fotoreportage waarmee de jarige nog eens kan terugkijken op deze aangename en vooral mooie zomeravond!"
+        },
         {
           "breed": "21-diner-2.jpg",
           "uitsnede": "40%"

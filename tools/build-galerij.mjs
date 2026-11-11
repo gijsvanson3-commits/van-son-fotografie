@@ -347,7 +347,8 @@ ${nav('galerij')}
 ${heroMedia}      <div class="serie-hero__text">
         <h1 class="serie-hero__title">${esc(serie.titel)}</h1>
         <p class="serie-hero__subtitle">${esc(serie.context)}</p>
-        ${serie.intro ? `<p class="serie-hero__intro">${esc(serie.intro)}</p>` : ''}
+        ${serie.introKop ? `<h2 class="serie-hero__kop">${esc(serie.introKop)}</h2>` : ''}
+        ${[serie.intro ?? []].flat().map((alinea) => `<p class="serie-hero__intro">${esc(alinea)}</p>`).join('\n        ')}
       </div>
     </header>
 
