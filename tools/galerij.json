@@ -126,15 +126,18 @@
       "slug": "dj-hidn",
       "categorie": "portretten",
       "titel": "DJ Hidn.",
-      "context": "Portretshoot",
-      "intro": "Een portretshoot voor DJ Hidn. buiten in de polder, met wind in het haar en een strakblauwe lucht.",
-      "omschrijving": "Portretshoot van DJ Hidn. in de polder: natuurlijke portretten onder een blauwe lucht.",
+      "context": "Artist impressions voor mijn broer",
+      "introKop": "Professioneel, maar niet te serieus",
+      "intro": [
+        "DJ Hidn. is mijn broer, en hij had artist-impressionfoto's nodig. De foto's zijn later gebruikt om een feest te promoten waar Hidn. nog ging draaien, en daarnaast heeft hij ze op zijn eigen socials gezet.",
+        "Ik wilde Hidn. vooral professioneel, maar ook niet al te serieus in beeld brengen. Ik ben erg trots op deze portretten: door het mooie weer spatten de kleuren echt van je scherm af."
+      ],
+      "omschrijving": "Artist-impressionfoto's van DJ Hidn.: kleurrijke, professionele portretten onder een blauwe lucht, gebruikt voor feestpromotie en socials.",
       "cover": "dj-hidn-03.jpg",
       "layout": [
         "dj-hidn-03.jpg",
         {
-          "kop": "Achter de draaitafel vandaan",
-          "tekst": "Even geen dansvloer, maar ruimte, licht en de persoon achter de muziek."
+          "tekst": "Het was een enorm gezellige shoot!"
         },
         [
           "dj-hidn-01.jpg",
