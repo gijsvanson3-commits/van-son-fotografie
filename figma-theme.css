@@ -587,6 +587,11 @@ body {
   text-align: center;
 }
 
+.serie-hero--text .serie-hero__intro {
+  margin-inline: auto;
+}
+
+
 .serie-hero__media {
   aspect-ratio: 619 / 422;
   margin: 0;
@@ -623,9 +628,6 @@ body {
   line-height: 1.45;
 }
 
-.serie-hero--text .serie-hero__intro {
-  margin-inline: auto;
-}
 
 .serie-story {
   gap: 2.2rem;
