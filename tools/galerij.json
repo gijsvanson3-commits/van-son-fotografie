@@ -50,17 +50,17 @@
     {
       "slug": "festival",
       "categorie": "evenementen",
-      "titel": "Festival: Gestrand",
-      "context": "Neon, dansvloer en vrienden tot diep in de nacht",
-      "intro": "Zodra de muziek begint, verdwijnt alle verlegenheid. Rood licht, neon en een dansvloer die niet leeg raakt.",
-      "omschrijving": "Fotoserie van een festival: neonlicht, een volle dansvloer en vrienden die samen de avond vieren.",
+      "titel": "Gestrand",
+      "context": "House, techno en een losse sfeer aan het strand van Scheveningen",
+      "introKop": "Een feest aan het strand",
+      "intro": [
+        "In opdracht van de organisatoren mocht ik festival Gestrand vastleggen, bij Colorado Charlie aan het strand van Scheveningen. Er werd vooral house en techno gedraaid, wat zorgde voor een leuke, losse sfeer.",
+        "Tijdens het fotograferen wilde ik vooral die losse sfeer vastleggen: mensen die echt zichzelf waren. Daarnaast vond ik het belangrijk om de algehele sfeer en de omgeving van het festival in beeld te brengen."
+      ],
+      "omschrijving": "Fotoreportage van festival Gestrand bij Colorado Charlie in Scheveningen: house, techno, neonlicht en een losse sfeer aan het strand.",
       "cover": "festival-02.jpg",
       "layout": [
         "festival-01.jpg",
-        {
-          "tekst": "Iedereen kent iedereen, of in elk geval na dit nummer."
-        },
-        "DSC00342.webp",
         [
           "festival-02.jpg",
           "festival-03.jpg"
@@ -68,7 +68,11 @@
         [
           "festival-04.jpg",
           "festival-05.jpg"
-        ]
+        ],
+        {
+          "tekst": "Het was een leuke avond met een goede sfeer, en ik heb zelf ook nog een dansje gewaagd!"
+        },
+        "DSC00342.webp"
       ]
     },
     {
