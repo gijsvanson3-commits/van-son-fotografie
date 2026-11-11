@@ -467,6 +467,7 @@ body {
 }
 
 .galerij-intro {
+  max-width: none;
   margin-top: 1.6rem;
 }
 
