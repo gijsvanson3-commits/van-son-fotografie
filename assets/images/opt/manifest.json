@@ -202,18 +202,6 @@
       1024
     ]
   },
-  "21-diner-1.jpg": {
-    "slug": "21-diner-1",
-    "width": 4672,
-    "height": 7008,
-    "widths": [
-      480,
-      720,
-      960,
-      1440,
-      2048
-    ]
-  },
   "21-diner-2.jpg": {
     "slug": "21-diner-2",
     "width": 4672,
@@ -238,16 +226,38 @@
       2048
     ]
   },
-  "21-diner-4.jpg": {
-    "slug": "21-diner-4",
-    "width": 4672,
-    "height": 7008,
+  "21-diner-6.jpg": {
+    "slug": "21-diner-6",
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      480,
+      720,
+      960,
+      1333
+    ]
+  },
+  "21-diner-7.jpg": {
+    "slug": "21-diner-7",
+    "width": 2000,
+    "height": 1333,
     "widths": [
       480,
       720,
       960,
       1440,
-      2048
+      2000
+    ]
+  },
+  "21-diner-8.jpg": {
+    "slug": "21-diner-8",
+    "width": 1333,
+    "height": 2000,
+    "widths": [
+      480,
+      720,
+      960,
+      1333
     ]
   },
   "dj-hidn-01.jpg": {

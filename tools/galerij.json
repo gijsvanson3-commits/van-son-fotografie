@@ -24,10 +24,22 @@
       "omschrijving": "Fotoserie van een 21 diner in warm avondlicht: lange tafel, champagne en spontane momenten met vrienden.",
       "cover": "21-diner-3.jpg",
       "layout": [
-        "21-diner-4.jpg",
-        ["21-diner-2.jpg", "21-diner-1.jpg"],
-        { "tekst": "Dan schuift iedereen aan en begint het echte feest." },
-        ["21-diner-3.jpg", "21-diner-5.webp"]
+        "21-diner-7.jpg",
+        [
+          "21-diner-6.jpg",
+          "21-diner-3.jpg"
+        ],
+        {
+          "tekst": "Dan schuift iedereen aan en begint het echte feest."
+        },
+        [
+          "21-diner-8.jpg",
+          "21-diner-5.webp"
+        ],
+        {
+          "breed": "21-diner-2.jpg",
+          "uitsnede": "40%"
+        }
       ]
     },
     {
@@ -40,10 +52,18 @@
       "cover": "festival-02.jpg",
       "layout": [
         "festival-01.jpg",
-        { "tekst": "Iedereen kent iedereen, of in elk geval na dit nummer." },
+        {
+          "tekst": "Iedereen kent iedereen, of in elk geval na dit nummer."
+        },
         "DSC00342.webp",
-        ["festival-02.jpg", "festival-03.jpg"],
-        ["festival-04.jpg", "festival-05.jpg"]
+        [
+          "festival-02.jpg",
+          "festival-03.jpg"
+        ],
+        [
+          "festival-04.jpg",
+          "festival-05.jpg"
+        ]
       ]
     },
     {
@@ -56,9 +76,18 @@
       "cover": "linkedin-01.jpg",
       "layout": [
         "linkedin-01.jpg",
-        { "kop": "Meer dan alleen een profielfoto", "tekst": "Een sterk portret draait niet alleen om hoe je eruitziet, maar ook om wat je uitstraalt. Door te fotograferen in een vertrouwde, natuurlijke omgeving ontstaan authentieke beelden. Geen geforceerde poses, maar foto's waarin je jezelf herkent." },
-        { "breed": "linkedin-02.jpg", "uitsnede": "35%" },
-        ["linkedin-08.jpg", "linkedin-09.jpg"]
+        {
+          "kop": "Meer dan alleen een profielfoto",
+          "tekst": "Een sterk portret draait niet alleen om hoe je eruitziet, maar ook om wat je uitstraalt. Door te fotograferen in een vertrouwde, natuurlijke omgeving ontstaan authentieke beelden. Geen geforceerde poses, maar foto's waarin je jezelf herkent."
+        },
+        {
+          "breed": "linkedin-02.jpg",
+          "uitsnede": "35%"
+        },
+        [
+          "linkedin-08.jpg",
+          "linkedin-09.jpg"
+        ]
       ]
     },
     {
@@ -71,8 +100,14 @@
       "cover": "trouwen-01.jpg",
       "layout": [
         "trouwen-01.jpg",
-        { "kop": "Echte momenten", "tekst": "Geen geposeerde plaatjes, maar de lach, de spanning en de warmte van de dag zelf." },
-        ["trouwen-02.jpg", "trouwen-03.jpg"]
+        {
+          "kop": "Echte momenten",
+          "tekst": "Geen geposeerde plaatjes, maar de lach, de spanning en de warmte van de dag zelf."
+        },
+        [
+          "trouwen-02.jpg",
+          "trouwen-03.jpg"
+        ]
       ]
     },
     {
@@ -85,8 +120,14 @@
       "cover": "dj-hidn-03.jpg",
       "layout": [
         "dj-hidn-03.jpg",
-        { "kop": "Achter de draaitafel vandaan", "tekst": "Even geen dansvloer, maar ruimte, licht en de persoon achter de muziek." },
-        ["dj-hidn-01.jpg", "dj-hidn-02.jpg"],
+        {
+          "kop": "Achter de draaitafel vandaan",
+          "tekst": "Even geen dansvloer, maar ruimte, licht en de persoon achter de muziek."
+        },
+        [
+          "dj-hidn-01.jpg",
+          "dj-hidn-02.jpg"
+        ],
         "dj-hidn-04.jpg"
       ]
     },
@@ -109,10 +150,8 @@
     }
   ],
   "alt": {
-    "21-diner-1.jpg": "Glas bier op een lange tafel tijdens een 21 diner",
     "21-diner-2.jpg": "Detail van decoratie in een boom bij een 21 diner",
     "21-diner-3.jpg": "Champagne wordt ingeschonken tijdens een 21 diner",
-    "21-diner-4.jpg": "Graan in warm avondlicht bij een 21 diner",
     "21-diner-5.webp": "Portret aan tafel tijdens een zonnig 21 diner",
     "DSC07908com2.webp": "Jongen met krullen lacht op een zonnig terras in de sneeuw",
     "DSC08056com1.JPG.webp": "Detail van een geborduurd hondje op de rug van een blauwe hoodie",
@@ -144,6 +183,9 @@
     "DSC_0581art1.webp": "Handen en een gezicht drukken zich af tegen een geplooid wit gordijn",
     "DSC08211art2.webp": "Glazen met goudkleurige drankjes in het zonlicht op een houten terrastafel in de bergen",
     "DSC03625art3.webp": "Speedboot trekt een wit spoor over de diepblauwe zee met bergen aan de horizon",
-    "DSC07744art4.webp": "Skiërs op een zonnige piste terwijl sneeuwkanonnen witte wolken langs de bergtop blazen"
+    "DSC07744art4.webp": "Skiërs op een zonnige piste terwijl sneeuwkanonnen witte wolken langs de bergtop blazen",
+    "21-diner-6.jpg": "Lachende vrouw met zonnebril in het haar ruikt aan een glas witte wijn in de zon",
+    "21-diner-7.jpg": "Gasten aan een lange tafel buiten kijken lachend opzij in het warme avondlicht",
+    "21-diner-8.jpg": "Lachende jongen en meisje delen brood aan een gedekte tafel tijdens een 21 diner"
   }
 }
