@@ -1448,3 +1448,42 @@ body.serie-page--muur {
     display: none;
   }
 }
+
+/* Opdrachten: tekstblok in het midden naast de foto's, de knop "Stel jouw fotoshoot samen"
+   eronder, gelijk met de onderkant van de onderste foto's. */
+.home-work__intro {
+  position: relative;
+  top: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
+}
+
+.home-work__cta-row {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  justify-content: flex-start;
+  margin: 0;
+}
+
+@media (max-width: 920px) {
+  .home-work__cta-row {
+    position: static;
+    margin-top: 1.2rem;
+  }
+}
+
+/* Knop in dezelfde stijl als het Opdrachten-blok: oranje met crème tekst en dezelfde ronding. */
+.home-work__cta-row .button {
+  border-radius: var(--figma-radius);
+  background: var(--figma-orange);
+  color: var(--figma-cream-text);
+}
+
+.home-work__cta-row .button:hover,
+.home-work__cta-row .button:focus-visible {
+  background: var(--figma-orange-deep);
+  color: var(--figma-cream-text);
+}
