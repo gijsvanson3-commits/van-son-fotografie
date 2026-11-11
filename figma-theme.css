@@ -1055,3 +1055,251 @@ body {
   position: absolute;
   inset: 0;
 }
+
+/* ---------- Kunstmuur: echte muur met stucwerk, plint, vloer en museumbordjes ---------- */
+:root {
+  --muur-stuc: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .32 0 0 0 0 .18 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  /* Plint (geschilderd hout) met daaronder een houten vloer. */
+  --muur-plint:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0 2px, #efe7d8 2px 5px, #e2d6c0 5px 15px, #cdbd9f 15px 18px) top / 100% 18px no-repeat,
+    linear-gradient(180deg, rgba(40, 22, 8, 0.35), transparent 8px) 0 18px / 100% 8px no-repeat,
+    repeating-linear-gradient(90deg, #b48557 0 110px, #8f6237 110px 112px, #a8784b 112px 230px, #8f6237 230px 232px, #bb8c5d 232px 320px, #8f6237 320px 322px) bottom / 100% 26px no-repeat;
+}
+
+body.serie-page--muur {
+  overflow-x: clip;
+  background:
+    var(--muur-stuc),
+    radial-gradient(ellipse 70% 40% at 50% 0%, rgba(255, 255, 255, 0.55), transparent 70%),
+    linear-gradient(180deg, #f3ece0 0%, #ebe1d0 100%);
+}
+
+.home-art__wall {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: calc(2.8rem + 44px);
+  border-bottom: 0;
+  background:
+    var(--muur-stuc),
+    radial-gradient(ellipse 70% 45% at 50% 0%, rgba(255, 255, 255, 0.6), transparent 70%),
+    linear-gradient(180deg, #f3ece0 0%, #e9dfcd 100%);
+}
+
+.kunst-wall {
+  border-bottom: 0;
+  box-shadow: none;
+}
+
+.home-art__wall::after,
+.kunst-gallery::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 44px;
+  background: var(--muur-plint);
+  box-shadow: 0 -3px 6px -2px rgba(80, 55, 25, 0.18);
+  pointer-events: none;
+}
+
+/* Op de kunstpagina loopt de plint over de hele breedte van het scherm. */
+.kunst-gallery::after {
+  left: 50%;
+  right: auto;
+  width: 100vw;
+  transform: translateX(-50%);
+}
+
+/* Kunstpagina: de lijsten hangen vrij zoals op een echte muur, maximaal twee rijen hoog.
+   Passen ze niet meer, dan komen ze op een volgende wand; met de pijlen loop je langs de wanden.
+   kunstmuur.js verdeelt de lijsten over de wanden (zonder JavaScript blijft het één lange muur). */
+.kunst-gallery {
+  position: relative;
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+  padding-bottom: 44px;
+}
+
+.kunst-gallery .kunst-wall {
+  margin-top: 0;
+  padding-bottom: clamp(3rem, 6vw, 4.5rem);
+}
+
+.kunst-gallery .kunst-wall.is-paged {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0;
+  margin-inline: calc(50% - 50vw);
+  padding: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.kunst-gallery .kunst-wall.is-paged::-webkit-scrollbar {
+  display: none;
+}
+
+.kunst-gallery .kunst-wall:focus-visible {
+  outline: 3px solid var(--figma-orange-deep);
+  outline-offset: -3px;
+}
+
+/* Eén wand: schermbreed, de lijsten binnen de normale paginabreedte met ruimte voor de pijlen. */
+.kunst-panel {
+  display: flex;
+  flex: 0 0 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  gap: clamp(4.5rem, 8vw, 6.5rem) clamp(1rem, 3vw, 2.4rem);
+  padding: clamp(3.5rem, 7vw, 5.5rem) max(4rem, calc(50vw - 36.5rem + 3.5rem)) clamp(3rem, 6vw, 4.5rem);
+  scroll-snap-align: start;
+}
+
+.kunst-gallery .kunst-piece::before {
+  inset: -45% -45% -15%;
+}
+
+.kunst-nav {
+  position: absolute;
+  z-index: 2;
+  top: calc(50% - 22px);
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--figma-orange);
+  color: var(--figma-ink);
+  font: 900 1.3rem/1 "Inter", system-ui, sans-serif;
+  box-shadow: 0 6px 16px -6px rgba(60, 40, 15, 0.45);
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: background 200ms ease, opacity 200ms ease;
+}
+
+.kunst-nav[hidden] {
+  display: none;
+}
+
+.kunst-nav--prev {
+  left: 0;
+}
+
+.kunst-nav--next {
+  right: 0;
+}
+
+.kunst-nav:hover,
+.kunst-nav:focus-visible {
+  background: var(--figma-orange-deep);
+}
+
+.kunst-nav:focus-visible {
+  outline: 3px solid var(--figma-ink);
+  outline-offset: 3px;
+}
+
+.kunst-nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+@media (max-width: 720px) {
+  .kunst-nav {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+}
+
+/* Goudkleurig museumbordje rechts naast de lijst, met lijntjes in plaats van leesbare tekst.
+   Elke lijst houdt rechts ruimte vrij voor zijn bordje, zodat alles netjes op de muur blijft. */
+.kunst-piece {
+  --plaque-w: clamp(2.7rem, 3.6vw, 3.4rem);
+  --plaque-gap: clamp(0.8rem, 1.4vw, 1.2rem);
+  margin-right: calc(var(--plaque-w) + var(--plaque-gap));
+}
+
+.home-art__wall .kunst-piece {
+  --plaque-w: 2.2rem;
+  --plaque-gap: 0.6rem;
+}
+
+.kunst-plaque {
+  position: absolute;
+  left: calc(100% + var(--plaque-gap));
+  bottom: 14%;
+  width: var(--plaque-w);
+  aspect-ratio: 4 / 3;
+  border-radius: 2px;
+  background:
+    linear-gradient(rgba(74, 48, 12, 0.55), rgba(74, 48, 12, 0.55)) 18% 26% / 64% 2px no-repeat,
+    linear-gradient(rgba(74, 48, 12, 0.35), rgba(74, 48, 12, 0.35)) 18% 48% / 50% 1.5px no-repeat,
+    linear-gradient(rgba(74, 48, 12, 0.35), rgba(74, 48, 12, 0.35)) 18% 62% / 58% 1.5px no-repeat,
+    linear-gradient(rgba(74, 48, 12, 0.35), rgba(74, 48, 12, 0.35)) 18% 76% / 36% 1.5px no-repeat,
+    linear-gradient(135deg, #f6e3a4 0%, #d4a84a 38%, #f1d58a 55%, #b8862f 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 246, 210, 0.55),
+    inset 0 -1px 0 rgba(90, 60, 15, 0.35),
+    0 2px 3px rgba(60, 40, 15, 0.3),
+    0 6px 10px -4px rgba(60, 40, 15, 0.35);
+}
+
+@media (max-width: 720px) {
+  .kunst-piece {
+    margin-right: 0;
+  }
+
+  /* Smal scherm: bordje onder de lijst, rechts uitgelijnd. */
+  .kunst-plaque {
+    left: auto;
+    right: 0;
+    bottom: auto;
+    top: calc(100% + 0.7rem);
+  }
+}
+
+/* De ruimte voor het bordje werkt al als tussenruimte tussen de lijsten. */
+.home-art__wall {
+  column-gap: 0.8rem;
+}
+
+.kunst-wall {
+  column-gap: clamp(1rem, 3vw, 2.4rem);
+}
+
+@media (max-width: 720px) {
+  .home-art__wall,
+  .kunst-wall {
+    column-gap: 2rem;
+  }
+}
+
+.home-art__wall {
+  padding-inline: 1rem;
+}
+
+@media (max-width: 720px) {
+  /* Telefoon: lijsten passen tussen de pijlen, twee rijen per wand. */
+  .kunst-panel {
+    padding-inline: 3.2rem;
+    row-gap: 4rem;
+  }
+
+  .kunst-panel .kunst-piece--portrait {
+    width: min(46vw, 13rem);
+  }
+
+  .kunst-panel .kunst-piece--landscape,
+  .kunst-panel .kunst-piece--panorama {
+    width: min(64vw, 22rem);
+  }
+}

@@ -234,6 +234,7 @@ function seriePage(serie, index) {
             ${img(p, { sizes, eager: first })}
           </span>
         </a>
+        <span class="kunst-plaque" aria-hidden="true"></span>
       </figure>`;
     first = false;
     return html;
@@ -337,7 +338,7 @@ function seriePage(serie, index) {
     description: serie.omschrijving,
     url: `/galerij/${serie.slug}`,
     image: serie.coverPhoto?.og || '',
-    extraScript: '  <script src="/lightbox.js" defer></script>\n',
+    extraScript: `  <script src="/lightbox.js" defer></script>\n${wall ? '  <script src="/kunstmuur.js" defer></script>\n' : ''}`,
   })}
 <body class="serie-page${wall ? ' serie-page--muur' : ''}">
 ${nav('galerij')}
@@ -352,8 +353,12 @@ ${heroMedia}      <div class="serie-hero__text">
       </div>
     </header>
 
-${wall ? `    <div class="kunst-wall">
+${wall ? `    <div class="kunst-gallery">
+      <button class="kunst-nav kunst-nav--prev" type="button" aria-label="Vorige foto" hidden><span aria-hidden="true">&larr;</span></button>
+      <div class="kunst-wall" tabindex="0" aria-label="Kunstmuur, scroll of gebruik de pijlen om alle foto's te zien">
 ${blocks}
+      </div>
+      <button class="kunst-nav kunst-nav--next" type="button" aria-label="Volgende foto" hidden><span aria-hidden="true">&rarr;</span></button>
     </div>` : `    <div class="serie-story">
 ${blocks}
     </div>`}
@@ -423,6 +428,7 @@ const homeArt = kunstSerie
                 ${img(p, { sizes: '(max-width: 720px) 70vw, 18rem' })}
               </span>
             </a>
+            <span class="kunst-plaque" aria-hidden="true"></span>
           </figure>`;
       })
       .join('\n')
