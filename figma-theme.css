@@ -1331,3 +1331,120 @@ body.serie-page--muur {
     font-size: min(clamp(2.3rem, 13vw, 3.2rem), calc((100cqi - 2rem) / 6));
   }
 }
+
+/* ---------- Galerij: kunstserie als kleine muur met lijsten in plaats van een omslagfoto ---------- */
+.serie-card__media--muur {
+  container-type: size;
+  background:
+    var(--muur-stuc),
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(255, 255, 255, 0.6), transparent 70%),
+    linear-gradient(180deg, #f3ece0 0%, #e9dfcd 100%);
+}
+
+/* Plint met vloer onderaan de kaart. */
+.serie-card__media--muur::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 44px;
+  background: var(--muur-plint);
+  box-shadow: 0 -3px 6px -2px rgba(80, 55, 25, 0.18);
+}
+
+.kunst-mini {
+  position: absolute;
+  inset: 0 0 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5cqh;
+  padding-top: 4cqh;
+}
+
+/* Alle maten volgen de hoogte van de kaart, zodat de muur in elke kaartgrootte past. */
+.kunst-mini .kunst-piece {
+  --plaque-w: 7cqh;
+  --plaque-gap: 2.4cqh;
+  flex: none;
+}
+
+.kunst-mini .kunst-piece--panorama { width: 88cqh; }
+.kunst-mini .kunst-piece--landscape { width: 60cqh; }
+.kunst-mini .kunst-piece--portrait { width: 37cqh; }
+
+.kunst-mini .kunst-piece::before {
+  inset: -40% -40% -15%;
+}
+
+.kunst-mini .kunst-piece::after {
+  bottom: calc(100% + 7cqh - 7px);
+  width: 7px;
+  height: 7px;
+}
+
+.kunst-mini .kunst-hanger {
+  height: 7cqh;
+}
+
+.kunst-mini .kunst-frame {
+  padding: 1.4cqh;
+  cursor: inherit;
+  transition: none;
+}
+
+.kunst-mini .kunst-frame__mat {
+  padding: 2.6cqh;
+}
+
+.kunst-mini .kunst-frame__mat img,
+.serie-card__link:hover .kunst-mini img,
+.serie-card__link:focus-visible .kunst-mini img {
+  transform: none;
+  box-shadow: 0 0 0 2px #f4efe4;
+}
+
+/* De muur zelf mag bij hover licht inzoomen, net als de foto's van de andere kaarten. */
+.kunst-mini {
+  transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.serie-card__link:hover .kunst-mini,
+.serie-card__link:focus-visible .kunst-mini {
+  transform: scale(1.03);
+}
+
+@media (max-width: 720px) {
+  .kunst-mini .kunst-plaque {
+    left: calc(100% + var(--plaque-gap));
+    right: auto;
+    top: auto;
+    bottom: 14%;
+  }
+
+  .kunst-mini .kunst-piece {
+    margin-right: calc(var(--plaque-w) + var(--plaque-gap));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kunst-mini,
+  .serie-card__link:hover .kunst-mini {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* Smallere kaart: minder lijsten, zodat er niets van de muur wordt afgesneden. */
+@container (max-width: 760px) {
+  .kunst-mini .kunst-piece:nth-child(n + 3) {
+    display: none;
+  }
+}
+
+@container (max-width: 470px) {
+  .kunst-mini .kunst-piece:nth-child(n + 2) {
+    display: none;
+  }
+}

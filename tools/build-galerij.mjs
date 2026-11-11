@@ -129,14 +129,31 @@ function cardSizes(index) {
   return '(max-width: 560px) 92vw, (max-width: 920px) 46vw, 28rem';
 }
 
+// Kunstserie in de galerij: geen losse omslagfoto, maar een kleine muur met de eerste vier lijsten.
+// Alles is decoratie binnen de kaartlink, dus geen eigen links en lege alt-teksten.
+function miniMuur(serie) {
+  const pieces = serie.layout
+    .flat()
+    .filter((block) => typeof block === 'string')
+    .slice(0, 4)
+    .map((file) => {
+      const p = photo(file);
+      if (!p) return '';
+      const shape = p.ratio > 1.7 ? 'panorama' : p.portrait ? 'portrait' : 'landscape';
+      return `<span class="kunst-piece kunst-piece--${shape}"><svg class="kunst-hanger" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M4 40 L50 4 L96 40" /></svg><span class="kunst-frame"><span class="kunst-frame__mat">${img({ ...p, alt: '' }, { sizes: '16rem' })}</span></span><span class="kunst-plaque"></span></span>`;
+    })
+    .join('');
+  return `<span class="kunst-mini" aria-hidden="true">${pieces}</span>`;
+}
+
 const cards = series
   .map((serie, index) => {
     const label = data.categorieen[serie.categorie];
     const count = serie.layout.flat().filter((block) => typeof block === 'string' || typeof block?.breed === 'string').length;
     return `        <div class="serie-card" role="listitem" data-serie-card data-category="${esc(serie.categorie)}">
           <a class="serie-card__link" href="/galerij/${esc(serie.slug)}">
-            <figure class="serie-card__media">
-              ${serie.coverPhoto ? img(serie.coverPhoto, { sizes: cardSizes(index), eager: index < 3 }) : ''}
+            <figure class="serie-card__media${serie.thema === 'muur' ? ' serie-card__media--muur' : ''}">
+              ${serie.thema === 'muur' ? miniMuur(serie) : serie.coverPhoto ? img(serie.coverPhoto, { sizes: cardSizes(index), eager: index < 3 }) : ''}
               <span class="serie-card__label">${esc(label)}</span>
             </figure>
             <div class="serie-card__body">
