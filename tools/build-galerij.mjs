@@ -120,6 +120,15 @@ for (const serie of series) {
   if (!data.categorieen[serie.categorie]) problems.push(`Serie "${serie.slug}" heeft onbekende categorie "${serie.categorie}"`);
 }
 
+// Breedte van de omslagfoto per plek in het mozaïek (zie .serie-grid in figma-theme.css):
+// elke 1e van 5 is de grote kaart, elke 5e is half zo breed, de rest smal maar hoog.
+// Ruim genomen, omdat de foto de kaart vult (object-fit: cover) en dus ook op hoogte kan schalen.
+function cardSizes(index) {
+  if (index % 5 === 0) return '(max-width: 920px) 92vw, 55rem';
+  if (index % 5 === 4) return '(max-width: 560px) 92vw, (max-width: 920px) 46vw, 37rem';
+  return '(max-width: 560px) 92vw, (max-width: 920px) 46vw, 28rem';
+}
+
 const cards = series
   .map((serie, index) => {
     const label = data.categorieen[serie.categorie];
@@ -127,7 +136,7 @@ const cards = series
     return `        <div class="serie-card" role="listitem" data-serie-card data-category="${esc(serie.categorie)}">
           <a class="serie-card__link" href="/galerij/${esc(serie.slug)}">
             <figure class="serie-card__media">
-              ${serie.coverPhoto ? img(serie.coverPhoto, { sizes: '(max-width: 560px) 88vw, (max-width: 920px) 44vw, 20rem', eager: index < 3 }) : ''}
+              ${serie.coverPhoto ? img(serie.coverPhoto, { sizes: cardSizes(index), eager: index < 3 }) : ''}
               <span class="serie-card__label">${esc(label)}</span>
             </figure>
             <div class="serie-card__body">
@@ -425,7 +434,7 @@ const homeArt = kunstSerie
             <svg class="kunst-hanger" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M4 40 L50 4 L96 40" /></svg>
             <a class="kunst-frame" href="/galerij/${esc(kunstSerie.slug)}" aria-label="Naar de kunstmuur: ${esc(p.alt)}">
               <span class="kunst-frame__mat">
-                ${img(p, { sizes: '(max-width: 720px) 70vw, 18rem' })}
+                ${img(p, { sizes: '(max-width: 720px) 80vw, 24rem' })}
               </span>
             </a>
             <span class="kunst-plaque" aria-hidden="true"></span>
