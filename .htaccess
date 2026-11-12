@@ -39,6 +39,8 @@ RewriteRule ^galerij/([a-z0-9-]+)$ series/$1.html [L,NC]
 RewriteRule ^blogs$ blog.html [L]
 RewriteRule ^blogs/evenementen-fotografie$ blog-evenementen-fotografie.html [L]
 RewriteRule ^blogs/verjaardag-fotoshoot$ Blog-verjaardag-fotoshoot.html [L]
+RewriteRule ^blogs/21-diner-organiseren$ blog-21-diner-organiseren.html [L]
+RewriteRule ^blogs/linkedin-foto-laten-maken$ blog-linkedin-foto-laten-maken.html [L]
 
 # Snelheid: tekstbestanden gecomprimeerd versturen.
 <IfModule mod_deflate.c>

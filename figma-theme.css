@@ -1487,3 +1487,725 @@ body.serie-page--muur {
   background: var(--figma-orange-deep);
   color: var(--figma-cream-text);
 }
+
+/* ---------- SEO-teksten: klein H1-kopje, verhaal en "Lees meer" ---------- */
+.serie-hero__eyebrow {
+  margin: 0 0 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  color: var(--figma-ink);
+  opacity: 0.8;
+}
+
+.verhaal {
+  color: var(--figma-ink);
+}
+
+.verhaal__kop {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.verhaal p {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.verhaal p + p,
+.verhaal p + .verhaal__vraag {
+  margin-top: 0.7rem;
+}
+
+.verhaal__vraag {
+  margin: 0 0 0.2rem;
+  font-size: 0.875rem;
+  font-weight: 900;
+}
+
+.verhaal a,
+.serie-cta__text a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--figma-orange-deep);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.verhaal--start {
+  max-width: 26rem;
+}
+
+/* De rest van het verhaal: over de volle breedte onder de hoofdfoto, in kolommen. */
+.verhaal--rest {
+  columns: 2 22rem;
+  column-gap: 2.6rem;
+  margin: -0.6rem 0 2.4rem;
+  padding: 1.6rem 1.8rem;
+  border-radius: var(--figma-radius-sm);
+  background: #fffcef;
+  box-shadow: inset 0 0 0 var(--figma-frame) var(--figma-orange);
+}
+
+.verhaal--rest .verhaal__blok {
+  break-inside: avoid;
+  padding-bottom: 1.3rem;
+}
+
+.verhaal--rest .verhaal__blok:last-child {
+  padding-bottom: 0;
+}
+
+
+@keyframes verhaal-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.lees-meer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.95rem;
+  padding: 0.5rem 1.05rem;
+  border: 0;
+  border-radius: var(--figma-radius-sm);
+  background: var(--figma-orange);
+  color: var(--figma-cream-text);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+.lees-meer[hidden] {
+  display: none;
+}
+
+.lees-meer:hover,
+.lees-meer:focus-visible {
+  background: var(--figma-orange-deep);
+}
+
+.lees-meer__pijl {
+  transition: transform 200ms ease;
+}
+
+.lees-meer[aria-expanded="true"] .lees-meer__pijl {
+  transform: rotate(180deg);
+}
+
+/* Kunstmuur: het verhaal staat onder de muur, gecentreerd. */
+.verhaal-muur {
+  display: grid;
+  justify-items: center;
+  margin-top: 2.6rem;
+  text-align: center;
+}
+
+.verhaal-muur .verhaal--start {
+  max-width: 40rem;
+}
+
+.verhaal-muur .verhaal--rest {
+  width: 100%;
+  margin: 1.4rem 0 0;
+  text-align: left;
+}
+
+.verhaal-muur .lees-meer {
+  order: 2;
+}
+
+/* Oproep onderaan met een korte tekst erbij. */
+h2.serie-cta__lead {
+  margin: 0;
+}
+
+.serie-cta__text {
+  max-width: 38rem;
+  margin: 0;
+  color: var(--figma-ink);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+@media (max-width: 920px) {
+  .verhaal--start {
+    max-width: none;
+  }
+
+  .verhaal--rest {
+    margin-top: 0;
+    padding: 1.3rem 1.2rem;
+  }
+}
+
+/* Footer: korte omschrijving naast de naam. */
+.site-footer__tagline {
+  flex: 1 1 22rem;
+  max-width: 34rem;
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+/* Ingeklapt: geen rand of ruimte laten zien. */
+.verhaal--rest:not(.is-open) {
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+/* Homepage: H1 als klein kopje boven "Over mij", tekst die openklapt en links in de panelen. */
+.home-eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  color: inherit;
+  opacity: 0.9;
+}
+
+.home-lead {
+  font-weight: 900;
+}
+
+
+.home-meer > p + p {
+  margin-top: 0.7rem;
+}
+
+.text-panel .lees-meer {
+  align-self: flex-start;
+  background: var(--figma-cream-text);
+  color: var(--figma-ink);
+}
+
+.text-panel .lees-meer:hover,
+.text-panel .lees-meer:focus-visible {
+  background: #fff;
+}
+
+.text-panel p a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* Over mij: de foto groeit mee met de tekst ernaast (ook als "Lees meer" openklapt). */
+@media (min-width: 921px) {
+  .about-media {
+    display: flex;
+  }
+
+  .about-photo-card {
+    flex: 1;
+    aspect-ratio: auto;
+    min-height: 22rem;
+  }
+
+  .about-photo-card img {
+    position: absolute;
+    object-fit: cover;
+  }
+}
+
+/* Fotoshoot: uitleg en vragen onder de calculator. */
+.shoot-info {
+  max-width: 52rem;
+  margin: 3rem auto 0;
+  padding: 1.8rem 1.9rem;
+  border-radius: var(--figma-radius-sm);
+  background: #fffcef;
+  box-shadow: inset 0 0 0 var(--figma-frame) var(--figma-orange);
+}
+
+.shoot-info__stappen,
+.shoot-info__lijst {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0.4rem 0 0;
+  padding-left: 1.2rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.shoot-info .verhaal--rest {
+  columns: auto;
+  margin: 1.4rem 0 0;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.shoot-info__links {
+  margin-top: 1rem !important;
+}
+
+/* Kunstmuur-verhaal en oproep onderaan: gewoon links uitgelijnd, in een rustige kolom. */
+.verhaal-muur {
+  justify-items: stretch;
+  max-width: 40rem;
+  margin-inline: auto;
+  text-align: left;
+}
+
+.verhaal-muur .verhaal--start {
+  max-width: none;
+}
+
+.verhaal-muur .lees-meer {
+  justify-self: start;
+}
+
+.serie-cta {
+  justify-items: start;
+  max-width: 40rem;
+  margin-inline: auto;
+  text-align: left;
+}
+
+/* Blogs: foto's in de tekst, tussenkopjes, auteur en knop onderaan. */
+.blog-article-section h3 {
+  margin: 1.1rem 0 0.35rem;
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.blog-article-section ol {
+  margin: 0 0 0.95rem;
+  padding-left: 1.3rem;
+  line-height: 1.65;
+}
+
+.blog-article-section li + li {
+  margin-top: 0.35rem;
+}
+
+.blog-article-section h2:not(:first-child) {
+  margin-top: 1.8rem;
+}
+
+.blog-figure {
+  margin: 1.4rem 0 1.6rem;
+  padding: var(--figma-frame);
+  border-radius: var(--figma-radius-sm);
+  background: var(--figma-orange);
+}
+
+.blog-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: calc(var(--figma-radius-sm) - var(--figma-frame));
+}
+
+.blog-figure--staand {
+  max-width: 26rem;
+  margin-inline: auto;
+}
+
+.blog-figure--duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--figma-frame);
+}
+
+.blog-figure--duo img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.blog-breadcrumb a {
+  color: inherit;
+}
+
+.blog-author {
+  margin: 0.9rem 0 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+.blog-article-cta {
+  margin-top: 1.6rem !important;
+}
+
+/* Oproep en kunstmuur-verhaal: links, gelijk met de rand van de foto's. */
+.serie-cta,
+.verhaal-muur {
+  margin-inline: 0;
+}
+
+/* Recensie onder de foto's. */
+.serie-recensie {
+  max-width: 40rem;
+  margin: clamp(2rem, 4vw, 2.6rem) 0 0;
+  padding: 1.4rem 1.6rem;
+  border-radius: var(--figma-radius-sm);
+  background: var(--figma-orange);
+  color: var(--figma-cream-text);
+}
+
+.serie-recensie blockquote {
+  margin: 0;
+}
+
+.serie-recensie blockquote p {
+  margin: 0;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.serie-recensie figcaption {
+  margin-top: 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* Blogkaart met drie staande foto's naast elkaar (portretshoots zonder liggende foto). */
+.blog-wide__trio {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1fr);
+  gap: 6px;
+  border-radius: calc(var(--figma-radius-sm) - 6px);
+  overflow: hidden;
+  transition: transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.blog-wide__trio img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.blog-wide:hover .blog-wide__trio,
+.blog-wide:focus-visible .blog-wide__trio {
+  transform: scale(1.03);
+}
+
+@media (hover: none), (max-width: 720px) {
+  .blog-wide__trio {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    border-radius: calc(var(--figma-radius-sm) - 6px) calc(var(--figma-radius-sm) - 6px) 0 0;
+  }
+}
+
+/* Recensie in een blog. */
+.blog-quote {
+  margin: 1.4rem 0 1.6rem;
+  padding: 1.2rem 1.4rem;
+  border-radius: var(--figma-radius-sm);
+  background: var(--figma-cream-text);
+  color: var(--figma-ink);
+}
+
+.blog-quote blockquote {
+  margin: 0;
+}
+
+.blog-quote blockquote p {
+  margin: 0;
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.blog-quote figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* Blogpaneel: lange titels breken netjes af en duwen de tekst niet buiten het paneel. */
+.blog-article-panel {
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
+}
+
+.blog-article-title {
+  font-size: clamp(1.9rem, 3vw, 2.7rem);
+  line-height: 1.05;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.blog-article-panel > p {
+  margin: 0;
+}
+
+/* ---------- Veelgestelde vragen: kop en tekst links, klapvakken rechts ---------- */
+.faq {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: start;
+  width: 100%;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  color: var(--figma-ink);
+}
+
+.faq__intro {
+  display: grid;
+  justify-items: start;
+  gap: 0.9rem;
+  padding: 1.6rem 1.7rem;
+  border-radius: var(--figma-radius);
+  background: var(--figma-orange);
+  color: var(--figma-cream-text);
+}
+
+.faq__titel {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--figma-cream-text);
+}
+
+.faq__intro p {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.faq__knop {
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--figma-radius-sm);
+  background: var(--figma-cream-text);
+  color: var(--figma-ink);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.faq__knop:hover,
+.faq__knop:focus-visible {
+  background: #fff;
+}
+
+.faq__lijst {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.faq__item {
+  border-radius: var(--figma-radius-sm);
+  background: #fffcef;
+  box-shadow: inset 0 0 0 2px rgba(255, 188, 76, 0.55);
+  interpolate-size: allow-keywords;
+}
+
+.faq__item[open] {
+  box-shadow: inset 0 0 0 2px var(--figma-orange);
+}
+
+.faq__vraag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 900;
+  line-height: 1.35;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq__vraag::-webkit-details-marker {
+  display: none;
+}
+
+.faq__vraag:focus-visible {
+  outline: 3px solid var(--figma-orange-deep);
+  outline-offset: 2px;
+  border-radius: var(--figma-radius-sm);
+}
+
+/* Plus die een min wordt. */
+.faq__icoon {
+  position: relative;
+  flex: none;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  background: var(--figma-orange);
+  transition: background 200ms ease;
+}
+
+.faq__icoon::before,
+.faq__icoon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.8rem;
+  height: 2px;
+  margin: -1px 0 0 -0.4rem;
+  border-radius: 2px;
+  background: var(--figma-cream-text);
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.faq__icoon::after {
+  transform: rotate(90deg);
+}
+
+.faq__item[open] .faq__icoon::after {
+  transform: rotate(0deg);
+}
+
+.faq__vraag:hover .faq__icoon {
+  background: var(--figma-orange-deep);
+}
+
+/* Soepel openklappen waar de browser dat kan; anders gewoon direct. */
+.faq__item::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition: block-size 450ms cubic-bezier(0.22, 1, 0.36, 1), content-visibility 450ms allow-discrete;
+}
+
+.faq__item[open]::details-content {
+  block-size: auto;
+}
+
+.faq__antwoord {
+  padding: 0 1.2rem 1.1rem;
+}
+
+.faq__antwoord p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.faq__antwoord a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--figma-orange-deep);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq__item::details-content {
+    transition: none;
+  }
+}
+
+@media (max-width: 920px) {
+  .faq {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* In een blog: even breed als de tekst erboven. */
+.blog-article-shell > .faq {
+  width: min(100%, 60rem);
+  justify-self: center;
+  margin-top: 0;
+}
+
+/* Fotoshoot: even breed als de uitleg erboven. */
+.shoot-shell > .faq {
+  max-width: 52rem;
+  margin-inline: auto;
+}
+
+/* Recensie in een blog: subtiel, alleen een lijntje links en rustige tekst. */
+.blog-quote {
+  margin: 1.2rem 0 1.4rem;
+  padding: 0.15rem 0 0.15rem 1rem;
+  border-left: 3px solid var(--figma-cream-text);
+  border-radius: 0;
+  background: none;
+  color: inherit;
+}
+
+.blog-quote blockquote p {
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.blog-quote figcaption {
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+/* Recensie (optie A): groot aanhalingsteken links, rustige tekst, naam in kleine hoofdletters. */
+.blog-quote,
+.serie-recensie {
+  position: relative;
+  padding: 0.2rem 0 0.2rem 3.9rem;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.blog-quote::before,
+.serie-recensie::before {
+  content: "\201C";
+  position: absolute;
+  left: 0;
+  top: -0.45rem;
+  font-size: 4.6rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--figma-ink);
+  opacity: 0.85;
+}
+
+.blog-quote blockquote p,
+.serie-recensie blockquote p {
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.blog-quote figcaption,
+.serie-recensie figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 1;
+}
+
+.blog-quote { color: var(--figma-cream-text); }
+.serie-recensie { color: var(--figma-ink); }
+.serie-recensie::before { color: var(--figma-orange); opacity: 1; }

@@ -8,6 +8,7 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, rmSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { faqBlok, faqSchema } from './faq.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const site = 'https://vansonfotografie.nl';
@@ -17,6 +18,42 @@ const instagram = 'https://www.instagram.com/van_son_fotografie/';
 
 const esc = (value) =>
   String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
+
+// Tekst met links in de vorm [linktekst](/pad) of [linktekst](mailto:...).
+const rich = (value) =>
+  esc(value).replace(/\[([^\]]+)\]\(((?:\/|mailto:)[^)\s]*)\)/g, (_, label, href) => `<a href="${href}">${label}</a>`);
+
+const footer = `  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span class="site-footer__brand">van Son fotografie</span>
+      <p class="site-footer__tagline">Fotograaf voor evenementen, 21 diners, bruiloften en zakelijke portretten. Ik kom door heel Nederland, reiskosten in overleg.</p>
+      <nav class="site-footer__links" aria-label="Contact">
+        <a href="mailto:info@vansonfotografie.nl">Mail</a>
+        <a href="https://www.instagram.com/van_son_fotografie/">Instagram</a>
+        <a href="https://www.linkedin.com/in/gijs-van-son-98b421199/">LinkedIn</a>
+      </nav>
+    </div>
+  </footer>`;
+
+// Eén blok uit het verhaal van een serie: een kopje met alinea's of met vragen en antwoorden.
+function verhaalBlok(blok, level = 'h2') {
+  const kop = `<${level} class="verhaal__kop">${esc(blok.kop)}</${level}>`;
+  const alineas = (blok.tekst ?? []).map((alinea) => `<p>${rich(alinea)}</p>`);
+  const vragen = (blok.vragen ?? []).map(
+    ({ vraag, antwoord }) => `<h3 class="verhaal__vraag">${esc(vraag)}</h3>\n          <p>${rich(antwoord)}</p>`
+  );
+  return `<section class="verhaal__blok">
+          ${kop}
+          ${[...alineas, ...vragen].join('\n          ')}
+        </section>`;
+}
+
+// Het eerste deel van het verhaal staat er meteen; de rest klapt open met "Lees meer".
+function leesMeerKnop(id, label = 'Lees meer') {
+  return `<button class="lees-meer" type="button" aria-expanded="false" aria-controls="${id}" data-lees-meer hidden>
+          <span data-lees-meer-label>${esc(label)}</span> <span class="lees-meer__pijl" aria-hidden="true">&darr;</span>
+        </button>`;
+}
 
 const problems = [];
 
@@ -158,7 +195,7 @@ const cards = series
             </figure>
             <div class="serie-card__body">
               <h2 class="serie-card__title">${esc(serie.titel)}</h2>
-              <p class="serie-card__context">${esc(serie.context)}</p>
+              <p class="serie-card__context">${esc(serie.bijschrift ?? serie.context)}</p>
               <div class="serie-card__footer">
                 <span class="serie-card__cta">Bekijk serie <span class="serie-card__arrow" aria-hidden="true">&rarr;</span></span>
                 <span class="serie-card__count">${count} foto's</span>
@@ -177,8 +214,8 @@ const filters = [
 ].join('\n          ');
 
 const overview = `${head({
-  title: 'Galerij | van Son fotografie',
-  description: 'Fotoseries van van Son fotografie: 21 diners, evenementen, festivals en vrij werk. Elke serie vertelt het verhaal van één dag.',
+  title: 'Portfolio: bruiloft, events en portret | van Son fotografie',
+  description: 'Bekijk het portfolio van van Son fotografie: bruiloften, festivals, 21 diners, zakelijke portretten en vrij werk. Spontaan en sfeervol vastgelegd.',
   url: '/galerij',
   image: series[0].coverPhoto?.og || '',
   extraScript: '  <script src="/gallery.js" defer></script>\n',
@@ -188,7 +225,7 @@ ${nav('galerij')}
 
   <main class="page-shell galerij-shell">
     <section class="galerij-intro">
-      <h1 class="galerij-title visually-hidden">Galerij: authentieke momenten, stijlvol vastgelegd</h1>
+      <h1 class="galerij-title visually-hidden">Portfolio: evenementen, bruiloften en portretten</h1>
       <div class="gallery-filterbar" role="group" aria-label="Filter series op categorie">
           ${filters}
       </div>
@@ -203,11 +240,13 @@ ${cards}
 
     <section class="gallery-cta">
       <div class="contact-card">
-        <h2 class="panel-title">Zelf zulke beelden laten maken?</h2>
+        <h2 class="panel-title">Zie je iets wat je aanspreekt?</h2>
         <p>
-          Zie je een serie die past bij wat je zoekt? Stel jouw fotoshoot samen, dan kijken we samen welk
-          soort shoot of reportage het beste bij jouw moment past.
+          Hier vind je een selectie van mijn werk. Elke serie is een echte opdracht, met een eigen verhaal:
+          van een 21 diner in de tuin tot sfeerbeelden aan het strand van Scheveningen. Wat ze gemeen hebben?
+          Kleur, spontaniteit en mensen die zichzelf zijn.
         </p>
+        <p>Stel je fotoshoot samen en ontvang direct een prijsindicatie.</p>
         <div class="contact-actions">
           <a class="button button-primary" href="/fotoshoot">Stel jouw fotoshoot samen</a>
           <a class="button button-secondary" href="/#contact">Neem contact op</a>
@@ -216,16 +255,7 @@ ${cards}
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="site-footer__inner">
-      <span class="site-footer__brand">van Son fotografie</span>
-      <nav class="site-footer__links" aria-label="Contact">
-        <a href="mailto:info@vansonfotografie.nl">Mail</a>
-        <a href="https://www.instagram.com/van_son_fotografie/">Instagram</a>
-        <a href="https://www.linkedin.com/in/gijs-van-son-98b421199/">LinkedIn</a>
-      </nav>
-    </div>
-  </footer>
+${footer}
 </body>
 </html>
 `;
@@ -349,22 +379,56 @@ function seriePage(serie, index) {
 `
     : '';
 
+  const afsluiter = serie.afsluiter;
+  const ctaLead = afsluiter
+    ? `<h2 class="serie-cta__lead">${esc(afsluiter.kop)}</h2>
+      <p class="serie-cta__text">${rich(afsluiter.tekst)}</p>`
+    : `<p class="serie-cta__lead">${wall ? 'Benieuwd naar meer vrij werk?' : "Ook zo'n dag laten vastleggen?"}</p>`;
   const cta = wall
     ? `    <section class="serie-cta">
-      <p class="serie-cta__lead">Benieuwd naar meer vrij werk?</p>
+      ${ctaLead}
       <a class="button button-primary" href="${instagram}">Bekijk mijn Instagram &rarr;</a>
     </section>`
     : `    <section class="serie-cta">
-      <p class="serie-cta__lead">Ook zo'n dag laten vastleggen?</p>
-      <a class="button button-primary" href="/fotoshoot">Stel jouw fotoshoot samen &rarr;</a>
+      ${ctaLead}
+      <a class="button button-primary" href="/fotoshoot">Stel je fotoshoot samen &rarr;</a>
     </section>`;
 
+  // Verhaal: het eerste blok staat er meteen, de rest klapt open met "Lees meer".
+  // Vragen staan niet in het verhaal maar in een eigen blok "Veelgestelde vragen".
+  const vragen = (serie.verhaal ?? [])
+    .filter((blok) => blok.vragen)
+    .flatMap((blok) => blok.vragen.map(({ vraag, antwoord }) => [vraag, antwoord]));
+  const vragenTitel = (serie.verhaal ?? []).find((blok) => blok.vragen)?.kop;
+  const faq = vragen.length ? `\n${faqBlok(vragen, { titel: vragenTitel })}\n` : '';
+  const faqLd = vragen.length ? `  <script type="application/ld+json">${JSON.stringify(faqSchema(vragen))}</script>\n` : '';
+  const verhaal = (serie.verhaal ?? []).filter((blok) => !blok.vragen);
+  const verhaalId = `verhaal-${serie.slug}`;
+  const verhaalStart = verhaal[0] ? verhaalBlok(verhaal[0]) : '';
+  const verhaalRest = verhaal.length > 1
+    ? `    <div class="verhaal verhaal--rest" id="${verhaalId}" data-lees-meer-inhoud>
+        ${verhaal.slice(1).map((blok) => verhaalBlok(blok)).join('\n        ')}
+    </div>`
+    : '';
+  const knop = verhaal.length > 1 ? leesMeerKnop(verhaalId) : '';
+
+  const recensie = serie.recensie
+    ? `
+    <figure class="serie-recensie">
+      <blockquote>
+        <p>${esc(serie.recensie.tekst)}</p>
+      </blockquote>
+      <figcaption>&mdash; ${esc(serie.recensie.naam)}${serie.recensie.over ? `, ${esc(serie.recensie.over)}` : ''}</figcaption>
+    </figure>
+`
+    : '';
+
   return `${head({
-    title: `${serie.titel} – ${serie.context} | van Son fotografie`,
-    description: serie.omschrijving,
+    title: serie.seo?.title ?? `${serie.titel} – ${serie.context} | van Son fotografie`,
+    description: serie.seo?.description ?? serie.omschrijving,
     url: `/galerij/${serie.slug}`,
     image: serie.coverPhoto?.og || '',
-    extraScript: `  <script src="/lightbox.js" defer></script>\n${wall ? '  <script src="/kunstmuur.js" defer></script>\n' : ''}`,
+    extraScript: `  <script src="/lightbox.js" defer></script>\n${wall ? '  <script src="/kunstmuur.js" defer></script>\n' : ''}  <script src="/leesmeer.js" defer></script>\n${faqLd}`,
   })}
 <body class="serie-page${wall ? ' serie-page--muur' : ''}">
 ${nav('galerij')}
@@ -372,23 +436,34 @@ ${nav('galerij')}
   <main class="serie-shell">
     <header class="serie-hero${heroPhoto ? (heroPhoto.portrait ? ' serie-hero--staand' : '') : wall ? ' visually-hidden' : ' serie-hero--text'}">
 ${heroMedia}      <div class="serie-hero__text">
-        <h1 class="serie-hero__title">${esc(serie.titel)}</h1>
+        <h1 class="serie-hero__eyebrow">${esc(serie.seo?.h1 ?? serie.titel)}</h1>
+        <p class="serie-hero__title">${esc(serie.titel)}</p>
         <p class="serie-hero__subtitle">${esc(serie.context)}</p>
-        ${serie.introKop ? `<h2 class="serie-hero__kop">${esc(serie.introKop)}</h2>` : ''}
-        ${[serie.intro ?? []].flat().map((alinea) => `<p class="serie-hero__intro">${esc(alinea)}</p>`).join('\n        ')}
-      </div>
+${wall ? '' : `        <div class="verhaal verhaal--start">
+        ${verhaalStart}
+        </div>
+        ${knop}
+`}      </div>
     </header>
-
+${wall ? '' : `\n${verhaalRest}\n`}
 ${wall ? `    <div class="kunst-gallery">
       <button class="kunst-nav kunst-nav--prev" type="button" aria-label="Vorige foto" hidden><span aria-hidden="true">&larr;</span></button>
       <div class="kunst-wall" tabindex="0" aria-label="Kunstmuur, scroll of gebruik de pijlen om alle foto's te zien">
 ${blocks}
       </div>
       <button class="kunst-nav kunst-nav--next" type="button" aria-label="Volgende foto" hidden><span aria-hidden="true">&rarr;</span></button>
-    </div>` : `    <div class="serie-story">
+    </div>${verhaal.length ? `
+
+    <div class="verhaal-muur">
+      <div class="verhaal verhaal--start">
+        ${verhaalStart}
+      </div>
+${verhaalRest}
+      ${knop}
+    </div>` : ''}` : `    <div class="serie-story">
 ${blocks}
     </div>`}
-
+${faq}${recensie}
 ${cta}
 
     <nav class="serie-next" aria-label="Andere series">
@@ -397,16 +472,7 @@ ${cta}
     </nav>
   </main>
 
-  <footer class="site-footer">
-    <div class="site-footer__inner">
-      <span class="site-footer__brand">van Son fotografie</span>
-      <nav class="site-footer__links" aria-label="Contact">
-        <a href="mailto:info@vansonfotografie.nl">Mail</a>
-        <a href="https://www.instagram.com/van_son_fotografie/">Instagram</a>
-        <a href="https://www.linkedin.com/in/gijs-van-son-98b421199/">LinkedIn</a>
-      </nav>
-    </div>
-  </footer>
+${footer}
 
 ${lightboxMarkup}
 </body>
@@ -505,6 +571,8 @@ const urls = [
   '/blogs',
   '/blogs/evenementen-fotografie',
   '/blogs/verjaardag-fotoshoot',
+  '/blogs/21-diner-organiseren',
+  '/blogs/linkedin-foto-laten-maken',
   '/fotoshoot',
 ];
 writeFileSync(

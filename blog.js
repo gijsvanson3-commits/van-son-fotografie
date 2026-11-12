@@ -48,6 +48,7 @@ async function getBlogData(source) {
       href: source,
       title,
       intro:
+        doc.querySelector('meta[name="blog-samenvatting"]')?.getAttribute("content")?.trim() ||
         extractText(doc.querySelector(".blog-article-lead")) ||
         doc.querySelector('meta[name="description"]')?.getAttribute("content")?.trim() ||
         "",
@@ -55,6 +56,8 @@ async function getBlogData(source) {
       imageSrcset: image?.getAttribute("srcset") || "",
       imageAlt: image?.getAttribute("alt") || "",
       readingTime: getReadingTime(doc),
+      // Staande foto's naast elkaar op de kaart (bijv. bij een portretshoot zonder liggende foto).
+      cardPhotos: (doc.querySelector('meta[name="blog-kaartfotos"]')?.getAttribute("content") || "").split(" ").filter(Boolean),
     };
   } catch (error) {
     console.warn(`Automatisch laden van ${source} is niet gelukt.`, error);
@@ -107,6 +110,26 @@ function fillBlogCard(card, data) {
     } else {
       image.removeAttribute("srcset");
     }
+  }
+
+  if (data.cardPhotos.length > 1) {
+    const trio = document.createElement("span");
+    trio.className = "blog-wide__trio";
+    trio.setAttribute("role", "img");
+    trio.setAttribute("aria-label", data.imageAlt || `Foto's bij ${data.title}`);
+    data.cardPhotos.forEach((slug) => {
+      const photo = document.createElement("img");
+      photo.src = `/assets/images/opt/${slug}-720.webp`;
+      photo.srcset = [480, 720, 960].map((w) => `/assets/images/opt/${slug}-${w}.webp ${w}w`).join(", ");
+      photo.sizes = "(max-width: 920px) 31vw, 24rem";
+      photo.alt = "";
+      photo.loading = "lazy";
+      photo.decoding = "async";
+      trio.append(photo);
+    });
+    card.querySelector(".blog-wide__trio")?.remove();
+    image.replaceWith(trio);
+    card.classList.add("blog-wide--trio");
   }
 
   if (!data.imageSrc) {

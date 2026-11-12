@@ -10,6 +10,8 @@ $routes = [
     '/' => 'index.html', '/fotoshoot' => 'fotoshoot.html', '/galerij' => 'gallery.html',
     '/blogs' => 'blog.html', '/blogs/evenementen-fotografie' => 'blog-evenementen-fotografie.html',
     '/blogs/verjaardag-fotoshoot' => 'Blog-verjaardag-fotoshoot.html',
+    '/blogs/21-diner-organiseren' => 'blog-21-diner-organiseren.html',
+    '/blogs/linkedin-foto-laten-maken' => 'blog-linkedin-foto-laten-maken.html',
 ];
 if (preg_match('~^/galerij/([a-z0-9-]+)$~', $path, $serie) && is_file(__DIR__ . '/../series/' . $serie[1] . '.html')) {
     $routes[$path] = 'series/' . $serie[1] . '.html';

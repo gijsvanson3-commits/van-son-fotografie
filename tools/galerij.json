@@ -6,7 +6,11 @@
     "layout: de eerste losse foto komt bovenaan naast de titel. Daarna: een bestandsnaam = foto over de volle breedte, [twee namen] = twee naast elkaar, {\"breed\": \"naam\", \"uitsnede\": \"20%\"} = staande foto toch breed bijgesneden (uitsnede: 0% = bovenkant, 100% = onderkant), {\"tekst\": \"...\"} = tekstvak op de foto('s) die erna komen (met \"kop\": \"...\" erbij krijgt het tekstvak een kopje).",
     "alt-teksten: beschrijving per foto in \"alt\" onderaan (voor Google en schermlezers). Elke gebruikte foto moet er één hebben.",
     "thema: \"muur\" hangt de foto's ingelijst aan een muur (voor kunst).",
-    "intro mag ook een lijst van alinea's zijn; met \"introKop\": \"...\" krijgt de tekst naast de hoofdfoto een kopje."
+    "seo: title, description en h1 voor Google. h1 staat als klein kopje boven de grote titel.",
+    "bijschrift: één zin over de serie op de galerijpagina.",
+    "verhaal: de tekst van de serie, per blok een \"kop\" met \"tekst\" (lijst van alinea's) of \"vragen\" (vraag/antwoord). Het eerste blok staat naast de hoofdfoto, de rest klapt open met \"Lees meer\". Links schrijf je als [linktekst](/pad).",
+    "afsluiter: kop en tekst boven de knop \"Stel je fotoshoot samen\" onderaan.",
+    "recensie: optioneel, {\"tekst\", \"naam\", \"over\"}; staat onder de foto's, boven de oproep."
   ],
   "categorieen": {
     "21-diner": "21 diner",
@@ -21,12 +25,7 @@
       "categorie": "21-diner",
       "titel": "21-diner",
       "context": "Een mooie zomeravond met mooie verhalen, gezelligheid en veel lekkere wijn!",
-      "introKop": "Een bijzondere avond om vast te leggen",
-      "intro": [
-        "Voor haar 21-diner benaderde de jarige mij met de vraag of ik deze bijzondere avond wilde vastleggen.",
-        "Tijdens het diner heb ik me vooral gericht op het vastleggen van de mooie zomerse sfeer die deze dag had. Het was fantastisch weer, iedereen genoot van het heerlijke zonnetje en de heerlijke wijn. Bij het vastleggen van een dergelijk evenement is het mijn doel om een beetje onopvallend te zijn, zo krijg je meer spontane beelden die echt laten zien hoe mensen zelf zijn. Hiernaast is het fijn om te zien dat iedereen zo geniet!"
-      ],
-      "omschrijving": "Fotoreportage van een 21-diner op een zomeravond: spontane beelden van gasten, mooie verhalen en wijn in de zon.",
+      "omschrijving": "Fotograaf voor je 21 diner: een zomeravond vol verhalen, gezelligheid en wijn, spontaan vastgelegd. Bekijk de foto's en plan jouw shoot.",
       "cover": "21-diner-3.jpg",
       "layout": [
         "21-diner-7.jpg",
@@ -45,19 +44,57 @@
           "breed": "21-diner-2.jpg",
           "uitsnede": "40%"
         }
-      ]
+      ],
+      "seo": {
+        "title": "Fotograaf 21 diner: zomeravond | van Son fotografie",
+        "description": "Fotograaf voor je 21 diner: een zomeravond vol verhalen, gezelligheid en wijn, spontaan vastgelegd. Bekijk de foto's en plan jouw shoot.",
+        "h1": "Fotograaf 21 diner: een zomeravond in de tuin"
+      },
+      "bijschrift": "Een zomerse 21 diner in de tuin, met speeches, wijn en stralend weer.",
+      "verhaal": [
+        {
+          "kop": "Een 21 diner in de tuin",
+          "tekst": [
+            "Een goede kennis van mij vierde haar 21e verjaardag met een diner buiten, in de tuin van haar ouders. Een lange tafel, familie en vrienden om haar heen en een zomeravond waarop het weer niet mooier had kunnen zijn. Ze wilde dat de avond werd vastgelegd zoals hij was: gezellig, ongedwongen en vol verhalen. Geen strakke reportage, maar foto's waarin ze de avond later echt terugvoelt."
+          ]
+        },
+        {
+          "kop": "Wat ze wilde vastleggen",
+          "tekst": [
+            "Bij een 21 diner draait alles om de mensen. De jarige, de familie, de vrienden die al jaren meegaan. Ze wilde geen rij geposeerde groepsfoto's, maar de sfeer van de avond: de gesprekken aan tafel, de toasts, het eten en vooral de speeches die bij een 21 diner horen."
+          ]
+        },
+        {
+          "kop": "Hoe ik het aanpakte",
+          "tekst": [
+            "Vooraf hebben we samen doorgenomen hoe de avond eruit zou zien en welke onderdelen zeker vastgelegd moesten worden. Zo wist ik precies wanneer de speeches zouden komen en kon ik daar op tijd klaarstaan. Daarna heb ik zelf wat voorwerk gedaan: ik bedenk dan alvast welke plekken en momenten ik wil vastleggen.",
+            "Tijdens het diner werk ik als fly on the wall. Ik beweeg me tussen de gasten, stoor zo min mogelijk en wacht op de momenten die vanzelf ontstaan. Niemand hoeft te poseren of een gesprek te onderbreken voor een foto. Het zomerlicht in de tuin deed de rest: warme kleuren aan het begin van de avond en sfeervol licht naarmate het later werd. Juist daardoor zijn de foto's zo kleurrijk geworden."
+          ]
+        },
+        {
+          "kop": "Mijn favoriete moment",
+          "tekst": [
+            "Het mooiste moment vond ik tijdens de speeches. Je zag de jarige en de gasten echt reageren: lachen, ontroerd zijn, elkaar aankijken. Een speech duurt maar een paar minuten, maar de reacties zeggen alles over hoe dierbaar iemand is. Juist die momenten maken een 21 diner zo bijzonder, en die wil je later terugzien."
+          ]
+        },
+        {
+          "kop": "Het resultaat",
+          "tekst": [
+            "Na het diner kreeg ze een online galerij met alle beelden. Daaruit koos ze haar favorieten, die ik daarna zorgvuldig heb nabewerkt. De eerste foto's lever ik altijd binnen 7 werkdagen. Zo houdt ze een complete reportage over van een avond die maar één keer gebeurt: van de eerste toost tot de laatste speech."
+          ]
+        }
+      ],
+      "afsluiter": {
+        "kop": "Ook een fotograaf voor jouw 21 diner?",
+        "tekst": "Of het nu in de tuin, thuis of in een restaurant is: stel je fotoshoot samen en zie direct wat het kost. Ik kom door heel Nederland. Op zoek naar inspiratie? [Lees mijn tips voor het organiseren van een 21 diner](/blogs/21-diner-organiseren)."
+      }
     },
     {
       "slug": "festival",
       "categorie": "evenementen",
       "titel": "Gestrand",
       "context": "House, techno en een losse sfeer aan het strand van Scheveningen",
-      "introKop": "Een feest aan het strand",
-      "intro": [
-        "In opdracht van de organisatoren mocht ik festival Gestrand vastleggen, bij Colorado Charlie aan het strand van Scheveningen. Er werd vooral house en techno gedraaid, wat zorgde voor een leuke, losse sfeer.",
-        "Tijdens het fotograferen wilde ik vooral die losse sfeer vastleggen: mensen die echt zichzelf waren. Daarnaast vond ik het belangrijk om de algehele sfeer en de omgeving van het festival in beeld te brengen."
-      ],
-      "omschrijving": "Fotoreportage van festival Gestrand bij Colorado Charlie in Scheveningen: house, techno, neonlicht en een losse sfeer aan het strand.",
+      "omschrijving": "Festivalfotografie bij Gestrand in Scheveningen: house, techno en een losse sfeer aan het strand. Bekijk de foto's van dit evenement.",
       "cover": "festival-02.jpg",
       "layout": [
         "festival-01.jpg",
@@ -65,26 +102,58 @@
           "festival-02.jpg",
           "festival-03.jpg"
         ],
-        [
-          "festival-04.jpg",
-          "festival-05.jpg"
-        ],
         {
           "tekst": "Het was een leuke avond met een goede sfeer, en ik heb zelf ook nog een dansje gewaagd!"
         },
-        "DSC00342.webp"
-      ]
+        [
+          "festival-05.jpg",
+          "DSC00342.webp"
+        ]
+      ],
+      "seo": {
+        "title": "Festivalfotograaf Gestrand Scheveningen | van Son",
+        "description": "Festivalfotografie bij Gestrand in Scheveningen: house, techno en een losse sfeer aan het strand. Bekijk de foto's van dit evenement.",
+        "h1": "Festivalfotografie: Gestrand in Scheveningen"
+      },
+      "bijschrift": "Sfeerbeelden van house en techno aan het strand van Scheveningen.",
+      "verhaal": [
+        {
+          "kop": "Sfeerbeelden voor Gestrand",
+          "tekst": [
+            "Gestrand is een feest met house en techno aan het strand van Scheveningen. De organisatie vroeg mij om sfeerbeelden te maken: foto's die laten voelen hoe het is om erbij te zijn. Zand onder je voeten, de bas die je in je borst voelt, zon op je gezicht en mensen die volledig loskomen. Geen foto's van een leeg podium, maar van de energie op de dansvloer."
+          ]
+        },
+        {
+          "kop": "Waar de foto's voor gebruikt zijn",
+          "tekst": [
+            "De beelden zijn ingezet voor de communicatie van Gestrand zelf. Daarnaast gebruikte studentenvereniging A.L.S.V. Quintus ze in hun communicatie tijdens de ELCID, de introductieweek voor nieuwe studenten in de zomer. Zo kregen aankomende studenten meteen een beeld van de sfeer. Dat laat goed zien hoe breed eventfoto's inzetbaar zijn: dezelfde beelden werken voor social media, een website, een aankondiging of een campagne."
+          ]
+        },
+        {
+          "kop": "Hoe ik werk op een festival",
+          "tekst": [
+            "Op een festival werk ik tussen het publiek. Ik wil niet dat mensen gaan poseren zodra ze een camera zien. Daarom beweeg ik mee met de menigte en wacht ik op de echte momenten: vrienden die samen dansen, iemand die lachend omkijkt, handen in de lucht bij een drop. Ik let op het licht aan het strand en op de kleuren, want die bepalen de sfeer van een festivalfoto. Kleurrijke beelden springen eruit op een tijdlijn, en daar draait het om bij communicatie.",
+            "Ik wissel bewust af tussen overzicht en detail. Een brede foto van het strand vol mensen laat zien hoe groot het feest is. Een close-up van iemand die met gesloten ogen danst, laat zien hoe het voelt. Samen vertellen ze het hele verhaal."
+          ]
+        },
+        {
+          "kop": "Afstemming en levering",
+          "tekst": [
+            "Vooraf stem ik met de organisatie af wat ze nodig hebben: welke onderdelen, hoeveel beelden en waarvoor ze gebruikt worden. Bij grote evenementen als dit spreken we de selectie van tevoren af. De organisatie krijgt dan meteen een galerij met bewerkte foto's, klaar voor socials, de website of een campagne. De eerste foto's lever ik binnen 7 werkdagen, sneller kan in overleg."
+          ]
+        }
+      ],
+      "afsluiter": {
+        "kop": "Ook een fotograaf voor jouw festival of event?",
+        "tekst": "Of het nu een festival, een bedrijfsfeest of een studentenevenement is: ik leg de sfeer vast zoals die echt was. Ik kom door heel Nederland. Stel je fotoshoot samen of [lees meer over evenementfotografie](/blogs/evenementen-fotografie)."
+      }
     },
     {
       "slug": "linkedin",
       "categorie": "portretten",
       "titel": "Zakelijk portret",
       "context": "Een professionele uitstraling, helemaal jezelf.",
-      "intro": [
-        "Jens, een goede kennis van mij, vroeg of ik LinkedIn-foto's voor zijn profiel kon maken. Tijdens deze fotoshoot in de straten van Leiden lag de nadruk op spontane en professionele portretten. Door gebruik te maken van natuurlijk licht en een ontspannen sfeer ontstonden beelden die persoonlijkheid en professionaliteit combineren.",
-        "Leiden heeft mooie, oude architectuur die als rustig straatbeeld achter het portret fungeert. Daardoor ogen de foto's al snel professioneel. Geen geforceerde poses, maar foto's waarin je jezelf herkent. Jens is erg blij met het resultaat, en ik ben er trots op hoe mooi de kleuren zijn geworden."
-      ],
-      "omschrijving": "LinkedIn-portretten in de straten van Leiden: natuurlijke, professionele portretten met oude architectuur als rustige achtergrond.",
+      "omschrijving": "Een LinkedIn foto of zakelijk portret dat professioneel oogt en toch helemaal jou is. Ontspannen shoot, ook bij jou op locatie.",
       "cover": "linkedin-01.jpg",
       "layout": [
         "linkedin-01.jpg",
@@ -100,19 +169,66 @@
           "linkedin-08.jpg",
           "linkedin-02.jpg"
         ]
-      ]
+      ],
+      "seo": {
+        "title": "LinkedIn foto & zakelijk portret | van Son fotografie",
+        "description": "Een LinkedIn foto of zakelijk portret dat professioneel oogt en toch helemaal jou is. Ontspannen shoot, ook bij jou op locatie.",
+        "h1": "LinkedIn foto en zakelijk portret laten maken"
+      },
+      "bijschrift": "Zakelijke portretten voor LinkedIn, ook gebruikt in de Volkskrant.",
+      "verhaal": [
+        {
+          "kop": "Van LinkedIn-profiel tot de Volkskrant",
+          "tekst": [
+            "Een kennis van mij wilde betere zakelijke foto's. Zijn LinkedIn-profiel kon wel een slinger gebruiken, en daarvoor had hij portretten nodig die professioneel ogen zonder stijf te worden. Uiteindelijk gebruikte hij de foto's ook bij een opiniestuk in de Volkskrant. Een goed zakelijk portret gaat dus vaak verder dan alleen je profielfoto: het wordt je visitekaartje op je website, bij een artikel of in een presentatie."
+          ]
+        },
+        {
+          "kop": "Hoe een portretshoot bij mij verloopt",
+          "tekst": [
+            "Vooraf bespreken we waar je de foto's voor gebruikt en welke uitstraling bij je past. Een portret voor een advocatenkantoor vraagt iets anders dan een portret voor een creatief ondernemer. Bij mooi weer shoot ik het liefst buiten, want daar heb je automatisch beter licht, en goed licht maakt een foto aanzienlijk mooier. Een rustige achtergrond zorgt ervoor dat alle aandacht naar jou gaat.",
+            "Tijdens de shoot geef ik je aanwijzingen waar dat helpt, maar ik zoek vooral de momenten waarop je ontspant. De eerste foto's zijn vaak wat stijf; na een paar minuten zakt dat weg en ontstaan de beelden die echt bij je passen. Mensen vertellen me vaak dat ze het gevoel hebben in goede handen te zijn, en dat zie je terug op de foto.",
+            "Na de shoot krijg je een online galerij met alle beelden. Jij kiest je favorieten, en die bewerk ik zorgvuldig na. Bij portretten ga ik secuurder en gedetailleerder te werk dan bij een evenement, want bij een portret valt elk detail op. De eerste foto's ontvang je binnen 7 werkdagen."
+          ]
+        },
+        {
+          "kop": "Veelgestelde vragen",
+          "vragen": [
+            {
+              "vraag": "Wat trek ik aan?",
+              "antwoord": "Kies iets waaraan je ziet dat het zakelijk is. Wat dat precies is, verschilt per vakgebied en type carrière. Veel mensen kiezen een mix van zakelijk en casual. Het belangrijkste: draag iets waarin jij je sterk voelt, dan straal je dat ook uit."
+            },
+            {
+              "vraag": "Binnen of buiten?",
+              "antwoord": "Bij mooi weer het liefst buiten, vanwege het natuurlijke licht. Bij slecht weer zoeken we samen een goede plek binnen, bijvoorbeeld bij een groot raam."
+            },
+            {
+              "vraag": "Kan de shoot op locatie?",
+              "antwoord": "Ja. Ik kom naar je toe, bijvoorbeeld naar je kantoor of een plek die bij je past, waar in Nederland ook."
+            },
+            {
+              "vraag": "Hoeveel foto's krijg ik?",
+              "antwoord": "Dat hangt af van wat je nodig hebt. We spreken het vooraf af, zodat je precies weet wat je krijgt."
+            }
+          ]
+        }
+      ],
+      "afsluiter": {
+        "kop": "Wil je ook een sterk zakelijk portret?",
+        "tekst": "Stel je fotoshoot samen en zie direct wat het kost, of [lees eerst mijn tips voor een goede LinkedIn foto](/blogs/linkedin-foto-laten-maken). Ik kom door heel Nederland."
+      },
+      "recensie": {
+        "tekst": "Gijs is een natuurtalent! Hij weet precies wat hij doet en legt je vast als wie je bent. Je kunt volledig op hem vertrouwen en ik ben uitermate tevreden met het eindresultaat. Van harte aanbevolen!",
+        "naam": "Jens",
+        "over": "zakelijk portret in Leiden"
+      }
     },
     {
       "slug": "trouwen",
       "categorie": "trouwen",
       "titel": "Trouwen",
       "context": "Een zonnige trouwdag bij Paarl in Sassenheim",
-      "introKop": "Het bruidspaar centraal",
-      "intro": [
-        "Eerder fotografeerde ik al het verjaardagsfeest van haar moeder, en via Facebook vroeg ze mij of ik ook haar trouwfeest wilde vastleggen. Dat vond ik erg leuk om te doen! Het feest vond plaats bij Paarl, een evenementenlocatie en restaurant in Sassenheim.",
-        "Als officiële fotograaf heb ik vooral gelet op het bruidspaar en ervoor gezorgd dat ik hen zo goed mogelijk heb vastgelegd."
-      ],
-      "omschrijving": "Fotoreportage van een zonnige bruiloft bij Paarl in Sassenheim: het bruidspaar, lachende gasten en een sfeervolle locatie.",
+      "omschrijving": "Bruiloftsfotografie bij Paarl in Sassenheim: een zonnig trouwfeest, spontaan en stijlvol vastgelegd. Bekijk de foto's en plan jullie dag.",
       "cover": "trouwen-01.jpg",
       "layout": [
         "trouwen-01.jpg",
@@ -123,19 +239,51 @@
           "trouwen-03.jpg",
           "trouwen-02.jpg"
         ]
-      ]
+      ],
+      "seo": {
+        "title": "Bruiloft fotograaf Sassenheim (Paarl) | van Son fotografie",
+        "description": "Bruiloftsfotografie bij Paarl in Sassenheim: een zonnig trouwfeest, spontaan en stijlvol vastgelegd. Bekijk de foto's en plan jullie dag.",
+        "h1": "Bruiloft fotograaf: trouwfeest bij Paarl in Sassenheim"
+      },
+      "bijschrift": "Het bruiloftsfeest bij Paarl in Sassenheim, met een zonsondergang als afsluiter.",
+      "verhaal": [
+        {
+          "kop": "Een trouwfeest bij Paarl",
+          "tekst": [
+            "Bij Paarl in Sassenheim legde ik het feest van een bruiloft vast. Het officiële deel zat erop en het was tijd om te vieren: met familie, vrienden en een dansvloer die al snel vol stond. Het was een zonnige dag, en dat zie je terug in elke foto. Warme kleuren, mensen in hun mooiste kleren en een sfeer waarin iedereen zichzelf kon zijn."
+          ]
+        },
+        {
+          "kop": "Wat ik vastlegde",
+          "tekst": [
+            "Een bruiloftsfeest draait om de mensen en de sfeer. Ik fotografeerde de gasten die samen proosten, de gesprekken aan de zijkant en vooral de dansvloer: het bruidspaar tussen hun vrienden en gasten die helemaal loskomen. Ik werk als fly on the wall. Ik beweeg me tussen de gasten zonder dat het feest stilvalt voor de camera, zodat iedereen zichzelf blijft.",
+            "Juist op een feest gebeurt er veel tegelijk. Terwijl het bruidspaar danst, staat er aan de rand iemand te lachen om een oud verhaal. Die kleine momenten vertellen samen het verhaal van de avond. Daarom kijk ik niet alleen naar het middelpunt, maar ook naar wat eromheen gebeurt."
+          ]
+        },
+        {
+          "kop": "Het hoogtepunt: de zonsondergang",
+          "tekst": [
+            "Aan het einde van de avond kregen we een prachtige zonsondergang cadeau. Het warme licht over de locatie maakte het feest compleet. Dit soort licht duurt maar even, dus dan moet je klaarstaan. Juist zulke momenten wil je als bruidspaar later terugzien: niet alleen wie er was, maar ook hoe het voelde."
+          ]
+        },
+        {
+          "kop": "Zo werk ik bij een bruiloft",
+          "tekst": [
+            "Vooraf bespreken we samen het programma en jullie wensen: welke momenten zeker vastgelegd moeten worden en welke mensen belangrijk zijn. Daarna doe ik zelf voorwerk, zodat ik op de dag weet waar ik moet zijn. Na het feest krijgen jullie een online galerij met de beelden. Jullie kiezen je favorieten en die bewerk ik zorgvuldig na. De eerste foto's ontvangen jullie binnen 7 werkdagen, zodat je snel kunt nagenieten."
+          ]
+        }
+      ],
+      "afsluiter": {
+        "kop": "Op zoek naar een bruiloft fotograaf?",
+        "tekst": "Of het nu om de hele dag gaat of alleen het feest: ik leg jullie bruiloft spontaan en kleurrijk vast, waar in Nederland jullie ook trouwen. Stel je fotoshoot samen en bekijk direct de mogelijkheden."
+      }
     },
     {
       "slug": "dj-hidn",
       "categorie": "portretten",
       "titel": "DJ Hidn.",
       "context": "Artist impressions voor mijn broer",
-      "introKop": "Professioneel, maar niet te serieus",
-      "intro": [
-        "DJ Hidn. is mijn broer, en hij had artist-impressionfoto's nodig. De foto's zijn later gebruikt om een feest te promoten waar Hidn. nog ging draaien, en daarnaast heeft hij ze op zijn eigen socials gezet.",
-        "Ik wilde Hidn. vooral professioneel, maar ook niet al te serieus in beeld brengen. Ik ben erg trots op deze portretten: door het mooie weer spatten de kleuren echt van je scherm af."
-      ],
-      "omschrijving": "Artist-impressionfoto's van DJ Hidn.: kleurrijke, professionele portretten onder een blauwe lucht, gebruikt voor feestpromotie en socials.",
+      "omschrijving": "Promofoto's voor DJ Hidn.: een artist shoot in de polder bij Leiden, in prachtig licht. Bekijk de shoot en vraag jouw artist shoot aan.",
       "cover": "dj-hidn-03.jpg",
       "layout": [
         "dj-hidn-03.jpg",
@@ -147,15 +295,46 @@
           "dj-hidn-02.jpg"
         ],
         "dj-hidn-04.jpg"
-      ]
+      ],
+      "seo": {
+        "title": "Artist shoot DJ Hidn. | van Son fotografie",
+        "description": "Promofoto's voor DJ Hidn.: een artist shoot in de polder bij Leiden, in prachtig licht. Bekijk de shoot en vraag jouw artist shoot aan.",
+        "h1": "Artist shoot: promofoto's voor DJ Hidn."
+      },
+      "bijschrift": "Promofoto's voor een DJ, geschoten in de polder bij Leiden.",
+      "verhaal": [
+        {
+          "kop": "Promofoto's voor een DJ",
+          "tekst": [
+            "DJ Hidn. is mijn broer. Voor een feest waar hij ging draaien, had hij promofoto's nodig: beelden die laten zien wie hij is als artiest en die opvallen in de promotie van het feest. Een goede promofoto moet in één oogopslag vertellen wat voor muziek en sfeer je kunt verwachten."
+          ]
+        },
+        {
+          "kop": "Shoot in de polder bij Leiden",
+          "tekst": [
+            "We kozen bewust geen club of studio, maar de polder in de buurt van Leiden. Weids landschap, ruimte en vooral heel mooi licht. Dat licht gaf de foto's precies de sfeer die we zochten: rustig en sterk tegelijk, met kleuren die blijven hangen. Een open landschap laat bovendien veel ruimte om de foto later bij te snijden voor een flyer, een post of een banner. De locatie hoort bij het verhaal: de rust van de polder staat in contrast met de energie van een avond achter de draaitafels, en dat maakt de foto's net wat anders dan je van een DJ verwacht."
+          ]
+        },
+        {
+          "kop": "Hoe ik een artist shoot aanpak",
+          "tekst": [
+            "Bij een artist shoot draait het om je imago. Vooraf bespreken we waar de foto's voor zijn, welke uitstraling bij je muziek past en welke plek daarbij hoort. Ik denk daarbij ook alvast na over de formaten: een staande foto voor een story, een liggende voor een eventpagina en een vierkante voor je profiel. Zo heb je na één shoot genoeg materiaal voor een hele campagne rond een optreden.",
+            "Tijdens de shoot geef ik richting waar het helpt, maar ik zoek vooral de momenten waarop je jezelf bent. Een portret is pas sterk als het geloofwaardig is. Daarom laat ik ruimte om te bewegen, te praten en even niet aan de camera te denken. Juist dan ontstaan de beelden die echt bij een artiest passen.",
+            "Na de shoot krijg je een online galerij. Jij kiest je favorieten, en die bewerk ik zorgvuldig na, zodat ze klaar zijn voor flyers, socials en je artiestenprofiel. Portretten bewerk ik secuur en gedetailleerd. De eerste foto's ontvang je binnen 7 werkdagen."
+          ]
+        }
+      ],
+      "afsluiter": {
+        "kop": "Ook promofoto's nodig?",
+        "tekst": "Ben je DJ, muzikant of artiest en heb je beelden nodig voor een optreden, release of profiel? Stel je fotoshoot samen. Ik kom door heel Nederland."
+      }
     },
     {
       "slug": "vrij-werk",
       "categorie": "kunst",
       "titel": "Vrij werk",
       "context": "Vrijheid blijheid! Licht, vorm en toeval",
-      "intro": "Zonder regels of verwachtingen. Beelden die mij inspireren en die iets laten voelen.",
-      "omschrijving": "Kunstfotografie en vrij werk van van Son fotografie: experimenten met licht, compositie en het juiste moment.",
+      "omschrijving": "Vrij werk van Gijs van Son: kleurrijke fotokunst met licht, vorm en toeval. Bekijk de serie en vraag een print aan.",
       "thema": "muur",
       "cover": "kunstfotografie.webp",
       "layout": [
@@ -164,7 +343,38 @@
         "DSC03625art3.webp",
         "DSC07744art4.webp",
         "DSC08211art2.webp"
-      ]
+      ],
+      "seo": {
+        "title": "Vrij werk: fotokunst en abstract | van Son fotografie",
+        "description": "Vrij werk van Gijs van Son: kleurrijke fotokunst met licht, vorm en toeval. Bekijk de serie en vraag een print aan.",
+        "h1": "Vrij werk: fotokunst met licht, vorm en toeval"
+      },
+      "bijschrift": "Licht, vorm en toeval: fotografie zonder opdracht.",
+      "verhaal": [
+        {
+          "kop": "Fotograferen zonder opdracht",
+          "tekst": [
+            "Bij een opdracht fotografeer ik wat de klant voor ogen heeft. In mijn vrije werk doe ik precies wat ik zelf wil. Geen briefing, geen lijstje met momenten, alleen kijken, wachten en vastleggen wat me raakt. Vrijheid blijheid. Dat maakt dit werk persoonlijk: het laat zien hoe ik naar de wereld kijk als niemand me vertelt waar ik op moet letten."
+          ]
+        },
+        {
+          "kop": "Licht, vorm en toeval",
+          "tekst": [
+            "Wat deze foto's verbindt, is mijn liefde voor licht en kleur. Bouwkranen die als silhouetten afsteken tegen een kleurrijke zonsondergang. Handen en een gezicht die zich aftekenen tegen een geplooid wit gordijn. Een speedboot die een wit spoor trekt over diepblauwe zee, met bergen aan de horizon. Soms zoek ik zo'n beeld op, soms gebeurt het gewoon. Toeval speelt een grote rol, en juist dat maakt het spannend.",
+            "Ik let daarbij vooral op vorm en contrast. Een silhouet werkt alleen als de lucht erachter sterk genoeg is. Een wit gordijn wordt pas interessant als het licht de plooien laat zien. Een spoor in het water vraagt om het juiste moment. Het zijn eenvoudige onderwerpen, maar met het juiste licht worden ze iets anders."
+          ]
+        },
+        {
+          "kop": "Waarom vrij werk belangrijk is",
+          "tekst": [
+            "Vrij werk houdt mijn blik scherp. Het is de plek waar ik experimenteer met compositie, kleur en licht. Wat ik hier leer, neem ik mee naar mijn opdrachten. Of het nu een festival, een bruiloft of een portret is: het oog voor kleur en het geduld om op het juiste moment te wachten, komen hier vandaan."
+          ]
+        }
+      ],
+      "afsluiter": {
+        "kop": "Een print kopen?",
+        "tekst": "Spreekt een van deze foto's je aan? Ik verkoop prints op aanvraag. [Mail me](mailto:info@vansonfotografie.nl) welke foto en welk formaat je zoekt, dan maak ik een voorstel. Heb je een vraag over een specifieke foto, bijvoorbeeld waar hij is gemaakt of hoe hij tot stand kwam? Vraag het gerust, ik vertel er graag over."
+      }
     }
   ],
   "alt": {
