@@ -10,7 +10,8 @@
     "bijschrift: één zin over de serie op de galerijpagina.",
     "verhaal: de tekst van de serie, per blok een \"kop\" met \"tekst\" (lijst van alinea's) of \"vragen\" (vraag/antwoord). Het eerste blok staat naast de hoofdfoto, de rest klapt open met \"Lees meer\". Links schrijf je als [linktekst](/pad).",
     "afsluiter: kop en tekst boven de knop \"Stel je fotoshoot samen\" onderaan.",
-    "recensie: optioneel, {\"tekst\", \"naam\", \"over\"}; staat onder de foto's, boven de oproep."
+    "recensie: optioneel, {\"tekst\", \"naam\", \"over\"}; staat onder de foto's, boven de oproep. Zet {\"recensie\": true} in de layout om hem als tekstvak op de foto erna te zetten.",
+    "homepagina: de series (slugs) die als tegels op de homepage staan, in deze volgorde."
   ],
   "categorieen": {
     "21-diner": "21 diner",
@@ -19,6 +20,12 @@
     "portretten": "Portretten",
     "kunst": "Kunst"
   },
+  "homepagina": [
+    "21-diner-zomeravond",
+    "dj-hidn",
+    "linkedin",
+    "trouwen"
+  ],
   "series": [
     {
       "slug": "21-diner-zomeravond",

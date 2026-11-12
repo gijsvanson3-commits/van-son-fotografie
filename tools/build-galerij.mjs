@@ -494,7 +494,15 @@ const pages = series.map((serie, index) => [serie.slug, seriePage(serie, index)]
 
 // ---------- Homepage: opdrachten en kunstmuur ----------
 // Vult de blokken tussen de <!-- galerij:... --> markeringen in index.html.
-const opdrachtSeries = series.filter((serie) => serie.thema !== 'muur').slice(0, 4);
+// "homepagina" in galerij.json bepaalt welke series op de homepage staan; anders de eerste vier.
+const homeSlugs = data.homepagina ?? series.filter((serie) => serie.thema !== 'muur').slice(0, 4).map((serie) => serie.slug);
+const opdrachtSeries = homeSlugs
+  .map((slug) => {
+    const serie = series.find((item) => item.slug === slug);
+    if (!serie) problems.push(`homepagina: serie "${slug}" bestaat niet`);
+    return serie;
+  })
+  .filter(Boolean);
 const kunstSerie = series.find((serie) => serie.thema === 'muur');
 
 const homeWork = opdrachtSeries
