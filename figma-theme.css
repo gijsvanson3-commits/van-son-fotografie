@@ -2244,3 +2244,8 @@ h2.serie-cta__lead {
 .shoot-shell > .faq + .faq {
   margin-top: 1.5rem;
 }
+
+/* Fotoshoot: blokken onder de calculator links uitgelijnd, gelijk met de calculator. */
+.shoot-shell > .faq {
+  margin-inline: 0;
+}
