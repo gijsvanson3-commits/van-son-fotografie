@@ -2225,3 +2225,22 @@ h2.serie-cta__lead {
 .blog-article-section .button {
   border-radius: 7px;
 }
+
+/* Klapvak met een lijst (fotoshoot: stappen en verwachtingen). */
+.faq__opsomming {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.faq__antwoord .faq__opsomming + p {
+  margin-top: 0.9rem;
+}
+
+.shoot-shell > .faq + .faq {
+  margin-top: 1.5rem;
+}
