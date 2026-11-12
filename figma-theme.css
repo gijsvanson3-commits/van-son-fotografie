@@ -2209,3 +2209,19 @@ h2.serie-cta__lead {
 .blog-quote { color: var(--figma-cream-text); }
 .serie-recensie { color: var(--figma-ink); }
 .serie-recensie::before { color: var(--figma-orange); opacity: 1; }
+
+/* Knop onder de oproep met tekst: strakkere hoeken. */
+.serie-cta .button {
+  border-radius: 7px;
+}
+
+/* Knoppen onder een tekstje: overal dezelfde strakke hoeken van 7px. */
+.lees-meer,
+.faq__knop,
+.home-more-link,
+.home-work__cta-row .button,
+.home-contact__main,
+.gallery-cta .button,
+.blog-article-section .button {
+  border-radius: 7px;
+}
