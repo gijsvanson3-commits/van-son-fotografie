@@ -158,8 +158,7 @@
       "layout": [
         "linkedin-01.jpg",
         {
-          "kop": "Meer dan alleen een profielfoto",
-          "tekst": "De foto's zijn niet alleen geschikt voor LinkedIn. Jens schreef laatst een opiniestuk voor de Volkskrant, en de krant gebruikte daarbij één van deze portretten."
+          "recensie": true
         },
         {
           "breed": "linkedin-09.jpg",

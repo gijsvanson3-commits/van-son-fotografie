@@ -297,7 +297,9 @@ function seriePage(serie, index) {
 
   // Opbouw zoals Figma "Desktop 5": de eerste losse foto komt bovenaan naast de titel.
   // Een {"tekst"} komt als crème tekstvak op de foto('s) die erna komen.
-  const isText = (block) => block && typeof block.tekst === 'string';
+  // {"recensie": true} zet de recensie van de serie als tekstvak op de foto die erna komt.
+  const isReview = (block) => block && block.recensie === true && serie.recensie;
+  const isText = (block) => block && (typeof block.tekst === 'string' || isReview(block));
   const isWide = (block) => block && typeof block.breed === 'string';
   const isPhotoBlock = (block) => typeof block === 'string' || Array.isArray(block) || isWide(block);
   let layout = [...serie.layout];
@@ -316,6 +318,14 @@ function seriePage(serie, index) {
   // Tekstvak op een foto, eventueel met een kopje ("kop") erboven.
   const note = (block) => {
     if (!block) return '';
+    if (isReview(block)) {
+      const r = serie.recensie;
+      return `
+        <figure class="serie-note serie-recensie">
+          <blockquote><p>${esc(r.tekst)}</p></blockquote>
+          <figcaption>&mdash; ${esc(r.naam)}${r.over ? `, ${esc(r.over)}` : ''}</figcaption>
+        </figure>`;
+    }
     if (!block.kop) return `\n        <p class="serie-note">${esc(block.tekst)}</p>`;
     return `\n        <div class="serie-note">
           <h2 class="serie-note__title">${esc(block.kop)}</h2>
@@ -331,7 +341,7 @@ function seriePage(serie, index) {
       }
       const previous = layout[i - 1];
       const noteBlock = isText(previous) ? previous : null;
-      const noteText = noteBlock ? noteBlock.tekst : '';
+      const noteText = noteBlock ? noteBlock.tekst || 'recensie' : '';
       // {"breed": "foto"}: ook een staande foto over de volle breedte, bijgesneden zoals in het ontwerp.
       if (isWide(block)) {
         const p = photo(block.breed);
@@ -411,7 +421,8 @@ function seriePage(serie, index) {
     : '';
   const knop = verhaal.length > 1 ? leesMeerKnop(verhaalId) : '';
 
-  const recensie = serie.recensie
+  // Staat de recensie al als tekstvak op een foto, dan niet nog een keer onderaan.
+  const recensie = serie.recensie && !serie.layout.some(isReview)
     ? `
     <figure class="serie-recensie">
       <blockquote>

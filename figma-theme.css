@@ -2249,3 +2249,39 @@ h2.serie-cta__lead {
 .shoot-shell > .faq {
   margin-inline: 0;
 }
+
+/* Recensie als tekstvak op een foto (LinkedIn-serie). */
+.serie-note.serie-recensie {
+  position: absolute;
+  max-width: none;
+  width: min(30rem, calc(100% - 2.2rem));
+  margin: 0;
+  padding: 1.4rem 1.8rem 1.4rem 4.6rem;
+  border-radius: 7px;
+  background: var(--figma-bg);
+}
+
+.serie-note.serie-recensie::before {
+  left: 1.4rem;
+  top: 1rem;
+  font-size: 3.8rem;
+}
+
+.serie-note.serie-recensie blockquote p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 720px) {
+  .serie-note.serie-recensie {
+    position: relative;
+    width: auto;
+    padding: 1rem 1.2rem 1rem 3.6rem;
+  }
+
+  .serie-note.serie-recensie::before {
+    left: 0.9rem;
+    top: 0.7rem;
+    font-size: 3.2rem;
+  }
+}
